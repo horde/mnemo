@@ -1,17 +1,21 @@
 <?php
-
-$block_name = _("View note");
-
 /**
- * Implementation of Horde_Block api to show a single note.
- *
- * @package Horde_Block
  */
-class Horde_Block_Mnemo_note extends Horde_Block
+class Mnemo_Block_Note extends Horde_Block
 {
-    protected $_app = 'mnemo';
+    /**
+     */
     private $_notename = '';
 
+    /**
+     */
+    public function getName()
+    {
+        return _("View note");
+    }
+
+    /**
+     */
     protected function _params()
     {
         global $prefs;
@@ -31,11 +35,15 @@ class Horde_Block_Mnemo_note extends Horde_Block
         );
     }
 
+    /**
+     */
     protected function _title()
     {
         return htmlspecialchars($this->_getTitle());
     }
 
+    /**
+     */
     protected function _content()
     {
         $memo = $this->_getNote();
@@ -53,6 +61,8 @@ class Horde_Block_Mnemo_note extends Horde_Block
         return $html;
     }
 
+    /**
+     */
     private function _getNote()
     {
         if (!isset($this->_params['note_uid'])) {
@@ -75,6 +85,8 @@ class Horde_Block_Mnemo_note extends Horde_Block
         return $memo;
     }
 
+    /**
+     */
     private function _getTitle()
     {
         if (empty($this->_notename)) {

@@ -1,17 +1,21 @@
 <?php
-
-$block_name = _("Notes Summary");
-
 /**
- * Implementation of Horde_Block api to show notes summary.
- *
- *
- * @package Horde_Block
  */
-class Horde_Block_Mnemo_summary extends Horde_Block
+class Mnemo_Block_Summary extends Horde_Block
 {
+    /**
+     */
     protected $_app = 'mnemo';
 
+    /**
+     */
+    public function getName()
+    {
+        return _("Notes Summary");
+    }
+
+    /**
+     */
     protected function _title()
     {
         global $registry;
@@ -24,6 +28,8 @@ class Horde_Block_Mnemo_summary extends Horde_Block
             . htmlspecialchars($label) . '</a>';
     }
 
+    /**
+     */
     protected function _params()
     {
         $cManager = new Horde_Prefs_CategoryManager();
@@ -32,21 +38,28 @@ class Horde_Block_Mnemo_summary extends Horde_Block
             $categories[$c] = $c;
         }
 
-        return array('show_actions' => array(
-                         'type' => 'checkbox',
-                         'name' => _("Show action buttons?"),
-                         'default' => 1),
-                     'show_notepad' => array(
-                         'type' => 'checkbox',
-                         'name' => _("Show notepad name?"),
-                         'default' => 1),
-                     'show_categories' => array(
-                         'type' => 'multienum',
-                         'name' => _("Show notes from these categories"),
-                         'default' => array(),
-                         'values' => $categories));
+        return array(
+            'show_actions' => array(
+                'type' => 'checkbox',
+                'name' => _("Show action buttons?"),
+                'default' => 1
+            ),
+            'show_notepad' => array(
+                'type' => 'checkbox',
+                'name' => _("Show notepad name?"),
+                'default' => 1
+            ),
+            'show_categories' => array(
+                'type' => 'multienum',
+                'name' => _("Show notes from these categories"),
+                'default' => array(),
+                'values' => $categories
+            )
+        );
     }
 
+    /**
+     */
     protected function _content()
     {
         global $registry, $prefs;

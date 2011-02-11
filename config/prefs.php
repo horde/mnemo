@@ -2,7 +2,9 @@
 /**
  * See horde/config/prefs.php for documentation on the structure of this file.
  *
- * $Id$
+ * IMPORTANT: Local overrides should be placed in prefs.local.php, or
+ * prefs-servername.php if the 'vhosts' setting has been enabled in Horde's
+ * configuration.
  */
 
 $prefGroups['display'] = array(
@@ -92,3 +94,8 @@ $_prefs['delete_opt'] = array(
     'type' => 'checkbox',
     'desc' => _("Do you want to confirm deleting entries?")
 );
+
+/* Local overrides. */
+if (file_exists(dirname(__FILE__) . '/prefs.local.php')) {
+    include dirname(__FILE__) . '/prefs.local.php';
+}

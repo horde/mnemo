@@ -16,7 +16,7 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2017-10-13</date>
+ <date>2017-10-16</date>
  <version>
   <release>5.0.0</release>
   <api>5.0.0</api>
@@ -422,7 +422,7 @@
    <file name="LICENSE" role="doc" />
    <file name="list.php" role="horde" />
    <file name="memo.php" role="horde" />
-   <file name="README" role="doc" />
+   <file name="README.rst" role="doc" />
    <file name="search.php" role="horde" />
    <file name="view.php" role="horde" />
   </dir> <!-- / -->
@@ -624,7 +624,7 @@
    <install as="LICENSE" name="LICENSE" />
    <install as="mnemo/list.php" name="list.php" />
    <install as="mnemo/memo.php" name="memo.php" />
-   <install as="README" name="README" />
+   <install as="README.rst" name="README.rst" />
    <install as="mnemo/search.php" name="search.php" />
    <install as="mnemo/view.php" name="view.php" />
    <install as="mnemo-convert-datatree-shares-to-sql" name="bin/mnemo-convert-datatree-shares-to-sql" />
@@ -1445,7 +1445,7 @@
    <stability>
     <release>beta</release>
     <api>beta</api></stability>
-   <date>2017-10-13</date>
+   <date>2017-10-16</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Add API to backup and restore user data.

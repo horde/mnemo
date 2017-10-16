@@ -16,7 +16,7 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2017-05-24</date>
+ <date>2017-10-13</date>
  <version>
   <release>5.0.0</release>
   <api>5.0.0</api>
@@ -57,14 +57,14 @@
     <file name="hooks.php.dist" role="horde" />
     <file name="prefs.php" role="horde" />
    </dir> <!-- /config -->
-   <dir name="docs">
+   <dir name="doc">
     <file name="CHANGES" role="doc" />
     <file name="CREDITS" role="doc" />
     <file name="INSTALL" role="doc" />
     <file name="RELEASE_NOTES" role="doc" />
     <file name="TODO" role="doc" />
     <file name="UPGRADING" role="doc" />
-   </dir> <!-- /docs -->
+   </dir> <!-- /doc -->
    <dir name="js">
     <file name="list.js" role="horde" />
     <file name="memo.js" role="horde" />
@@ -416,7 +416,7 @@
      <file name="rtl.css" role="horde" />
      <file name="screen.css" role="horde" />
     </dir> <!-- /themes/default -->
-    </dir> <!-- /themes -->
+   </dir> <!-- /themes -->
    <file name="data.php" role="horde" />
    <file name="index.php" role="horde" />
    <file name="LICENSE" role="doc" />
@@ -619,6 +619,14 @@
  </usesrole>
  <phprelease>
   <filelist>
+   <install as="mnemo/data.php" name="data.php" />
+   <install as="mnemo/index.php" name="index.php" />
+   <install as="LICENSE" name="LICENSE" />
+   <install as="mnemo/list.php" name="list.php" />
+   <install as="mnemo/memo.php" name="memo.php" />
+   <install as="README" name="README" />
+   <install as="mnemo/search.php" name="search.php" />
+   <install as="mnemo/view.php" name="view.php" />
    <install as="mnemo-convert-datatree-shares-to-sql" name="bin/mnemo-convert-datatree-shares-to-sql" />
    <install as="mnemo-convert-sql-shares-to-sqlng" name="bin/mnemo-convert-sql-shares-to-sqlng" />
    <install as="mnemo-convert-to-utf8" name="bin/mnemo-convert-to-utf8" />
@@ -627,12 +635,12 @@
    <install as="mnemo/config/conf.xml" name="config/conf.xml" />
    <install as="mnemo/config/hooks.php.dist" name="config/hooks.php.dist" />
    <install as="mnemo/config/prefs.php" name="config/prefs.php" />
-   <install as="CHANGES" name="docs/CHANGES" />
-   <install as="CREDITS" name="docs/CREDITS" />
-   <install as="INSTALL" name="docs/INSTALL" />
-   <install as="RELEASE_NOTES" name="docs/RELEASE_NOTES" />
-   <install as="TODO" name="docs/TODO" />
-   <install as="UPGRADING" name="docs/UPGRADING" />
+   <install as="CHANGES" name="doc/CHANGES" />
+   <install as="CREDITS" name="doc/CREDITS" />
+   <install as="INSTALL" name="doc/INSTALL" />
+   <install as="RELEASE_NOTES" name="doc/RELEASE_NOTES" />
+   <install as="TODO" name="doc/TODO" />
+   <install as="UPGRADING" name="doc/UPGRADING" />
    <install as="mnemo/js/list.js" name="js/list.js" />
    <install as="mnemo/js/memo.js" name="js/memo.js" />
    <install as="mnemo/js/view.js" name="js/view.js" />
@@ -791,14 +799,6 @@
    <install as="mnemo/themes/default/graphics/plus.png" name="themes/default/graphics/plus.png" />
    <install as="mnemo/themes/default/graphics/search.png" name="themes/default/graphics/search.png" />
    <install as="mnemo/themes/default/graphics/za.png" name="themes/default/graphics/za.png" />
-   <install as="mnemo/data.php" name="data.php" />
-   <install as="mnemo/index.php" name="index.php" />
-   <install as="LICENSE" name="LICENSE" />
-   <install as="mnemo/list.php" name="list.php" />
-   <install as="mnemo/memo.php" name="memo.php" />
-   <install as="README" name="README" />
-   <install as="mnemo/search.php" name="search.php" />
-   <install as="mnemo/view.php" name="view.php" />
   </filelist>
  </phprelease>
  <changelog>
@@ -1445,7 +1445,7 @@
    <stability>
     <release>beta</release>
     <api>beta</api></stability>
-   <date>2017-05-24</date>
+   <date>2017-10-13</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Add API to backup and restore user data.

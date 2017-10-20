@@ -16,7 +16,7 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2017-10-17</date>
+ <date>2017-10-20</date>
  <version>
   <release>5.0.0</release>
   <api>5.0.0</api>
@@ -393,7 +393,6 @@
      <file name="AllTests.php" role="test" />
      <file name="Autoload.php" role="test" />
      <file name="bootstrap.php" role="test" />
-     <file name="phpunit.xml" role="test" />
      <file name="TestCase.php" role="test" />
     </dir> <!-- /test/Mnemo -->
    </dir> <!-- /test -->
@@ -619,16 +618,6 @@
  </usesrole>
  <phprelease>
   <filelist>
-   <install as="mnemo/data.php" name="data.php" />
-   <install as="TODO.rst" name="doc/TODO.rst" />
-   <install as="UPGRADING.rst" name="doc/UPGRADING.rst" />
-   <install as="mnemo/index.php" name="index.php" />
-   <install as="LICENSE" name="LICENSE" />
-   <install as="mnemo/list.php" name="list.php" />
-   <install as="mnemo/memo.php" name="memo.php" />
-   <install as="README.rst" name="README.rst" />
-   <install as="mnemo/search.php" name="search.php" />
-   <install as="mnemo/view.php" name="view.php" />
    <install as="mnemo-convert-datatree-shares-to-sql" name="bin/mnemo-convert-datatree-shares-to-sql" />
    <install as="mnemo-convert-sql-shares-to-sqlng" name="bin/mnemo-convert-sql-shares-to-sqlng" />
    <install as="mnemo-convert-to-utf8" name="bin/mnemo-convert-to-utf8" />
@@ -637,29 +626,30 @@
    <install as="mnemo/config/conf.xml" name="config/conf.xml" />
    <install as="mnemo/config/hooks.php.dist" name="config/hooks.php.dist" />
    <install as="mnemo/config/prefs.php" name="config/prefs.php" />
+   <install as="mnemo/data.php" name="data.php" />
    <install as="CHANGES" name="doc/CHANGES" />
    <install as="CREDITS.rst" name="doc/CREDITS.rst" />
    <install as="INSTALL.rst" name="doc/INSTALL.rst" />
    <install as="RELEASE_NOTES" name="doc/RELEASE_NOTES" />
+   <install as="TODO.rst" name="doc/TODO.rst" />
+   <install as="UPGRADING.rst" name="doc/UPGRADING.rst" />
+   <install as="mnemo/index.php" name="index.php" />
    <install as="mnemo/js/list.js" name="js/list.js" />
    <install as="mnemo/js/memo.js" name="js/memo.js" />
    <install as="mnemo/js/view.js" name="js/view.js" />
    <install as="mnemo/lib/.htaccess" name="lib/.htaccess" />
-   <install as="mnemo/lib/Api.php" name="lib/Api.php" />
-   <install as="mnemo/lib/Application.php" name="lib/Application.php" />
-   <install as="mnemo/lib/Driver.php" name="lib/Driver.php" />
-   <install as="mnemo/lib/Exception.php" name="lib/Exception.php" />
-   <install as="mnemo/lib/Mnemo.php" name="lib/Mnemo.php" />
-   <install as="mnemo/lib/TagBrowser.php" name="lib/TagBrowser.php" />
-   <install as="mnemo/lib/Tagger.php" name="lib/Tagger.php" />
    <install as="mnemo/lib/Ajax/Application.php" name="lib/Ajax/Application.php" />
    <install as="mnemo/lib/Ajax/Imple/EditNote.php" name="lib/Ajax/Imple/EditNote.php" />
    <install as="mnemo/lib/Ajax/Imple/TagAutoCompleter.php" name="lib/Ajax/Imple/TagAutoCompleter.php" />
+   <install as="mnemo/lib/Api.php" name="lib/Api.php" />
+   <install as="mnemo/lib/Application.php" name="lib/Application.php" />
    <install as="mnemo/lib/Backup/Notes.php" name="lib/Backup/Notes.php" />
    <install as="mnemo/lib/Block/Note.php" name="lib/Block/Note.php" />
    <install as="mnemo/lib/Block/Summary.php" name="lib/Block/Summary.php" />
+   <install as="mnemo/lib/Driver.php" name="lib/Driver.php" />
    <install as="mnemo/lib/Driver/Kolab.php" name="lib/Driver/Kolab.php" />
    <install as="mnemo/lib/Driver/Sql.php" name="lib/Driver/Sql.php" />
+   <install as="mnemo/lib/Exception.php" name="lib/Exception.php" />
    <install as="mnemo/lib/Factory/Driver.php" name="lib/Factory/Driver.php" />
    <install as="mnemo/lib/Factory/Notepads.php" name="lib/Factory/Notepads.php" />
    <install as="mnemo/lib/Factory/TagBrowser.php" name="lib/Factory/TagBrowser.php" />
@@ -667,12 +657,16 @@
    <install as="mnemo/lib/Form/DeleteNotepad.php" name="lib/Form/DeleteNotepad.php" />
    <install as="mnemo/lib/Form/EditNotepad.php" name="lib/Form/EditNotepad.php" />
    <install as="mnemo/lib/Form/Search.php" name="lib/Form/Search.php" />
+   <install as="mnemo/lib/Mnemo.php" name="lib/Mnemo.php" />
    <install as="mnemo/lib/Notepads/Base.php" name="lib/Notepads/Base.php" />
    <install as="mnemo/lib/Notepads/Default.php" name="lib/Notepads/Default.php" />
    <install as="mnemo/lib/Notepads/Kolab.php" name="lib/Notepads/Kolab.php" />
+   <install as="mnemo/lib/TagBrowser.php" name="lib/TagBrowser.php" />
+   <install as="mnemo/lib/Tagger.php" name="lib/Tagger.php" />
    <install as="mnemo/lib/View/List.php" name="lib/View/List.php" />
+   <install as="LICENSE" name="LICENSE" />
+   <install as="mnemo/list.php" name="list.php" />
    <install as="mnemo/locale/.htaccess" name="locale/.htaccess" />
-   <install as="mnemo/locale/mnemo.pot" name="locale/mnemo.pot" />
    <install as="mnemo/locale/bg/LC_MESSAGES/mnemo.mo" name="locale/bg/LC_MESSAGES/mnemo.mo" />
    <install as="mnemo/locale/bg/LC_MESSAGES/mnemo.po" name="locale/bg/LC_MESSAGES/mnemo.po" />
    <install as="mnemo/locale/cs/LC_MESSAGES/mnemo.mo" name="locale/cs/LC_MESSAGES/mnemo.mo" />
@@ -717,6 +711,7 @@
    <install as="mnemo/locale/lv/help.xml" name="locale/lv/help.xml" />
    <install as="mnemo/locale/lv/LC_MESSAGES/mnemo.mo" name="locale/lv/LC_MESSAGES/mnemo.mo" />
    <install as="mnemo/locale/lv/LC_MESSAGES/mnemo.po" name="locale/lv/LC_MESSAGES/mnemo.po" />
+   <install as="mnemo/locale/mnemo.pot" name="locale/mnemo.pot" />
    <install as="mnemo/locale/nb/LC_MESSAGES/mnemo.mo" name="locale/nb/LC_MESSAGES/mnemo.mo" />
    <install as="mnemo/locale/nb/LC_MESSAGES/mnemo.po" name="locale/nb/LC_MESSAGES/mnemo.po" />
    <install as="mnemo/locale/nl/LC_MESSAGES/mnemo.mo" name="locale/nl/LC_MESSAGES/mnemo.mo" />
@@ -749,6 +744,7 @@
    <install as="mnemo/locale/zh_CN/LC_MESSAGES/mnemo.po" name="locale/zh_CN/LC_MESSAGES/mnemo.po" />
    <install as="mnemo/locale/zh_TW/LC_MESSAGES/mnemo.mo" name="locale/zh_TW/LC_MESSAGES/mnemo.mo" />
    <install as="mnemo/locale/zh_TW/LC_MESSAGES/mnemo.po" name="locale/zh_TW/LC_MESSAGES/mnemo.po" />
+   <install as="mnemo/memo.php" name="memo.php" />
    <install as="mnemo/migration/1_mnemo_base_tables.php" name="migration/1_mnemo_base_tables.php" />
    <install as="mnemo/migration/2_mnemo_upgrade_autoincrement.php" name="migration/2_mnemo_upgrade_autoincrement.php" />
    <install as="mnemo/migration/3_mnemo_upgrade_sqlng.php" name="migration/3_mnemo_upgrade_sqlng.php" />
@@ -764,6 +760,8 @@
    <install as="mnemo/notepads/edit.php" name="notepads/edit.php" />
    <install as="mnemo/notepads/index.php" name="notepads/index.php" />
    <install as="mnemo/notes/index.php" name="notes/index.php" />
+   <install as="README.rst" name="README.rst" />
+   <install as="mnemo/search.php" name="search.php" />
    <install as="mnemo/templates/.htaccess" name="templates/.htaccess" />
    <install as="mnemo/templates/data/export.inc" name="templates/data/export.inc" />
    <install as="mnemo/templates/data/import.inc" name="templates/data/import.inc" />
@@ -777,7 +775,6 @@
    <install as="Mnemo/AllTests.php" name="test/Mnemo/AllTests.php" />
    <install as="Mnemo/Autoload.php" name="test/Mnemo/Autoload.php" />
    <install as="Mnemo/bootstrap.php" name="test/Mnemo/bootstrap.php" />
-   <install as="Mnemo/phpunit.xml" name="test/Mnemo/phpunit.xml" />
    <install as="Mnemo/TestCase.php" name="test/Mnemo/TestCase.php" />
    <install as="Mnemo/Unit/Driver/KolabTest.php" name="test/Mnemo/Unit/Driver/KolabTest.php" />
    <install as="Mnemo/Unit/Factory/DriverTest.php" name="test/Mnemo/Unit/Factory/DriverTest.php" />
@@ -785,8 +782,6 @@
    <install as="Mnemo/Unit/Mnemo/KolabTest.php" name="test/Mnemo/Unit/Mnemo/KolabTest.php" />
    <install as="Mnemo/Unit/Mnemo/Sql/Base.php" name="test/Mnemo/Unit/Mnemo/Sql/Base.php" />
    <install as="Mnemo/Unit/Mnemo/Sql/Pdo/SqliteTest.php" name="test/Mnemo/Unit/Mnemo/Sql/Pdo/SqliteTest.php" />
-   <install as="mnemo/themes/default/rtl.css" name="themes/default/rtl.css" />
-   <install as="mnemo/themes/default/screen.css" name="themes/default/screen.css" />
    <install as="mnemo/themes/default/graphics/add.png" name="themes/default/graphics/add.png" />
    <install as="mnemo/themes/default/graphics/az.png" name="themes/default/graphics/az.png" />
    <install as="mnemo/themes/default/graphics/delete.png" name="themes/default/graphics/delete.png" />
@@ -799,6 +794,9 @@
    <install as="mnemo/themes/default/graphics/plus.png" name="themes/default/graphics/plus.png" />
    <install as="mnemo/themes/default/graphics/search.png" name="themes/default/graphics/search.png" />
    <install as="mnemo/themes/default/graphics/za.png" name="themes/default/graphics/za.png" />
+   <install as="mnemo/themes/default/rtl.css" name="themes/default/rtl.css" />
+   <install as="mnemo/themes/default/screen.css" name="themes/default/screen.css" />
+   <install as="mnemo/view.php" name="view.php" />
   </filelist>
  </phprelease>
  <changelog>
@@ -1445,7 +1443,7 @@
    <stability>
     <release>beta</release>
     <api>beta</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Add API to backup and restore user data.

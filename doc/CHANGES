@@ -14,6 +14,14 @@ v5.0.0-git
 
 
 -------
+v4.2.14
+-------
+
+[jan] Officially support PHP 7.
+[jan] Fix exporting multiple tags to vNote CATEGORIES (Bug #14057).
+
+
+-------
 v4.2.13
 -------
 
@@ -134,6 +142,11 @@ v4.2.1
 v4.2.0
 ------
 
+
+---------
+v4.2.0RC2
+---------
+
 [jan] Fix error after successful import (Thomas Jarosch
       <thomas.jarosch@intra2net.com>, Bug #13272).
 [jan] Fix link on edit form to delete notes (Thomas Jarosch
@@ -160,6 +173,11 @@ v4.2.0alpha1
 [jan] Make notepad checkbox links switches instead of toggles.
 [jan] Replace categories with tags.
 [jan] Convert to Horde_View.
+
+
+------
+v4.1.4
+------
 
 
 ------
@@ -194,6 +212,13 @@ v4.1.1
 ------
 v4.1.0
 ------
+
+Final release.
+
+
+-----------
+v4.1.0beta2
+-----------
 
 [jan] Fix incorrect dependencies.
 
@@ -260,11 +285,12 @@ v4.0.0beta1
 [gwr] Mark the initial default share as such with the Kolab backend.
 [gwr] Fixed deletion of shares with the Kolab driver.
 [jan] Fix display of note title (Bug #11275).
+[jan] Update Turkish translation (İstanbul Technical University).
 
 
-----------
-v3.0.7-git
-----------
+------
+v3.0.7
+------
 
 [jan] Update Turkish translation (İstanbul Technical University).
 
@@ -319,10 +345,11 @@ v3.0.1
 [jan] Fix color picker for categories in the note list header (Bug #9980).
 
 
-----
-v3.0
-----
+------
+v3.0.0
+------
 
+First stable release for Horde 4.
 [jan] Fix generating tooltip previews of encrypted notes.
 [jan] Fix application-specific permission checks (Bug #9786).
 [mjr] Datatree share to SQL upgrade script refactored for Horde 4.
@@ -330,30 +357,40 @@ v3.0
 [jan] Move all executable scripts to bin/ and prefix with mnemo-.
 
 
---------
-v3.0-RC1
---------
+---------
+v3.0.0RC2
+---------
 
+Second release candidate for Horde 4.
+
+
+---------
+v3.0.0RC1
+---------
+
+First release candidate for Horde 4.
 [jan] Update installation and upgrade instructions.
 [gwr] Adapted the Kolab driver to Horde 4.
 
 
-----------
-v3.0-BETA1
-----------
+-----------
+v3.0.0beta1
+-----------
 
 [jan] Fix PDF generation.
 [jan] Fix encrypting and decrypting of notes.
 
 
------------
-v3.0-ALPHA1
------------
+------------
+v3.0.0alpha1
+------------
 
+First alpha release for Horde 4.
 [jan] Provide default configuration files instead of .dist versions.
 [jan] Default notepads no longer have the user name as the ID.
 [jan] Create a default notepad if the user doesn't own any yet.
-[jan] Try to create ISO-8859-1 encoded PDFs if this matches the user's language.
+[jan] Try to create ISO-8859-1 encoded PDFs if this matches the user's
+      language.
 [jan] Add script to convert notes to UTF-8 in the backend.
 
 
@@ -391,10 +428,12 @@ v2.2.2
 [cjh] Add hooks for altering the displayed note body and showing help text next
       to the note entry field.
 [cjh] Explicitly load DB library (Bug #7648).
-[jan] Fix "replace" API method (Alfonso Marín Marín <almarin@um.es>, Bug #7436).
+[jan] Fix "replace" API method (Alfonso Marín Marín <almarin@um.es>, Bug
+      #7436).
 [cjh] Add a PostgreSQL-specific upgrade script.
 [jan] Change group field in shares table to work with LDAP groups (Bug #6883).
-[jan] Fix user name conversion with user hooks in the notepad panel (Bug #7366).
+[jan] Fix user name conversion with user hooks in the notepad panel (Bug
+      #7366).
 
 
 ------
@@ -405,18 +444,18 @@ v2.2.1
 [jan] Add Basque translation (Euskal Herriko Unibertsitatea EHU/UPV
       <xabier.arrieta@ehu.es>).
 [mjr] Remove user permissions on all shares when deleting a user.
-[mjr] Fix issue with removeUserData api that caused the deleted user's task list
-      to not be deleted (Bug #6969).
+[mjr] Fix issue with removeUserData api that caused the deleted user's task
+      list to not be deleted (Bug #6969).
 
 
 ----
 v2.2
 ----
 
-[mjr] Fix issue with removeUserData api that caused the deleted user's task list
-      to not be deleted (Bug #6969).
-[cjh] Improve resource usage in datatree_to_sql share migration script
-      (Bug #6740).
+[mjr] Fix issue with removeUserData api that caused the deleted user's task
+      list to not be deleted (Bug #6969).
+[cjh] Improve resource usage in datatree_to_sql share migration script (Bug
+      #6740).
 [jan] Fix exporting and synchronization of encrypted notes.
 
 
@@ -439,18 +478,12 @@ v2.2-RC2
 --------
 
 [jan] Fix saving the password when creating new notes.
-
-
---------
-v2.2-RC2
---------
-
 [jan] SECURITY: Fix privilege escalation in Horde API.
 [cjh] SECURITY: Fix missing ownership validation on share changes.
 [cjh] Add the ability to filter the list of notepads in the panel.
 [cjh] New share management UI that doesn't require JavaScript.
-[cjh] Add support for split read/write databases (<duck@obala.net>,
-      Request #5936).
+[cjh] Add support for split read/write databases (<duck@obala.net>, Request
+      #5936).
 
 
 --------
@@ -513,8 +546,8 @@ v2.1-RC1
 
 [jan] Confirm note deletions (Request #1156).
 [jan] Add CLI script to import vNote data.
-[cjh] Add support for dynamic re-sorting of the note list, including saving
-      the sort preferences on any changes.
+[cjh] Add support for dynamic re-sorting of the note list, including saving the
+      sort preferences on any changes.
 [jan] Show character count next to notes.
 [mas] Change any output of <b> and <i> tags to <strong> and <em> for better
       accessibility support.
@@ -561,11 +594,11 @@ v2.0
 ----
 
 [cjh] UIDs need to be stored in the History system with a mnemo: prefix and
-      with the notepad so as not to confuse different instances of the
-      same note (if two users both have a note on their seperate notepads,
-      they should have unique histories for that note).
-[cjh] Don't throw a fatal error if an empty share name is submitted
-      (Bug #1000).
+      with the notepad so as not to confuse different instances of the same
+      note (if two users both have a note on their seperate notepads, they
+      should have unique histories for that note).
+[cjh] Don't throw a fatal error if an empty share name is submitted (Bug
+      #1000).
 
 
 --------
@@ -605,29 +638,29 @@ v2.0-ALPHA
 ----------
 
 [cjh] GUIDs now only contain mnemo: and the note ID - sharename is not needed.
-[cjh] Note IDs are now 32-character unique strings, to be useable as GUIDs.
-      The SQL table definition has changed; conversion scripts are in scripts/.
+[cjh] Note IDs are now 32-character unique strings, to be useable as GUIDs. The
+      SQL table definition has changed; conversion scripts are in scripts/.
 [cjh] The notes/ API now implements the modern methods required for SyncML and
       other syncing efforts.
 [cjh] Make sure there is a view link for empty notes.
 [cjh] Add a Delete link from the note edit screen.
-[cjh] Make sure that the correct categories for a note's current notepad
-      are always used.
+[cjh] Make sure that the correct categories for a note's current notepad are
+      always used.
 [cjh] Change how memos are stored in the SQL driver.
-      scripts/create_sequence.php will update an existing database with no
-      loss of data.
+      scripts/create_sequence.php will update an existing database with no loss
+      of data.
 [cjh] Display the Creation and Last-Modified dates in the note view.
-[cjh] Track addition, modification, and deletion of notes
-      with the Horde History:: API.
+[cjh] Track addition, modification, and deletion of notes with the Horde
+      History:: API.
 [cjh] Add import of vNotes.
 [cjh] Show the full memo body in a tooltip.
-[cjh] Add a preference for the default category for notes
-      (Brian Keifer <brian@valinor.net>).
+[cjh] Add a preference for the default category for notes (Brian Keifer
+      <brian@valinor.net>).
 [jan] Add UTF-8 support and charset parameter for backend drivers.
-[jan] Only show selected note categories on the summary screen
-      (Brian Keifer <brian@valinor.net>).
-[cjh] Much more comprehensive permissions checking, and support for
-      guest access.
+[jan] Only show selected note categories on the summary screen (Brian Keifer
+      <brian@valinor.net>).
+[cjh] Much more comprehensive permissions checking, and support for guest
+      access.
 [cjh] Use the global shares editing page for changing/assigning share
       permissions.
 [mac] Allow importing onto any available Notepad.
@@ -660,8 +693,8 @@ v1.1.1
 ------
 
 [jan] Add Italian translation (Sergio G. Caredda <scaredda@tiscali.it>).
-[jan] Add Romanian translation (Eugen Hoanca <eugenh@urban-grafx.ro>,
-      Marius Dragulescu <mariusd@urban-grafx.ro>).
+[jan] Add Romanian translation (Eugen Hoanca <eugenh@urban-grafx.ro>, Marius
+      Dragulescu <mariusd@urban-grafx.ro>).
 
 
 ----
@@ -670,17 +703,19 @@ v1.1
 
 [jan] Rename Memos to Notes (mac).
 [jan] Add print memo button (mac).
-[jan] Show current category color in category color options screen
-      (Jan Kuipers <jrkuipers@lauwerscollege.nl>).
+[jan] Show current category color in category color options screen (Jan
+      Kuipers <jrkuipers@lauwerscollege.nl>).
 [jan] Add ability to create/remove categories (mac).
 [jan] Add user preferences for the color of different categories (mac).
 [jan] Add Mnemo::addParameter().
 [jan] Add Greek translation (Stefanos I. Dimitriou <sdimitri@teiath.gr>).
 [jan] Add Slovak translation (Ivan Noris <vix@vazka.sk>).
-[jan] Add Norwegian Bokmaal translation (Torstein S. Hansen <huleboer@techbee.no>).
+[jan] Add Norwegian Bokmaal translation (Torstein S. Hansen
+      <huleboer@techbee.no>).
 [jan] Add Bulgarian translation (Miroslav Pendev <miro@cybershade.us>).
 [jan] Add Lithuanian translation (Darius Matuliauskas <darius@lnk.lt>).
-[jan] Replace <?= with <?php echo to remove the short_open_tags requirement (cjh).
+[jan] Replace <?= with <?php echo to remove the short_open_tags requirement
+      (cjh).
 [jan] Add Danish translation (Martin List-Petersen <martin@list-petersen.dk>).
 
 
@@ -691,12 +726,14 @@ v1.0
 [jan] Add Hungarian translation (Laszlo L. Tornoci <torlasz@xenia.sote.hu>).
 [jan] Add Simplified Chinese translation (Peter Wang <whw@oulink.net>).
 [jan] Add Czech translation (Pavel Chytil <pavel@chytil.tk>).
-[jan] Add Brazilian Portuguese translation (Antonio Dias <accdias-horde-i18n@sst.com.br>).
+[jan] Add Brazilian Portuguese translation (Antonio Dias
+      <accdias-horde-i18n@sst.com.br>).
 [jan] Add Dutch translation (Jan Kuipers <jrkuipers@lauwerscollege.nl>).
 [jan] Add French translation (Thierry Thomas <thierry@pompo.net>).
 [jan] Add Finnish translation (Leena Heino <liinu@uta.fi>).
 [jan] Add Norwegian Nynorsk translation (Per-Stian Vatne <psv@orsta.org>).
-[jan] Add Traditional Chinese translation (Chih-Wei Yeh <cwyeh@ccca.nctu.edu.tw>).
+[jan] Add Traditional Chinese translation (Chih-Wei Yeh
+      <cwyeh@ccca.nctu.edu.tw>).
 [jan] Add Swedish translation (Andreas Dahlén <andreas@dahlen.ws>).
 [jan] Add Spanish translation (Raul Alvarez Venegas <rav@tecoman.ucol.mx>).
 [jan] Add German translation.

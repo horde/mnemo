@@ -813,6 +813,11 @@
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * First alpha release for Horde 4.
+* [jan] Provide default configuration files instead of .dist versions.
+* [jan] Default notepads no longer have the user name as the ID.
+* [jan] Create a default notepad if the user doesn&apos;t own any yet.
+* [jan] Try to create ISO-8859-1 encoded PDFs if this matches the user&apos;s language.
+* [jan] Add script to convert notes to UTF-8 in the backend.
    </notes>
   </release>
   <release>
@@ -827,8 +832,8 @@
    <date>2011-03-16</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
-* Fix PDF generation.
-* Fix encrypting and decrypting of notes.
+* [jan] Fix PDF generation.
+* [jan] Fix encrypting and decrypting of notes.
    </notes>
   </release>
   <release>
@@ -844,6 +849,7 @@
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * First release candidate for Horde 4.
+* [jan] Update installation and upgrade instructions.
 * [gwr] Adapted the Kolab driver to Horde 4.
    </notes>
   </release>
@@ -1172,7 +1178,6 @@
    <date>2014-03-10</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
-* 
    </notes>
   </release>
   <release>
@@ -1232,7 +1237,6 @@
    <date>2014-07-08</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
-* 
    </notes>
   </release>
   <release>

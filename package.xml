@@ -1461,5 +1461,18 @@
 * [jan] Add browse(), put(), and path_delete() methods to API to support WebDAV access.
    </notes>
   </release>
+  <release>
+   <version>
+    <release>4.2.15</release>
+    <api>4.0.0</api></version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api></stability>
+   <date>2017-09-19</date>
+   <license uri="http://www.horde.org/licenses/apache">ASL</license>
+   <notes>
+* 
+   </notes>
+  </release>
  </changelog>
 </package>

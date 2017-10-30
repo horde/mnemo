@@ -16,12 +16,22 @@
     [jan] Remove configuration option for database table.
     [jan] Return ETags with browse() API method.
     [jan] Add browse(), put(), and path_delete() methods to API to support WebDAV access.
+4.2.15:
+  api: 4.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2017-09-19
+  license:
+    identifier: ASL
+    uri: http://www.horde.org/licenses/apache
+  notes:
 4.2.14:
   api: 4.0.0
   state:
     release: stable
     api: stable
-  date: 2017-03-20
+  date: 2017-09-19
   license:
     identifier: ASL
     uri: http://www.horde.org/licenses/apache

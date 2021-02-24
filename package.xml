@@ -16,14 +16,14 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2017-11-11</date>
+ <date>2021-02-24</date>
  <version>
-  <release>5.0.0</release>
-  <api>5.0.0</api>
+  <release>5.0.0alpha1</release>
+  <api>5.0.0alpha1</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>alpha</release>
+  <api>alpha</api>
  </stability>
  <license uri="http://www.horde.org/licenses/apache">ASL</license>
  <notes>
@@ -1444,12 +1444,12 @@
   </release>
   <release>
    <version>
-    <release>5.0.0</release>
-    <api>5.0.0</api></version>
+    <release>5.0.0alpha1</release>
+    <api>5.0.0alpha1</api></version>
    <stability>
-    <release>beta</release>
-    <api>beta</api></stability>
-   <date>2017-11-11</date>
+    <release>alpha</release>
+    <api>alpha</api></stability>
+   <date>2021-02-24</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Add API to backup and restore user data.

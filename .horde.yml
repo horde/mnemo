@@ -24,11 +24,11 @@ authors:
     active: false
     role: lead
 version:
-  release: 5.0.0
-  api: 5.0.0
+  release: 5.0.0alpha1
+  api: 5.0.0alpha1
 state:
-  release: beta
-  api: beta
+  release: alpha
+  api: alpha
 license:
   identifier: ASL
   uri: http://www.horde.org/licenses/apache

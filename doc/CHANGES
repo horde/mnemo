@@ -1,6 +1,6 @@
-----------
-v5.0.0-git
-----------
+------------
+v5.0.0alpha1
+------------
 
 [jan] Add API to backup and restore user data.
 [mjr] Add ability to save note without redirecting to notebook (Request

@@ -58,9 +58,6 @@
     "autoload": {
         "psr-0": {
             "Mnemo": "lib/"
-        },
-        "psr-4": {
-            "Horde\\Mnemo\\": "src/"
         }
     },
     "bin": [

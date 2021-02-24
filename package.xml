@@ -18,7 +18,7 @@
  </lead>
  <date>2021-02-24</date>
  <version>
-  <release>5.0.0alpha1</release>
+  <release>5.0.0alpha2</release>
   <api>5.0.0alpha1</api>
  </version>
  <stability>
@@ -27,13 +27,7 @@
  </stability>
  <license uri="http://www.horde.org/licenses/apache">ASL</license>
  <notes>
-* [jan] Add API to backup and restore user data.
-* [mjr] Add ability to save note without redirecting to notebook (Request #14085).
-* [mjr] Add tag browsing/searching (Request #14178).
-* [jan] Keep original file names when PUTing notes via WebDAV.
-* [jan] Remove configuration option for database table.
-* [jan] Return ETags with browse() API method.
-* [jan] Add browse(), put(), and path_delete() methods to API to support WebDAV access.
+* 
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -630,6 +624,80 @@
   </filelist>
  </phprelease>
  <changelog>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   <release>
    <version>
     <release>1.0.0</release>
@@ -1896,10 +1964,10 @@
     <api>5.0.0alpha1</api>
    </version>
    <stability>
-    <release>alpha</release>
-    <api>alpha</api>
+    <release>beta</release>
+    <api>beta</api>
    </stability>
-   <date>2017-10-20</date>
+   <date>2021-02-24</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Add API to backup and restore user data.
@@ -1909,6 +1977,21 @@
 * [jan] Remove configuration option for database table.
 * [jan] Return ETags with browse() API method.
 * [jan] Add browse(), put(), and path_delete() methods to API to support WebDAV access.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>5.0.0alpha2</release>
+    <api>5.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2021-02-24</date>
+   <license uri="http://www.horde.org/licenses/apache">ASL</license>
+   <notes>
+* 
    </notes>
   </release>
  </changelog>

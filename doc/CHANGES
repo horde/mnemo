@@ -1,4 +1,11 @@
 ------------
+v5.0.0alpha3
+------------
+
+
+
+
+------------
 v5.0.0alpha2
 ------------
 
@@ -634,16 +641,6 @@ v2.0-RC1
 [jan] Tweak layout of the summary block.
 
 
----------
-v2.0-BETA
----------
-
-[jan] Add Polish translation (Mateusz Kaminski <matipl@ds.pg.gda.pl>).
-[jan] Add special black-on-white styles for message printing.
-[jan] Add access keys.
-[cjh] Add Kolab drivers (Stuart Bingë <s.binge@codefusion.co.za>).
-
-
 ----------
 v2.0-ALPHA
 ----------
@@ -676,6 +673,16 @@ v2.0-ALPHA
       permissions.
 [mac] Allow importing onto any available Notepad.
 [mac] Add shared notepads.
+
+
+---------
+v2.0-BETA
+---------
+
+[jan] Add Polish translation (Mateusz Kaminski <matipl@ds.pg.gda.pl>).
+[jan] Add special black-on-white styles for message printing.
+[jan] Add access keys.
+[cjh] Add Kolab drivers (Stuart Bingë <s.binge@codefusion.co.za>).
 
 
 ------

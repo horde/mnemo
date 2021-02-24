@@ -18,7 +18,7 @@
  </lead>
  <date>2021-02-24</date>
  <version>
-  <release>5.0.0alpha2</release>
+  <release>5.0.0alpha3</release>
   <api>5.0.0alpha1</api>
  </version>
  <stability>
@@ -27,7 +27,7 @@
  </stability>
  <license uri="http://www.horde.org/licenses/apache">ASL</license>
  <notes>
-* |+
+* 
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -624,6 +624,81 @@
   </filelist>
  </phprelease>
  <changelog>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   <release>
    <version>
     <release>1.0.0</release>
@@ -752,24 +827,10 @@
    <date/>
    <license uri=""></license>
    <notes>
-* [cjh] GUIDs now only contain mnemo: and the note ID - sharename is not needed.
-* [cjh] Note IDs are now 32-character unique strings, to be useable as GUIDs. The SQL table definition has changed; conversion scripts are in scripts/.
-* [cjh] The notes/ API now implements the modern methods required for SyncML and other syncing efforts.
-* [cjh] Make sure there is a view link for empty notes.
-* [cjh] Add a Delete link from the note edit screen.
-* [cjh] Make sure that the correct categories for a note&apos;s current notepad are always used.
-* [cjh] Change how memos are stored in the SQL driver. scripts/create_sequence.php will update an existing database with no loss of data.
-* [cjh] Display the Creation and Last-Modified dates in the note view.
-* [cjh] Track addition, modification, and deletion of notes with the Horde History:: API.
-* [cjh] Add import of vNotes.
-* [cjh] Show the full memo body in a tooltip.
-* [cjh] Add a preference for the default category for notes (Brian Keifer &lt;brian@valinor.net&gt;).
-* [jan] Add UTF-8 support and charset parameter for backend drivers.
-* [jan] Only show selected note categories on the summary screen (Brian Keifer &lt;brian@valinor.net&gt;).
-* [cjh] Much more comprehensive permissions checking, and support for guest access.
-* [cjh] Use the global shares editing page for changing/assigning share permissions.
-* [mac] Allow importing onto any available Notepad.
-* [mac] Add shared notepads.
+* [jan] Add Polish translation (Mateusz Kaminski &lt;matipl@ds.pg.gda.pl&gt;).
+* [jan] Add special black-on-white styles for message printing.
+* [jan] Add access keys.
+* [cjh] Add Kolab drivers (Stuart Bingë &lt;s.binge@codefusion.co.za&gt;).
    </notes>
   </release>
   <release>
@@ -1918,6 +1979,21 @@
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * |+
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>5.0.0alpha3</release>
+    <api>5.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2021-02-24</date>
+   <license uri="http://www.horde.org/licenses/apache">ASL</license>
+   <notes>
+* 
    </notes>
   </release>
  </changelog>

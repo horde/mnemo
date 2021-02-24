@@ -34,33 +34,33 @@ license:
   uri: http://www.horde.org/licenses/apache
 dependencies:
   required:
-    php: ^5.3 || ^7
-    pear:
-      pear.horde.org/content: ^2.0.5
-      pear.horde.org/horde: ^5
-      pear.horde.org/Horde_Auth: ^2
-      pear.horde.org/Horde_Core: ^2.31
-      pear.horde.org/Horde_Data: ^2
-      pear.horde.org/Horde_Exception: ^2
-      pear.horde.org/Horde_Form: ^2
-      pear.horde.org/Horde_Group: ^2
-      pear.horde.org/Horde_History: ^2.1
-      pear.horde.org/Horde_Icalendar: ^2
-      pear.horde.org/Horde_Injector: ^2
-      pear.horde.org/Horde_Perms: ^2
-      pear.horde.org/Horde_Prefs: ^2
-      pear.horde.org/Horde_Share: ^2.2
-      pear.horde.org/Horde_Support: ^2
-      pear.horde.org/Horde_Text_Filter: ^2
-      pear.horde.org/Horde_Util: ^2
+    php: ^7
+    composer:
+      horde/content: ^3
+      horde/horde: ^6
+      horde/auth: ^3
+      horde/core: ^3
+      horde/data: ^3
+      horde/exception: ^3
+      horde/form: ^3
+      horde/group: ^3
+      horde/history: ^3
+      horde/icalendar: ^3
+      horde/injector: ^3
+      horde/perms: ^3
+      horde/prefs: ^3
+      horde/share: ^3
+      horde/support: ^3
+      horde/text_filter: ^3
+      horde/util: ^3
     ext:
       gettext: '*'
   optional:
-    pear:
-      pear.horde.org/Horde_ActiveSync: ^2.4
-      pear.horde.org/Horde_Backup: ^1
-      pear.horde.org/Horde_Cli: ^2
-      pear.horde.org/Horde_Crypt: ^2
-      pear.horde.org/Horde_Db: ^2.1
-      pear.horde.org/Horde_Pdf: ^2
-      pear.horde.org/Horde_Test: ^2
+    composer:
+      horde/activesync: ^3
+      horde/backup: ^2
+      horde/cli: ^3
+      horde/crypt: ^3
+      horde/db: ^3
+      horde/pdf: ^3
+      horde/test: ^3

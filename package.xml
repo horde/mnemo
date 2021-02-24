@@ -429,187 +429,17 @@
  <dependencies>
   <required>
    <php>
-    <min>5.3.0</min>
+    <min>7.0.0</min>
     <max>8.0.0alpha1</max>
     <exclude>8.0.0alpha1</exclude>
    </php>
    <pearinstaller>
     <min>1.7.0</min>
    </pearinstaller>
-   <package>
-    <name>content</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.5</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>horde</name>
-    <channel>pear.horde.org</channel>
-    <min>5.0.0</min>
-    <max>6.0.0alpha1</max>
-    <exclude>6.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Auth</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Core</name>
-    <channel>pear.horde.org</channel>
-    <min>2.31.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Data</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Exception</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Form</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Group</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_History</name>
-    <channel>pear.horde.org</channel>
-    <min>2.1.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Icalendar</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Injector</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Perms</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Prefs</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Share</name>
-    <channel>pear.horde.org</channel>
-    <min>2.2.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Support</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Text_Filter</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Util</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
    <extension>
     <name>gettext</name>
    </extension>
   </required>
-  <optional>
-   <package>
-    <name>Horde_ActiveSync</name>
-    <channel>pear.horde.org</channel>
-    <min>2.4.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Backup</name>
-    <channel>pear.horde.org</channel>
-    <min>1.0.0</min>
-    <max>2.0.0alpha1</max>
-    <exclude>2.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Cli</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Crypt</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Db</name>
-    <channel>pear.horde.org</channel>
-    <min>2.1.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Pdf</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-   <package>
-    <name>Horde_Test</name>
-    <channel>pear.horde.org</channel>
-    <min>2.0.0</min>
-    <max>3.0.0alpha1</max>
-    <exclude>3.0.0alpha1</exclude>
-   </package>
-  </optional>
  </dependencies>
  <usesrole>
   <role>horde</role>
@@ -802,6 +632,539 @@
  <changelog>
   <release>
    <version>
+    <release>1.0.0</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Add Hungarian translation (Laszlo L. Tornoci &lt;torlasz@xenia.sote.hu&gt;).
+* [jan] Add Simplified Chinese translation (Peter Wang &lt;whw@oulink.net&gt;).
+* [jan] Add Czech translation (Pavel Chytil &lt;pavel@chytil.tk&gt;).
+* [jan] Add Brazilian Portuguese translation (Antonio Dias &lt;accdias-horde-i18n@sst.com.br&gt;).
+* [jan] Add Dutch translation (Jan Kuipers &lt;jrkuipers@lauwerscollege.nl&gt;).
+* [jan] Add French translation (Thierry Thomas &lt;thierry@pompo.net&gt;).
+* [jan] Add Finnish translation (Leena Heino &lt;liinu@uta.fi&gt;).
+* [jan] Add Norwegian Nynorsk translation (Per-Stian Vatne &lt;psv@orsta.org&gt;).
+* [jan] Add Traditional Chinese translation (Chih-Wei Yeh &lt;cwyeh@ccca.nctu.edu.tw&gt;).
+* [jan] Add Swedish translation (Andreas Dahlén &lt;andreas@dahlen.ws&gt;).
+* [jan] Add Spanish translation (Raul Alvarez Venegas &lt;rav@tecoman.ucol.mx&gt;).
+* [jan] Add German translation.
+* [jan] Add Portuguese translation (Nuno Loureiro &lt;nuno@co.eth.pt&gt;).
+* [cjh] Initial Mnemo version, based on Nag.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Rename Memos to Notes (mac).
+* [jan] Add print memo button (mac).
+* [jan] Show current category color in category color options screen (Jan Kuipers &lt;jrkuipers@lauwerscollege.nl&gt;).
+* [jan] Add ability to create/remove categories (mac).
+* [jan] Add user preferences for the color of different categories (mac).
+* [jan] Add Mnemo::addParameter().
+* [jan] Add Greek translation (Stefanos I. Dimitriou &lt;sdimitri@teiath.gr&gt;).
+* [jan] Add Slovak translation (Ivan Noris &lt;vix@vazka.sk&gt;).
+* [jan] Add Norwegian Bokmaal translation (Torstein S. Hansen &lt;huleboer@techbee.no&gt;).
+* [jan] Add Bulgarian translation (Miroslav Pendev &lt;miro@cybershade.us&gt;).
+* [jan] Add Lithuanian translation (Darius Matuliauskas &lt;darius@lnk.lt&gt;).
+* [jan] Replace &lt;?= with &lt;?php echo to remove the short_open_tags requirement (cjh).
+* [jan] Add Danish translation (Martin List-Petersen &lt;martin@list-petersen.dk&gt;).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Add Italian translation (Sergio G. Caredda &lt;scaredda@tiscali.it&gt;).
+* [jan] Add Romanian translation (Eugen Hoanca &lt;eugenh@urban-grafx.ro&gt;, Marius Dragulescu &lt;mariusd@urban-grafx.ro&gt;).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.2</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Make memos without description accessible from the memo list.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.3</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Add Polish translation (Mateusz Kaminski &lt;matipl@ds.pg.gda.pl&gt;).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.4</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Close XSS when setting the parent frame&apos;s page title by javascript (cjh).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.01</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [cjh] GUIDs now only contain mnemo: and the note ID - sharename is not needed.
+* [cjh] Note IDs are now 32-character unique strings, to be useable as GUIDs. The SQL table definition has changed; conversion scripts are in scripts/.
+* [cjh] The notes/ API now implements the modern methods required for SyncML and other syncing efforts.
+* [cjh] Make sure there is a view link for empty notes.
+* [cjh] Add a Delete link from the note edit screen.
+* [cjh] Make sure that the correct categories for a note&apos;s current notepad are always used.
+* [cjh] Change how memos are stored in the SQL driver. scripts/create_sequence.php will update an existing database with no loss of data.
+* [cjh] Display the Creation and Last-Modified dates in the note view.
+* [cjh] Track addition, modification, and deletion of notes with the Horde History:: API.
+* [cjh] Add import of vNotes.
+* [cjh] Show the full memo body in a tooltip.
+* [cjh] Add a preference for the default category for notes (Brian Keifer &lt;brian@valinor.net&gt;).
+* [jan] Add UTF-8 support and charset parameter for backend drivers.
+* [jan] Only show selected note categories on the summary screen (Brian Keifer &lt;brian@valinor.net&gt;).
+* [cjh] Much more comprehensive permissions checking, and support for guest access.
+* [cjh] Use the global shares editing page for changing/assigning share permissions.
+* [mac] Allow importing onto any available Notepad.
+* [mac] Add shared notepads.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0RC1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Tweak layout of the summary block.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0RC2</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Add Czech translation (Pavel Chytil &lt;pavel@chytil.tk&gt;).
+* [jan] Add Latvian translation (Janis Eisaks &lt;jancs@dv.lv&gt;).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0RC3</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [cjh] Add My Notepads menu entry.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [cjh] UIDs need to be stored in the History system with a mnemo: prefix and with the notepad so as not to confuse different instances of the same note (if two users both have a note on their seperate notepads, they should have unique histories for that note).
+* [cjh] Don&apos;t throw a fatal error if an empty share name is submitted (Bug #1000).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Fix print view.
+* [jan] Fix print button.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.2RC1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [cjh] Fix resetting categories to Unfiled (Bug #2018).
+* [cjh] Use bind variables in SQL driver, clean up required parameters (selsky@columbia.edu, Bug #1791).
+* [cjh] Add a PostgreSQL upgrade script (Bug #1779).
+* [cjh] Better error handling when deleting shares that don&apos;t exist (Bug #1754).
+* [jan] Add Japanese translation (Hiromi Kimura &lt;hiromi@tac.tsukuba.ac.jp&gt;).
+* [jan] Add shortcut icon (favicon.ico).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.2</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Allow to import more than one note from vNote data at once.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.3</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [cjh] Close several XSS vulnerabilities with note and notepad data.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.0RC1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Confirm note deletions (Request #1156).
+* [jan] Add CLI script to import vNote data.
+* [cjh] Add support for dynamic re-sorting of the note list, including saving the sort preferences on any changes.
+* [jan] Show character count next to notes.
+* [mas] Change any output of &lt;b&gt; and &lt;i&gt; tags to &lt;strong&gt; and &lt;em&gt; for better accessibility support.
+* [jan] Add permissions to restrict number of notes.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.0</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Fix portal block if used with Kolab driver (tokoe@kde.org, Bug #2735).
+* [jan] Add Russian translation (Alexey Zakharov &lt;baber@mosga.net&gt;).
+* [ben] Better support for MS-SQL.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Show error message if imported file didn&apos;t contain notes.
+* [jan] Add Slovenian translation (Duck &lt;duck@obala.net&gt;).
+* [jan] Add categories from imported contacts to the user&apos;s categories.
+* [jan] Show personal notepad by default with disabled preferences (Bug #4078).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.2</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] SECURITY: Fix privilege escalation in Horde API.
+* [cjh] SECURITY: Fix missing ownership validation on share changes.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.01</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [cjh] Show tooltips in the summary block, and restrict tooltips to 20 lines (Request #3443).
+* [cjh] Optionally show a note&apos;s notepad in the list view (Request #2317).
+* [cjh] Add quick (inline) note searching.
+* [cjh] Add the ability to save a note as a PDF.
+* [jan] Add support for encrypted notes.
+* [cjh] Move notepad selection/deselection to a collapsible panel.
+* [mas] Conform to WCAG 1.0 Priority 2/Section 508 accessibility guidelines. (Request #4080)
+* [cjh] Notes search should be either title or full text (Request #4277).
+* [cjh] Make the note edit view the full page width.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.0RC1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Implement WebDAV DELETE.
+* [cjh] Add quick links to the sidebar block for adding notes to a specific notepad (Gunnar Wrobel &lt;p@rdus.de&gt;, Request #5716).
+* [cjh] Fix generation of UIDs with PHP 5.2+.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.0RC2</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Fix saving the password when creating new notes.
+* [jan] SECURITY: Fix privilege escalation in Horde API.
+* [cjh] SECURITY: Fix missing ownership validation on share changes.
+* [cjh] Add the ability to filter the list of notepads in the panel.
+* [cjh] New share management UI that doesn&apos;t require JavaScript.
+* [cjh] Add support for split read/write databases (&lt;duck@obala.net&gt;, Request #5936).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.0RC3</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [cjh] Apply fix for http://dev.rubyonrails.org/ticket/11473 to prototype.js (Request #6590).
+* [cjh] Add an upgrade script for the new SQL share driver (Request #6109).
+* [gwr] Added History support in the Kolab driver.
+* [cjh] Avoid errors when trying to export an empty notepad (Bug #6409).
+* [cjh] Show who created or made the last change to a note along with the date (Request #6305).
+* [jan] Add Turkish translation (METU &lt;horde-tr@metu.edu.tr&gt;).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.0</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [mjr] Fix issue with removeUserData api that caused the deleted user&apos;s task list to not be deleted (Bug #6969).
+* [cjh] Improve resource usage in datatree_to_sql share migration script (Bug #6740).
+* [jan] Fix exporting and synchronization of encrypted notes.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.1</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Log moving of memos in the history backend (Bug #3207).
+* [jan] Add Basque translation (Euskal Herriko Unibertsitatea EHU/UPV &lt;xabier.arrieta@ehu.es&gt;).
+* [mjr] Remove user permissions on all shares when deleting a user.
+* [mjr] Fix issue with removeUserData api that caused the deleted user&apos;s task list to not be deleted (Bug #6969).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.2</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [mms] Upgrade prototype.js to v1.6.1.
+* [jan] Fix synchronization with output compression enabled (Bug #7769).
+* [jan] Add passphrase confirmation field (Bug #7379).
+* [cjh] Work around BC break with Horde versions before 3.2 (Bug #7820).
+* [cjh] Add URL access to notes by "starts-with" search on the note title.
+* [cjh] Add hooks for altering the displayed note body and showing help text next to the note entry field.
+* [cjh] Explicitly load DB library (Bug #7648).
+* [jan] Fix "replace" API method (Alfonso Marín Marín &lt;almarin@um.es&gt;, Bug #7436).
+* [cjh] Add a PostgreSQL-specific upgrade script.
+* [jan] Change group field in shares table to work with LDAP groups (Bug #6883).
+* [jan] Fix user name conversion with user hooks in the notepad panel (Bug #7366).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.3</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Add and fix Oracle SQL scripts.
+* [jan] Add Croatian translation (Matej Vela &lt;matej.vela@carnet.hr&gt;).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.4</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [mjr] Do not remove history entries when removing user data (Bug #8755).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.5</release>
+    <api/>
+   </version>
+   <stability>
+    <release/>
+    <api/>
+   </stability>
+   <date/>
+   <license uri=""></license>
+   <notes>
+* [jan] Add upgrade scripts for next-generation SQL share driver.
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>3.0.0alpha1</release>
     <api>3.0.0</api>
    </version>
@@ -891,10 +1254,12 @@
   <release>
    <version>
     <release>3.0.1</release>
-    <api>3.0.0</api></version>
+    <api>3.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2011-05-18</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -905,10 +1270,12 @@
   <release>
    <version>
     <release>3.0.2</release>
-    <api>3.0.0</api></version>
+    <api>3.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2011-08-02</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -918,10 +1285,12 @@
   <release>
    <version>
     <release>3.0.3</release>
-    <api>3.0.0</api></version>
+    <api>3.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2011-10-18</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -933,10 +1302,12 @@
   <release>
    <version>
     <release>3.0.4</release>
-    <api>3.0.0</api></version>
+    <api>3.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2011-12-13</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -948,10 +1319,12 @@
   <release>
    <version>
     <release>3.0.5</release>
-    <api>3.0.0</api></version>
+    <api>3.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2012-01-31</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -961,10 +1334,12 @@
   <release>
    <version>
     <release>3.0.6</release>
-    <api>3.0.0</api></version>
+    <api>3.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2012-05-29</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -976,10 +1351,12 @@
   <release>
    <version>
     <release>3.0.7</release>
-    <api>3.0.0</api></version>
+    <api>3.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2012-05-29</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -987,8 +1364,6 @@
    </notes>
   </release>
   <release>
-   <date>2012-10-12</date>
-   <time>22:27:01</time>
    <version>
     <release>4.0.0beta1</release>
     <api>4.0.0beta1</api>
@@ -997,6 +1372,7 @@
     <release>beta</release>
     <api>beta</api>
    </stability>
+   <date>2012-10-12</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [gwr] Always mark the initial share as default notepad.
@@ -1009,10 +1385,12 @@
   <release>
    <version>
     <release>4.0.0RC1</release>
-    <api>4.0.0beta1</api></version>
+    <api>4.0.0beta1</api>
+   </version>
    <stability>
     <release>beta</release>
-    <api>beta</api></stability>
+    <api>beta</api>
+   </stability>
    <date>2012-10-27</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1023,10 +1401,12 @@
   <release>
    <version>
     <release>4.0.0</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2012-10-30</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1037,10 +1417,12 @@
   <release>
    <version>
     <release>4.0.1</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2012-11-27</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1052,10 +1434,12 @@
   <release>
    <version>
     <release>4.0.2</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2013-01-10</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1068,10 +1452,12 @@
   <release>
    <version>
     <release>4.0.3</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2013-02-12</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1081,8 +1467,6 @@
    </notes>
   </release>
   <release>
-   <date>2013-05-07</date>
-   <time>16:12:35</time>
    <version>
     <release>4.1.0beta1</release>
     <api>4.0.0</api>
@@ -1091,6 +1475,7 @@
     <release>beta</release>
     <api>stable</api>
    </stability>
+   <date>2013-05-07</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Add Ukrainian translation (Andriy Kopystyansky &lt;anri@polynet.lviv.ua&gt;).
@@ -1100,10 +1485,12 @@
   <release>
    <version>
     <release>4.1.0beta2</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>beta</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2013-05-14</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1113,10 +1500,12 @@
   <release>
    <version>
     <release>4.1.0</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2013-06-05</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1126,10 +1515,12 @@
   <release>
    <version>
     <release>4.1.1</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2013-07-16</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1139,10 +1530,12 @@
   <release>
    <version>
     <release>4.1.2</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2013-10-29</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1154,10 +1547,12 @@
   <release>
    <version>
     <release>4.1.3</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2014-03-10</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1171,10 +1566,12 @@
   <release>
    <version>
     <release>4.1.4</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2014-03-10</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1184,10 +1581,12 @@
   <release>
    <version>
     <release>4.2.0alpha1</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>alpha</release>
-    <api>alpha</api></stability>
+    <api>alpha</api>
+   </stability>
    <date>2014-05-05</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1201,10 +1600,12 @@
   <release>
    <version>
     <release>4.2.0RC1</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>beta</release>
-    <api>beta</api></stability>
+    <api>beta</api>
+   </stability>
    <date>2014-06-17</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1215,10 +1616,12 @@
   <release>
    <version>
     <release>4.2.0RC2</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>beta</release>
-    <api>beta</api></stability>
+    <api>beta</api>
+   </stability>
    <date>2014-07-01</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1231,10 +1634,12 @@
   <release>
    <version>
     <release>4.2.0</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2014-07-08</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1244,10 +1649,12 @@
   <release>
    <version>
     <release>4.2.1</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2014-08-04</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1261,10 +1668,12 @@
   <release>
    <version>
     <release>4.2.2</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2014-10-29</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1276,10 +1685,12 @@
   <release>
    <version>
     <release>4.2.3</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2014-12-03</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1290,10 +1701,12 @@
   <release>
    <version>
     <release>4.2.4</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2015-02-10</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1305,10 +1718,12 @@
   <release>
    <version>
     <release>4.2.5</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2015-02-10</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1318,10 +1733,12 @@
   <release>
    <version>
     <release>4.2.6</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2015-04-28</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1331,10 +1748,12 @@
   <release>
    <version>
     <release>4.2.7</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2015-08-01</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1347,10 +1766,12 @@
   <release>
    <version>
     <release>4.2.8</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2015-10-21</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1362,10 +1783,12 @@
   <release>
    <version>
     <release>4.2.9</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2016-02-02</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1376,10 +1799,12 @@
   <release>
    <version>
     <release>4.2.10</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2016-03-21</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1389,10 +1814,12 @@
   <release>
    <version>
     <release>4.2.11</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2016-07-01</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1404,10 +1831,12 @@
   <release>
    <version>
     <release>4.2.12</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2016-12-16</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1417,10 +1846,12 @@
   <release>
    <version>
     <release>4.2.13</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
+    <api>stable</api>
+   </stability>
    <date>2017-03-20</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
@@ -1431,11 +1862,13 @@
   <release>
    <version>
     <release>4.2.14</release>
-    <api>4.0.0</api></version>
+    <api>4.0.0</api>
+   </version>
    <stability>
     <release>stable</release>
-    <api>stable</api></stability>
-   <date>2017-03-20</date>
+    <api>stable</api>
+   </stability>
+   <date>2017-09-19</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Officially support PHP 7.
@@ -1444,12 +1877,29 @@
   </release>
   <release>
    <version>
+    <release>4.2.15</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2017-09-19</date>
+   <license uri="http://www.horde.org/licenses/apache">ASL</license>
+   <notes>
+* 
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>5.0.0alpha1</release>
-    <api>5.0.0alpha1</api></version>
+    <api>5.0.0alpha1</api>
+   </version>
    <stability>
     <release>alpha</release>
-    <api>alpha</api></stability>
-   <date>2021-02-24</date>
+    <api>alpha</api>
+   </stability>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [jan] Add API to backup and restore user data.
@@ -1459,19 +1909,6 @@
 * [jan] Remove configuration option for database table.
 * [jan] Return ETags with browse() API method.
 * [jan] Add browse(), put(), and path_delete() methods to API to support WebDAV access.
-   </notes>
-  </release>
-  <release>
-   <version>
-    <release>4.2.15</release>
-    <api>4.0.0</api></version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api></stability>
-   <date>2017-09-19</date>
-   <license uri="http://www.horde.org/licenses/apache">ASL</license>
-   <notes>
-* 
    </notes>
   </release>
  </changelog>

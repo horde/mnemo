@@ -1,4 +1,15 @@
 ---
+5.0.0alpha4:
+  api: 5.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-03-13
+  license:
+    identifier: ASL
+    uri: http://www.horde.org/licenses/apache
+  notes: |+
+    
 5.0.0alpha3:
   api: 5.0.0alpha1
   state:
@@ -705,6 +716,12 @@
 2.0-RC1:
   notes: |
     [jan] Tweak layout of the summary block.
+2.0-BETA:
+  notes: |
+    [jan] Add Polish translation (Mateusz Kaminski <matipl@ds.pg.gda.pl>).
+    [jan] Add special black-on-white styles for message printing.
+    [jan] Add access keys.
+    [cjh] Add Kolab drivers (Stuart Bingë <s.binge@codefusion.co.za>).
 2.0-ALPHA:
   notes: |
     [cjh] GUIDs now only contain mnemo: and the note ID - sharename is not needed.
@@ -725,12 +742,6 @@
     [cjh] Use the global shares editing page for changing/assigning share permissions.
     [mac] Allow importing onto any available Notepad.
     [mac] Add shared notepads.
-2.0-BETA:
-  notes: |
-    [jan] Add Polish translation (Mateusz Kaminski <matipl@ds.pg.gda.pl>).
-    [jan] Add special black-on-white styles for message printing.
-    [jan] Add access keys.
-    [cjh] Add Kolab drivers (Stuart Bingë <s.binge@codefusion.co.za>).
 1.1.4:
   notes: |
     [jan] Close XSS when setting the parent frame's page title by javascript (cjh).

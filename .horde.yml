@@ -34,7 +34,7 @@ license:
   uri: http://www.horde.org/licenses/apache
 dependencies:
   required:
-    php: ^7
+    php: ^7.4 || ^8
     composer:
       horde/content: ^3
       horde/horde: ^6

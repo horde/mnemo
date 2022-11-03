@@ -16,7 +16,7 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2021-03-13</date>
+ <date>2022-11-03</date>
  <version>
   <release>5.0.0alpha4</release>
   <api>5.0.0alpha1</api>
@@ -27,10 +27,18 @@
  </stability>
  <license uri="http://www.horde.org/licenses/apache">ASL</license>
  <notes>
-* 
+* [rla] Enable PHP 8.x compat.
+* |+
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
+   <dir name=".github">
+    <dir name="workflows">
+     <file name="ci.yml" role="horde" />
+     <file name="phpdoc.yml" role="horde" />
+     <file name="update-satis.yml" role="horde" />
+    </dir> <!-- /.github/workflows -->
+   </dir> <!-- /.github -->
    <dir name="bin">
     <file name="mnemo-convert-datatree-shares-to-sql" role="script">
      <tasks:replace from="/usr/bin/env php" to="php_bin" type="pear-config" />
@@ -423,9 +431,9 @@
  <dependencies>
   <required>
    <php>
-    <min>7.0.0</min>
-    <max>8.0.0alpha1</max>
-    <exclude>8.0.0alpha1</exclude>
+    <min>7.4.0</min>
+    <max>9.0.0alpha1</max>
+    <exclude>9.0.0alpha1</exclude>
    </php>
    <pearinstaller>
     <min>1.7.0</min>
@@ -442,6 +450,9 @@
  </usesrole>
  <phprelease>
   <filelist>
+   <install as="mnemo/.github/workflows/ci.yml" name=".github/workflows/ci.yml" />
+   <install as="mnemo/.github/workflows/phpdoc.yml" name=".github/workflows/phpdoc.yml" />
+   <install as="mnemo/.github/workflows/update-satis.yml" name=".github/workflows/update-satis.yml" />
    <install as="mnemo-convert-datatree-shares-to-sql" name="bin/mnemo-convert-datatree-shares-to-sql" />
    <install as="mnemo-convert-sql-shares-to-sqlng" name="bin/mnemo-convert-sql-shares-to-sqlng" />
    <install as="mnemo-convert-to-utf8" name="bin/mnemo-convert-to-utf8" />
@@ -624,82 +635,6 @@
   </filelist>
  </phprelease>
  <changelog>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
   <release>
    <version>
     <release>1.0.0</release>
@@ -2023,7 +1958,8 @@
    <date>2021-03-13</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
-* 
+* [rla] Enable PHP 8.x compat.
+* |+
    </notes>
   </release>
  </changelog>

@@ -1,5 +1,4 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/mnemo",
     "description": "Notes application",
     "type": "horde-application",
@@ -17,15 +16,15 @@
             "role": "lead"
         }
     ],
-    "time": "2021-03-13",
+    "time": "2022-11-03",
     "repositories": [
         {
             "type": "composer",
-            "url": "https://horde-satis.maintaina.com/"
+            "url": "https://horde-satis.maintaina.com"
         }
     ],
     "require": {
-        "horde/horde-installer-plugin": "^2 || dev-FRAMEWORK_6_0",
+        "horde/horde-installer-plugin": "dev-FRAMEWORK_6_0 || ^2",
         "php": "^7.4 || ^8",
         "horde/content": "^3 || dev-FRAMEWORK_6_0",
         "horde/horde": "^6 || dev-FRAMEWORK_6_0",
@@ -46,6 +45,7 @@
         "horde/util": "^3 || dev-FRAMEWORK_6_0",
         "ext-gettext": "*"
     },
+    "require-dev": {},
     "suggest": {
         "horde/activesync": "^3 || dev-FRAMEWORK_6_0",
         "horde/backup": "^2 || dev-FRAMEWORK_6_0",
@@ -60,10 +60,20 @@
             "Mnemo": "lib/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Horde\\Mnemo\\Test\\": "test/"
+        }
+    },
     "bin": [
         "bin/mnemo-convert-datatree-shares-to-sql",
         "bin/mnemo-convert-sql-shares-to-sqlng",
         "bin/mnemo-convert-to-utf8",
         "bin/mnemo-import-text-note"
-    ]
+    ],
+    "config": {
+        "allow-plugins": {
+            "horde/horde-installer-plugin": true
+        }
+    }
 }

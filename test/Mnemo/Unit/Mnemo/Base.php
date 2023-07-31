@@ -43,13 +43,13 @@ class Mnemo_Unit_Mnemo_Base extends Mnemo_TestCase
      */
     protected $default_name = 'Notepad of test@example.com';
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::createBasicMnemoSetup(self::$setup);
         parent::setUpBeforeClass();
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $error = self::$setup->getError();
@@ -58,7 +58,7 @@ class Mnemo_Unit_Mnemo_Base extends Mnemo_TestCase
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         foreach ($GLOBALS['mnemo_shares']->listShares('test@example.com') as $share) {
             $GLOBALS['mnemo_shares']->removeShare($share);

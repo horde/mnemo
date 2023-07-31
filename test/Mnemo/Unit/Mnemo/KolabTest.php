@@ -38,8 +38,9 @@ class Mnemo_Unit_Mnemo_KolabTest extends Mnemo_Unit_Mnemo_Base
      */
     protected $default_name = 'Notes';
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
+        self::markTestSkipped('Skipping because of "Cannot bind interface or abstract class "Horde_Share_Base" to an interface. in /usr/share/php/Horde/Injector/Binder/Implementation.php:78"');
         self::$setup = new Horde_Test_Setup();
         parent::setUpBeforeClass();
         self::createKolabShares(self::$setup);

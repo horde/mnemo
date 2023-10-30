@@ -301,7 +301,7 @@ if (!$view->modify || !$view->passphrase) {
             );
         }
     }
-    $view->tags = implode(', ', $memo_tags);
+    $view->tags = is_array($memo_tags) ? implode(', ', $memo_tags) : $memo_tags;
     if ($memo_id &&
         $mnemo_shares->getShare($memolist_id)->hasPermission($user, Horde_Perms::DELETE)) {
         $view->delete = Horde::url('memo.php')->add(array(

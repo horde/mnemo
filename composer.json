@@ -3,7 +3,7 @@
     "description": "Notes application",
     "type": "horde-application",
     "homepage": "https://www.horde.org/apps/mnemo",
-    "license": "ASL",
+    "license": "Apache-1.1",
     "authors": [
         {
             "name": "Jan Schneider",

@@ -16,7 +16,7 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2022-11-03</date>
+ <date>2023-10-30</date>
  <version>
   <release>5.0.0alpha5</release>
   <api>5.0.0alpha1</api>
@@ -27,7 +27,8 @@
  </stability>
  <license uri="http://www.horde.org/licenses/apache">ASL</license>
  <notes>
-* 
+* [rla][bugf] Fix error screen after saving a note.
+* |+
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -634,83 +635,6 @@
   </filelist>
  </phprelease>
  <changelog>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
   <release>
    <version>
     <release>1.0.0</release>
@@ -2050,7 +1974,8 @@
    <date>2022-11-03</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
-* 
+* [rla][bugf] Fix error screen after saving a note.
+* |+
    </notes>
   </release>
  </changelog>

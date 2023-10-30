@@ -3,7 +3,7 @@
     "description": "A web based notes manager",
     "type": "library",
     "homepage": "http://pear.horde.org",
-    "license": "ASL",
+    "license": "Apache-1.1",
     "authors": [
         {
             "name": "Chuck Hagenbuch",

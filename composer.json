@@ -18,45 +18,37 @@
     ],
     "version": "5.0.0",
     "time": "2017-11-11",
-    "repositories": [
-        {
-            "type": "pear",
-            "url": "https://pear.horde.org"
-        }
-    ],
     "require": {
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/content": "^2.0.5",
-        "pear-pear.horde.org/horde": "^5",
-        "pear-pear.horde.org/Horde_Auth": "^2",
-        "pear-pear.horde.org/Horde_Core": "^2.31",
-        "pear-pear.horde.org/Horde_Data": "^2",
-        "pear-pear.horde.org/Horde_Exception": "^2",
-        "pear-pear.horde.org/Horde_Form": "^2",
-        "pear-pear.horde.org/Horde_Group": "^2",
-        "pear-pear.horde.org/Horde_History": "^2.1",
-        "pear-pear.horde.org/Horde_Icalendar": "^2",
-        "pear-pear.horde.org/Horde_Injector": "^2",
-        "pear-pear.horde.org/Horde_Perms": "^2",
-        "pear-pear.horde.org/Horde_Prefs": "^2",
-        "pear-pear.horde.org/Horde_Share": "^2.2",
-        "pear-pear.horde.org/Horde_Support": "^2",
-        "pear-pear.horde.org/Horde_Text_Filter": "^2",
-        "pear-pear.horde.org/Horde_Util": "^2",
+        "horde/content": "^2.0.5",
+        "horde/horde": "^5",
+        "horde/auth": "^2",
+        "horde/core": "^2.31",
+        "horde/data": "^2",
+        "horde/exception": "^2",
+        "horde/form": "^2",
+        "horde/group": "^2",
+        "horde/history": "^2.1",
+        "horde/icalendar": "^2",
+        "horde/injector": "^2",
+        "horde/perms": "^2",
+        "horde/prefs": "^2",
+        "horde/share": "^2.2",
+        "horde/support": "^2",
+        "horde/text_filter": "^2",
+        "horde/util": "^2",
         "ext-gettext": "*"
     },
     "suggest": {
-        "pear-pear.horde.org/Horde_ActiveSync": "^2.4",
-        "pear-pear.horde.org/Horde_Backup": "^1",
-        "pear-pear.horde.org/Horde_Cli": "^2",
-        "pear-pear.horde.org/Horde_Crypt": "^2",
-        "pear-pear.horde.org/Horde_Db": "^2.1",
-        "pear-pear.horde.org/Horde_Pdf": "^2",
-        "pear-pear.horde.org/Horde_Test": "^2"
+        "horde/activeSync": "^2.4",
+        "horde/backup": "^1",
+        "horde/cli": "^2",
+        "horde/crypt": "^2",
+        "horde/db": "^2.1",
+        "horde/pdf": "^2",
+        "horde/test": "^2"
     },
     "replace": {
-        "pear-pear.horde.org/mnemo": "5.*",
-        "pear-horde/mnemo": "5.*"
     },
     "autoload": {
         "psr-0": {

@@ -18,7 +18,7 @@
  </lead>
  <date>2023-10-30</date>
  <version>
-  <release>5.0.0alpha5</release>
+  <release>5.0.0alpha6</release>
   <api>5.0.0alpha1</api>
  </version>
  <stability>
@@ -27,8 +27,7 @@
  </stability>
  <license uri="http://www.horde.org/licenses/apache">ASL</license>
  <notes>
-* [rla][bugf] Fix error screen after saving a note.
-* |+
+* 
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -635,6 +634,84 @@
   </filelist>
  </phprelease>
  <changelog>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   <release>
    <version>
     <release>1.0.0</release>
@@ -1971,11 +2048,26 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2022-11-03</date>
+   <date>2023-10-30</date>
    <license uri="http://www.horde.org/licenses/apache">ASL</license>
    <notes>
 * [rla][bugf] Fix error screen after saving a note.
 * |+
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>5.0.0alpha6</release>
+    <api>5.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2023-10-30</date>
+   <license uri="http://www.horde.org/licenses/apache">ASL</license>
+   <notes>
+* 
    </notes>
   </release>
  </changelog>

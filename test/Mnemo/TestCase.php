@@ -28,9 +28,9 @@
  * @link       http://www.horde.org/apps/mnemo
  */
 class Mnemo_TestCase
-extends PHPUnit_Framework_TestCase
+extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->markTestIncomplete('Needs some love');
     }

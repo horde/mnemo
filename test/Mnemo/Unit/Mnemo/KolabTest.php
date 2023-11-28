@@ -38,7 +38,7 @@ class Mnemo_Unit_Mnemo_KolabTest extends Mnemo_Unit_Mnemo_Base
      */
     protected $default_name = 'Notes';
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$setup = new Horde_Test_Setup();
         parent::setUpBeforeClass();

@@ -29,7 +29,7 @@
  */
 class Mnemo_Unit_Mnemo_Sql_Base extends Mnemo_Unit_Mnemo_Base
 {
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::createSqlShares(self::$setup);

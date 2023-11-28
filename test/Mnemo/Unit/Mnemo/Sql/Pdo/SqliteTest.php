@@ -31,7 +31,7 @@ class Mnemo_Unit_Mnemo_Sql_Pdo_SqliteTest extends Mnemo_Unit_Mnemo_Sql_Base
 {
     protected $backupGlobals = false;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$setup = new Horde_Test_Setup();
         self::createSqlPdoSqlite(self::$setup);

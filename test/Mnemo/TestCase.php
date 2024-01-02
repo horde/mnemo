@@ -27,8 +27,9 @@
  * @license    http://www.horde.org/licenses/apache
  * @link       http://www.horde.org/apps/mnemo
  */
+use PHPUnit\Framework\TestCase;
 class Mnemo_TestCase
-extends Horde_Test_Case
+extends TestCase
 {
     public function setUp(): void
     {

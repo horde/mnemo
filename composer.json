@@ -41,7 +41,10 @@
         "horde/util": "^3 || dev-FRAMEWORK_6_0",
         "ext-gettext": "*"
     },
-    "require-dev": {},
+    "require-dev": {
+        "horde/test": "^3 || dev-FRAMEWORK_6_0",
+        "phpunit/phpunit": "^9 || ^10"
+    },
     "suggest": {
         "horde/activesync": "^3 || dev-FRAMEWORK_6_0",
         "horde/backup": "^2 || dev-FRAMEWORK_6_0",

@@ -16,7 +16,7 @@
   <email>chuck@horde.org</email>
   <active>no</active>
  </lead>
- <date>2023-10-30</date>
+ <date>2024-01-10</date>
  <version>
   <release>5.0.0alpha7</release>
   <api>5.0.0alpha1</api>
@@ -27,7 +27,7 @@
  </stability>
  <license uri="http://www.horde.org/licenses/apache">Apache-1.1</license>
  <notes>
-* 
+* |+
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -634,85 +634,6 @@
   </filelist>
  </phprelease>
  <changelog>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
   <release>
    <version>
     <release>1.0.0</release>
@@ -2081,9 +2002,9 @@
     <api>alpha</api>
    </stability>
    <date>2023-10-30</date>
-   <license uri="http://www.horde.org/licenses/apache">ASL</license>
+   <license uri="http://www.horde.org/licenses/apache">Apache-1.1</license>
    <notes>
-* 
+* |+
    </notes>
   </release>
  </changelog>

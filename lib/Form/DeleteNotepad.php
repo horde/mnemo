@@ -23,7 +23,7 @@ class Mnemo_Form_DeleteNotepad extends Horde_Form
     /**
      * Const'r
      */
-    public function __construct(&$vars, $notepad)
+    public function __construct($vars, $notepad)
     {
         $this->_notepad = $notepad;
         parent::__construct($vars, sprintf(_("Delete %s"), $notepad->get('name')));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * See horde/config/prefs.php for documentation on the structure of this file.
  *
@@ -74,14 +75,14 @@ $_prefs['default_notepad'] = array(
     'type' => 'enum',
     'enum' => array(),
     'desc' => _("Your default notepad:"),
-    'on_init' => function($ui) {
+    'on_init' => function ($ui) {
         $enum = array();
         foreach (Mnemo::listNotepads(false, Horde_Perms::EDIT) as $key => $val) {
             $enum[$key] = Mnemo::getLabel($val);
         }
         $ui->prefs['default_notepad']['enum'] = $enum;
     },
-    'on_change' => function() {
+    'on_change' => function () {
         $GLOBALS['injector']->getInstance('Mnemo_Factory_Notepads')
             ->create()
             ->setDefaultShare($GLOBALS['prefs']->getValue('default_notepad'));
@@ -107,7 +108,7 @@ $_prefs['sync_notepads'] = array(
     'type' => 'multienum',
     'enum' => array(),
     'desc' => _("Select the notepads that, in addition to the default, should be used for synchronization with external devices:"),
-    'on_init' => function($ui) {
+    'on_init' => function ($ui) {
         $enum = array();
         $sync = @unserialize($GLOBALS['prefs']->getValue('sync_notepads'));
         if (empty($sync)) {
@@ -124,7 +125,7 @@ $_prefs['sync_notepads'] = array(
         }
         $ui->prefs['sync_notepads']['enum'] = $enum;
     },
-    'on_change' => function() {
+    'on_change' => function () {
         $sync = @unserialize($GLOBALS['prefs']->getValue('sync_notepads'));
         $haveDefault = false;
         $default = Mnemo::getDefaultNotepad(Horde_Perms::DELETE);

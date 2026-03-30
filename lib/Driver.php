@@ -11,6 +11,9 @@
  * @author  Michael J. Rubinsky <mrubinsk@horde.org>
  * @package Mnemo
  */
+
+use Horde\Util\HordeString;
+
 abstract class Mnemo_Driver
 {
     /**
@@ -62,13 +65,13 @@ abstract class Mnemo_Driver
      */
     public function getMemoDescription($body)
     {
-        if (!strstr($body, "\n") && Horde_String::length($body) <= 64) {
+        if (!strstr($body, "\n") && HordeString::length($body) <= 64) {
             return trim($body);
         }
 
         $lines = explode("\n", $body);
         if (!is_array($lines)) {
-            return trim(Horde_String::substr($body, 0, 64));
+            return trim(HordeString::substr(string: $body, start: 0, length: 64));
         }
 
         // Move to a line with more than spaces.
@@ -76,10 +79,10 @@ abstract class Mnemo_Driver
         while (isset($lines[$i]) && !preg_match('|[^\s]|', $lines[$i])) {
             $i++;
         }
-        if (Horde_String::length($lines[$i]) <= 64) {
+        if (HordeString::length($lines[$i]) <= 64) {
             return trim($lines[$i]);
         } else {
-            return trim(Horde_String::substr($lines[$i], 0, 64));
+            return trim(HordeString::substr(string: $lines[$i], start: 0, length: 64));
         }
     }
 
@@ -461,8 +464,12 @@ abstract class Mnemo_Driver
             $body->type = Horde_ActiveSync::BODYPREF_TYPE_HTML;
             $memo['body'] = Horde_Text_Filter::filter($memo['body'], 'Text2html', array('parselevel' => Horde_Text_Filter_Text2html::MICRO));
             if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) &&
-                Horde_String::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) {
-                $body->data = Horde_String::substr($memo['body'], 0, $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']);
+                HordeString::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) {
+                $body->data = HordeString::substr(
+                    string: $memo['body'],
+                    start: 0,
+                    length: $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']
+                );
                 $body->truncated = 1;
             } else {
                 $body->data = $memo['body'];
@@ -470,14 +477,18 @@ abstract class Mnemo_Driver
         } else {
             $body->type = Horde_ActiveSync::BODYPREF_TYPE_PLAIN;
             if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']) &&
-                Horde_String::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']) {
-                    $body->data = Horde_String::substr($memo['body'], 0, $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']);
+                HordeString::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']) {
+                    $body->data = HordeString::substr(
+                        string: $memo['body'],
+                        start: 0,
+                        length: $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']
+                    );
                     $body->truncated = 1;
             } else {
                 $body->data = $memo['body'];
             }
         }
-        $body->estimateddatasize = Horde_String::length($memo['body']);
+        $body->estimateddatasize = HordeString::length($memo['body']);
         $message->body = $body;
         if (!empty($memo['tags'])) {
             $message->categories = $memo['tags'];

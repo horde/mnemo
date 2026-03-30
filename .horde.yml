@@ -64,3 +64,10 @@ dependencies:
       horde/db: ^3
       horde/pdf: ^3
       horde/test: ^3
+
+autoload:
+  classmap:
+    - lib/
+  psr-4:
+    Horde\Mnemo\: /src
+vendor: horde

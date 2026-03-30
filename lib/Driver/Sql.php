@@ -130,7 +130,7 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
             throw new Mnemo_Exception($e->getMessage());
         }
 
-        if ($row) {
+        if (!$row) {
             throw new Horde_Exception_NotFound('Not found');
         }
         $this->_notepad = $row['memo_owner'];

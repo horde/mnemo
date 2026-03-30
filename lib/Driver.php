@@ -462,7 +462,7 @@ abstract class Mnemo_Driver
             $memo['body'] = Horde_Text_Filter::filter($memo['body'], 'Text2html', array('parselevel' => Horde_Text_Filter_Text2html::MICRO));
             if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) &&
                 Horde_String::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) {
-                $body->data = Horde_String::substr($memo['body'], $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']);
+                $body->data = Horde_String::substr($memo['body'], 0, $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']);
                 $body->truncated = 1;
             } else {
                 $body->data = $memo['body'];

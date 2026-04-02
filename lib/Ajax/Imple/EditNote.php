@@ -8,11 +8,14 @@
  * @category Horde
  * @package  Mnemo
  */
+
+use Horde\Util\Variables;
+
 class Mnemo_Ajax_Imple_EditNote extends Horde_Core_Ajax_Imple_InPlaceEditor
 {
     /**
      */
-    protected function _handleEdit(Horde_Variables $vars)
+    protected function _handleEdit(Variables|\Horde_Variables $vars)
     {
         $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create();
         $memo = $storage->getByUID($vars->id);

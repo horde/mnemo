@@ -14,6 +14,7 @@
  */
 
 use Horde\Backup;
+use Horde\Util\Variables;
 
 /* Determine the base directories. */
 if (!defined('MNEMO_BASE')) {
@@ -370,7 +371,7 @@ class Mnemo_Application extends Horde_Registry_Application
     /**
      * @throws Mnemo_Exception
      */
-    public function download(Horde_Variables $vars)
+    public function download(Variables|\Horde_Variables $vars)
     {
         global $injector, $registry;
 

@@ -12,6 +12,9 @@
  * @license http://www.horde.org/licenses/bsdl.php BSD
  * @package Mnemo
  */
+
+use Horde\Util\Variables;
+
 class Mnemo_View_List
 {
     /**
@@ -70,7 +73,7 @@ class Mnemo_View_List
      *
      * @return Nag_View_List
      */
-    public function __construct($vars)
+    public function __construct(Variables|\Horde_Variables $vars)
     {
         $this->_vars = $vars;
         $this->_title = _("My Notes");

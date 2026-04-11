@@ -15,37 +15,41 @@ var Mnemo_List = {
     //  ajaxUrl
     sortCallback: function(column, sortDown)
     {
-        new Ajax.Request(
-            this.ajaxUrl,
-            { parameters: { pref: 'sortby', value: column.substring(1) } }
-        );
-        new Ajax.Request(
-            this.ajaxUrl,
-            { parameters: { pref: 'sortdir', value: sortDown } }
-        );
+        fetch(this.ajaxUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ pref: 'sortby', value: column.substring(1) })
+        });
+        fetch(this.ajaxUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ pref: 'sortdir', value: sortDown })
+        });
     },
 
     onDomLoad: function()
     {
-        if ($('quicksearchL')) {
-            $('quicksearchL').observe(
+        var quicksearchL = document.getElementById('quicksearchL');
+        if (quicksearchL) {
+            quicksearchL.addEventListener(
                 'click',
                 function(e) {
-                    $('quicksearchL').hide();
-                    $('quicksearch').show();
-                    $('quicksearchT').focus();
-                    e.stop();
-                }.bindAsEventListener()
+                    quicksearchL.hidden = true;
+                    document.getElementById('quicksearch').hidden = false;
+                    document.getElementById('quicksearchT').focus();
+                    e.preventDefault();
+                }
             );
-            $('quicksearchX').observe(
+            document.getElementById('quicksearchX').addEventListener(
                 'click',
                 function(e) {
-                    $('quicksearch').hide();
-                    $('quicksearchT').value = '';
-                    QuickFinder.filter($('quicksearchT'));
-                    $('quicksearchL').show();
-                    e.stop();
-                }.bindAsEventListener()
+                    document.getElementById('quicksearch').hidden = true;
+                    var searchField = document.getElementById('quicksearchT');
+                    searchField.value = '';
+                    QuickFinder.filter(searchField);
+                    quicksearchL.hidden = false;
+                    e.preventDefault();
+                }
             );
         }
     }
@@ -56,4 +60,4 @@ function table_sortCallback(tableId, column, sortDown)
     Mnemo_List.sortCallback(column, sortDown);
 }
 
-document.observe('dom:loaded', Mnemo_List.onDomLoad.bind(Mnemo_List));
+document.addEventListener('DOMContentLoaded', Mnemo_List.onDomLoad.bind(Mnemo_List));

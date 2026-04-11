@@ -15,41 +15,46 @@ var Mnemo_Memo = {
     //  confirm
     updateCharacterCount: function()
     {
-        if ($('mnemo-body')) {
-            $('mnemo-count').update(
-                $F('mnemo-body').replace(/[\r\n]/g, '').length
-            );;
+        var body = document.getElementById('mnemo-body');
+        if (body) {
+            document.getElementById('mnemo-count').textContent =
+                body.value.replace(/[\r\n]/g, '').length;
         }
     },
 
     onDomLoad: function()
     {
-        if ($('mnemo-passphrase')) {
-            $('mnemo-passphrase').focus();
+        var passphrase = document.getElementById('mnemo-passphrase');
+        if (passphrase) {
+            passphrase.focus();
         }
-        if ($('mnemo-body')) {
-            $('mnemo-body').focus();
+        var body = document.getElementById('mnemo-body');
+        if (body) {
+            body.focus();
         }
 
-        if ($('mnemo-delete')) {
-            $('mnemo-delete').observe(
+        var deleteBtn = document.getElementById('mnemo-delete');
+        if (deleteBtn) {
+            deleteBtn.addEventListener(
                 'click',
                 function(e)
                 {
                     if (this.confirm) {
                         if (!window.confirm(this.confirm)) {
-                            e.stop();
+                            e.preventDefault();
                         }
                     }
-                }.bindAsEventListener(this)
+                }.bind(this)
             );
         }
 
-        if ($('mnemo-body')) {
-            $('mnemo-body').observe('change', this.updateCharacterCount);
-            $('mnemo-body').observe('click', this.updateCharacterCount);
-            $('mnemo-body').observe('keypress', this.updateCharacterCount.defer.bind(this.updateCharacterCount));
+        if (body) {
+            body.addEventListener('change', this.updateCharacterCount);
+            body.addEventListener('click', this.updateCharacterCount);
+            body.addEventListener('keypress', function() {
+                setTimeout(Mnemo_Memo.updateCharacterCount, 0);
+            });
         }
     }
-}
-document.observe('dom:loaded', Mnemo_Memo.onDomLoad.bind(Mnemo_Memo));
+};
+document.addEventListener('DOMContentLoaded', Mnemo_Memo.onDomLoad.bind(Mnemo_Memo));

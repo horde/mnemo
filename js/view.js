@@ -15,23 +15,25 @@ var Mnemo_View = {
     //  confirm
     onDomLoad: function()
     {
-        if ($('mnemo-passphrase')) {
-            $('mnemo-passphrase').focus();
+        var passphrase = document.getElementById('mnemo-passphrase');
+        if (passphrase) {
+            passphrase.focus();
         }
 
-        if ($('mnemo-delete')) {
-            $('mnemo-delete').observe(
+        var deleteBtn = document.getElementById('mnemo-delete');
+        if (deleteBtn) {
+            deleteBtn.addEventListener(
                 'click',
                 function(e)
                 {
                     if (this.confirm) {
                         if (!window.confirm(this.confirm)) {
-                            e.stop();
+                            e.preventDefault();
                         }
                     }
-                }.bindAsEventListener(this)
+                }.bind(this)
             );
         }
     }
-}
-document.observe('dom:loaded', Mnemo_View.onDomLoad.bind(Mnemo_View));
+};
+document.addEventListener('DOMContentLoaded', Mnemo_View.onDomLoad.bind(Mnemo_View));

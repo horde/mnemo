@@ -14,6 +14,7 @@
  */
 
 use Horde\Backup;
+use Horde\Core\Horde;
 use Horde\Util\Variables;
 
 /* Determine the base directories. */
@@ -181,6 +182,21 @@ class Mnemo_Application extends Horde_Registry_Application
     public function topbarCreate(Horde_Tree_Renderer_Base $tree, $parent = null,
                                  array $params = array())
     {
+        try {
+            $this->_topbarCreate($tree, $parent, $params);
+        } catch (Throwable $e) {
+            Horde::log($e);
+        }
+    }
+
+    /**
+     * Build topbar tree nodes for Mnemo.
+     */
+    protected function _topbarCreate(
+        Horde_Tree_Renderer_Base $tree,
+        $parent = null,
+        array $params = [],
+    ): void {
         global $registry;
 
         $add = Horde::url('memo.php', true)->add('actionID', 'add_memo');

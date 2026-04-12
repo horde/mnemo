@@ -14,42 +14,32 @@
  * Integers should be given literally (without quotes).
  * Boolean values may be true or false (never quotes).
  *
- * Generated from conf.xml on 2026-04-04
+ * Generated from conf.xml on 2026-04-13
  */
-
 // ----------------------------------------------------------------------
 // Storage System Settings
 // ----------------------------------------------------------------------
-
-// What storage driver should we use?
-// Options:
-//   'sql' - SQL
+// What storage driver should we use? ('sql' = SQL)
 $conf['storage']['driver'] = 'sql';
-
-// Database configuration
-// Configure your database connection parameters
-
+// Database connection: 'horde' uses the global Horde DB, 'custom' uses settings below
+// $conf['storage']['params']['driverconfig'] = 'custom';
+// $conf['storage']['params']['phptype'] = 'mysqli';
+// $conf['storage']['params']['hostspec'] = 'localhost';
+// $conf['storage']['params']['username'] = '';
+// $conf['storage']['params']['password'] = '';
+// $conf['storage']['params']['database'] = '';
+// $conf['storage']['params']['charset'] = 'utf8mb4';
+// $conf['storage']['params']['ssl'] = false;
 $conf['storage']['params']['driverconfig'] = 'horde';
-$conf['storage']['driver'] = 'sql';
-
 
 // ----------------------------------------------------------------------
 // Notepad Handler Settings
 // ----------------------------------------------------------------------
-
-// What type of notepad handler should we use?
-// Options:
-//   'default' - Default
+// What type of notepad handler should we use? ('default' = Default)
 $conf['notepads']['driver'] = 'default';
-
 
 // ----------------------------------------------------------------------
 // Menu settings
 // ----------------------------------------------------------------------
-
-// Should we display an Import/Export   link in the Mnemo application menus?
-
-$conf['notepads']['driver'] = 'default';
+// Should we display an Import/Export link in the Mnemo application menus?
 $conf['menu']['import_export'] = true;
-
-/* CONFIG END. DO NOT CHANGE ANYTHING IN OR BEFORE THIS LINE. */

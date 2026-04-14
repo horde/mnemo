@@ -1,4 +1,22 @@
 ---
+5.0.0-alpha9:
+  api: 5.0.0-alpha9
+  state:
+    release: alpha
+    api: alpha
+  date: 2026-04-14
+  license:
+    identifier: Apache-1.1
+    uri: https://spdx.org/licenses/Apache-1.1.html
+  notes: |-
+    fix: Harden topbarCreate against mnemo internal problems.
+    docs: create/update conf.php.dist
+    docs: Add config example
+    refactor: Remove most reliance on prototype.js
+    fix: More defensive code when trying to drop tables
+    fix: Accept both types of variables
+    feat(kolab)!: Remove Kolab backends
+    feat(kolab)!: Remove kolab related config options
 5.0.0-alpha8:
   api: 5.0.0-alpha1
   state:

@@ -1,4 +1,15 @@
 ---
+5.0.0-alpha10:
+  api: 5.0.0-alpha10
+  state:
+    release: alpha
+    api: alpha
+  date: 2026-04-27
+  license:
+    identifier: Apache-1.1
+    uri: https://spdx.org/licenses/Apache-1.1.html
+  notes: |-
+    fix: Wrong level
 5.0.0-alpha9:
   api: 5.0.0-alpha9
   state:

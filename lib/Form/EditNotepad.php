@@ -64,7 +64,7 @@ class Mnemo_Form_EditNotepad extends Horde_Form
                      'text' => _("Change Permissions"),
                      'onclick' => Horde::popupJs(
                           $url,
-                          array('params' => array('urlencode' => true)))
+                          array('urlencode' => true))
                           . 'return false;',
                      'class' => 'horde-button',
                      'target' => '_blank')

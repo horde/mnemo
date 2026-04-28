@@ -69,7 +69,7 @@ class Mnemo_View_List
     /**
      * Const'r
      *
-     * @param Horde_Variables $vars  Variables for the view.
+     * @param Horde_Variables|Variables $vars  Variables for the view.
      *
      * @return Nag_View_List
      */

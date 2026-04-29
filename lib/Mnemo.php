@@ -1,8 +1,8 @@
 <?php
 
-use Horde\Util\Util;
-
 declare(strict_types=1);
+
+use Horde\Util\Util;
 
 /**
  * Copyright 2001-2026 Horde LLC (http://www.horde.org/)

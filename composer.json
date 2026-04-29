@@ -16,11 +16,15 @@
             "role": "lead"
         }
     ],
-    "time": "2026-04-27",
+    "keywords": [
+        "notes",
+        "journals"
+    ],
+    "time": "2026-04-29",
     "repositories": [],
     "require": {
         "horde/horde-installer-plugin": "dev-FRAMEWORK_6_0 || ^3 || ^2",
-        "php": "^7.4 || ^8",
+        "php": "^8.1",
         "horde/content": "^3 || dev-FRAMEWORK_6_0",
         "horde/horde": "^6 || dev-FRAMEWORK_6_0",
         "horde/auth": "^3 || dev-FRAMEWORK_6_0",
@@ -55,7 +59,7 @@
             "lib/"
         ],
         "psr-4": {
-            "Horde\\Mnemo\\": "/src"
+            "Horde\\Mnemo\\": "src/"
         }
     },
     "autoload-dev": {

@@ -23,9 +23,9 @@ class Mnemo_Form_CreateNotepad extends Horde_Form
         parent::__construct($vars, _("Create Notepad"));
 
         $this->addVariable(_("Name"), 'name', 'text', true);
-        $this->addVariable(_("Description"), 'description', 'longtext', false, false, null, array(4, 60));
+        $this->addVariable(_("Description"), 'description', 'longtext', false, false, null, [4, 60]);
 
-        $this->setButtons(array(_("Create")));
+        $this->setButtons([_("Create")]);
     }
 
     public function execute()

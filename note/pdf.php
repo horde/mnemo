@@ -1,6 +1,9 @@
 <?php
+
+use Horde\Util\Util;
+
 /**
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -11,11 +14,11 @@ require_once __DIR__ . '/../lib/Application.php';
 Horde_Registry::appInit('mnemo');
 
 /* Check if a passphrase has been sent. */
-$passphrase = Horde_Util::getFormData('memo_passphrase');
+$passphrase = Util::getFormData('memo_passphrase');
 
 /* We can either have a UID or a memo id and a notepad. Check for UID
  * first. */
-if ($uid = Horde_Util::getFormData('uid')) {
+if ($uid = Util::getFormData('uid')) {
     $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create();
     try {
         $note = $storage->getByUID($uid, $passphrase);
@@ -27,8 +30,8 @@ if ($uid = Horde_Util::getFormData('uid')) {
 } else {
     /* If we aren't provided with a memo and memolist, redirect to
      * list.php. */
-    $note_id = Horde_Util::getFormData('note');
-    $notelist_id = Horde_Util::getFormData('notepad');
+    $note_id = Util::getFormData('note');
+    $notelist_id = Util::getFormData('notepad');
     if (!isset($note_id) || !$notelist_id) {
         Horde::url('list.php', true)->redirect();
     }
@@ -61,7 +64,7 @@ if ($GLOBALS['registry']->getLanguageCharset() == 'ISO-8859-1') {
 }
 
 /* Set up the PDF object. */
-$pdf = new Horde_Pdf_Writer(array('format' => 'Letter', 'unit' => 'pt'));
+$pdf = new Horde_Pdf_Writer(['format' => 'Letter', 'unit' => 'pt']);
 $pdf->setMargins(50, 50);
 
 /* Enable automatic page breaks. */

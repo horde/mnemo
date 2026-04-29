@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (GPL). If you
  * did not receive this file, see http://www.horde.org/licenses/gpl.
@@ -26,7 +27,7 @@ class MnemoFixDescSize extends Horde_Db_Migration_Base
      */
     public function up()
     {
-        $this->changeColumn('mnemo_memos', 'memo_desc', 'string', array('limit' => 255, 'null' => false));
+        $this->changeColumn('mnemo_memos', 'memo_desc', 'string', ['limit' => 255, 'null' => false]);
     }
 
     /**
@@ -34,6 +35,6 @@ class MnemoFixDescSize extends Horde_Db_Migration_Base
      */
     public function down()
     {
-        $this->changeColumn('mnemo_memos', 'memo_desc', 'string', array('limit' => 64, 'null' => false));
+        $this->changeColumn('mnemo_memos', 'memo_desc', 'string', ['limit' => 64, 'null' => false]);
     }
 }

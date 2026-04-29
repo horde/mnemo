@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Mnemo storage implementation for Horde's Horde_Db database abstraction
  * layer.
  *
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -46,7 +46,7 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
      *
      * @throws InvalidArguementException
      */
-    public function __construct($notepad, $params = array())
+    public function __construct($notepad, $params = [])
     {
         if (empty($params['db'])) {
             throw new InvalidArgumentException('Missing required connection parameter.');
@@ -68,7 +68,7 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
     public function retrieve($raw = false)
     {
         $query = 'SELECT * FROM mnemo_memos WHERE memo_owner = ?';
-        $values = array($this->_notepad);
+        $values = [$this->_notepad];
 
         try {
             $rows = $this->_db->select($query, $values);
@@ -77,7 +77,7 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
         }
 
         // Store the retrieved values in a fresh list.
-        $this->_memos = array();
+        $this->_memos = [];
         foreach ($rows as $row) {
             $this->_memos[$row['memo_id']] = $this->_buildNote($row, null, $raw);
         }
@@ -96,9 +96,9 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
      */
     public function get($noteId, $passphrase = null)
     {
-        $query = 'SELECT * FROM mnemo_memos' .
-                 ' WHERE memo_owner = ? AND memo_id = ?';
-        $values = array($this->_notepad, $noteId);
+        $query = 'SELECT * FROM mnemo_memos'
+                 . ' WHERE memo_owner = ? AND memo_id = ?';
+        $values = [$this->_notepad, $noteId];
         try {
             $row = $this->_db->selectOne($query, $values);
         } catch (Horde_Db_Exception $e) {
@@ -126,7 +126,7 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
     public function getByUID($uid, $passphrase = null)
     {
         $query = 'SELECT * FROM mnemo_memos WHERE memo_uid = ?';
-        $values = array($uid);
+        $values = [$uid];
         try {
             $row = $this->_db->selectOne($query, $values);
         } catch (Horde_Db_Exception $e) {
@@ -162,13 +162,13 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
         $query = 'INSERT INTO mnemo_memos'
             . ' (memo_owner, memo_id, memo_desc, memo_body, memo_uid)'
             . ' VALUES (?, ?, ?, ?, ?)';
-        $values = array(
+        $values = [
             $this->_notepad,
             $noteId,
             Horde_String::convertCharset($desc, 'UTF-8', $this->_charset),
             Horde_String::convertCharset($body, 'UTF-8', $this->_charset),
-            Horde_String::convertCharset($uid, 'UTF-8', $this->_charset)
-        );
+            Horde_String::convertCharset($uid, 'UTF-8', $this->_charset),
+        ];
 
         try {
             $this->_db->insert($query, $values);
@@ -194,12 +194,12 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
         $query  = 'UPDATE mnemo_memos'
             . ' SET memo_desc = ?, memo_body = ?'
             . ' WHERE memo_owner = ? AND memo_id = ?';
-        $values = array(
+        $values = [
             Horde_String::convertCharset($desc, 'UTF-8', $this->_charset),
             Horde_String::convertCharset($body, 'UTF-8', $this->_charset),
             $this->_notepad,
-            $noteId
-        );
+            $noteId,
+        ];
 
         try {
             $this->_db->update($query, $values);
@@ -226,10 +226,10 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
         // Get the note's details for use later.
         $note = $this->get($noteId);
 
-        $query = 'UPDATE mnemo_memos' .
-                 ' SET memo_owner = ?' .
-                 ' WHERE memo_owner = ? AND memo_id = ?';
-        $values = array($newNotepad, $this->_notepad, $noteId);
+        $query = 'UPDATE mnemo_memos'
+                 . ' SET memo_owner = ?'
+                 . ' WHERE memo_owner = ? AND memo_id = ?';
+        $values = [$newNotepad, $this->_notepad, $noteId];
         try {
             $result = $this->_db->update($query, $values);
         } catch (Horde_Db_Exception $e) {
@@ -252,9 +252,9 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
         // Get the note's details for use later.
         $note = $this->get($noteId);
 
-        $query = 'DELETE FROM mnemo_memos' .
-                 ' WHERE memo_owner = ? AND memo_id = ?';
-        $values = array($this->_notepad, $noteId);
+        $query = 'DELETE FROM mnemo_memos'
+                 . ' WHERE memo_owner = ? AND memo_id = ?';
+        $values = [$this->_notepad, $noteId];
 
         try {
             $this->_db->delete($query, $values);
@@ -275,7 +275,7 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
     {
         // Get list of notes we are removing so we can tell history about it.
         $query = 'SELECT memo_uid FROM mnemo_memos WHERE memo_owner = ?';
-        $values = array($this->_notepad);
+        $values = [$this->_notepad];
         try {
             $ids = $this->_db->selectValues($query, $values);
         } catch (Horde_Db_Exception $e) {
@@ -307,10 +307,10 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
         if (empty($row['memo_uid'])) {
             $row['memo_uid'] = strval(new Horde_Support_Guid());
 
-            $query = 'UPDATE mnemo_memos' .
-                ' SET memo_uid = ?' .
-                ' WHERE memo_owner = ? AND memo_id = ?';
-            $values = array($row['memo_uid'], $row['memo_owner'], $row['memo_id']);
+            $query = 'UPDATE mnemo_memos'
+                . ' SET memo_uid = ?'
+                . ' WHERE memo_owner = ? AND memo_id = ?';
+            $values = [$row['memo_uid'], $row['memo_owner'], $row['memo_id']];
             try {
                 $this->_db->update($query, $values);
             } catch (Horde_Db_Exception $e) {
@@ -330,17 +330,22 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
 
         // Create a new note based on $row's values.
         $uid = Horde_String::convertCharset(
-            $row['memo_uid'], $this->_charset, 'UTF-8'
+            $row['memo_uid'],
+            $this->_charset,
+            'UTF-8'
         );
-        $memo = array(
+        $memo = [
             'memolist_id' => $row['memo_owner'],
             'memo_id' => $row['memo_id'],
             'uid' => $uid,
             'desc' => Horde_String::convertCharset(
-                $row['memo_desc'], $this->_charset, 'UTF-8'),
+                $row['memo_desc'],
+                $this->_charset,
+                'UTF-8'
+            ),
             'body' => $body,
             'tags' => $GLOBALS['injector']->getInstance('Mnemo_Tagger')->getTags($uid, 'note'),
-            'encrypted' => $encrypted);
+            'encrypted' => $encrypted];
 
         try {
             $userId = $GLOBALS['registry']->getAuth();
@@ -348,23 +353,23 @@ class Mnemo_Driver_Sql extends Mnemo_Driver
                 ->getHistory('mnemo:' . $row['memo_owner'] . ':' . $row['memo_uid']);
             foreach ($log as $entry) {
                 switch ($entry['action']) {
-                case 'add':
-                    $memo['created'] = new Horde_Date($entry['ts']);
-                    if ($userId != $entry['who']) {
-                        $memo['createdby'] = sprintf(_("by %s"), Mnemo::getUserName($entry['who']));
-                    } else {
-                        $memo['createdby'] = _("by me");
-                    }
-                    break;
+                    case 'add':
+                        $memo['created'] = new Horde_Date($entry['ts']);
+                        if ($userId != $entry['who']) {
+                            $memo['createdby'] = sprintf(_("by %s"), Mnemo::getUserName($entry['who']));
+                        } else {
+                            $memo['createdby'] = _("by me");
+                        }
+                        break;
 
-                case 'modify':
-                    $memo['modified'] = new Horde_Date($entry['ts']);
-                    if ($userId != $entry['who']) {
-                        $memo['modifiedby'] = sprintf(_("by %s"), Mnemo::getUserName($entry['who']));
-                    } else {
-                        $memo['modifiedby'] = _("by me");
-                    }
-                    break;
+                    case 'modify':
+                        $memo['modified'] = new Horde_Date($entry['ts']);
+                        if ($userId != $entry['who']) {
+                            $memo['modifiedby'] = sprintf(_("by %s"), Mnemo::getUserName($entry['who']));
+                        } else {
+                            $memo['modifiedby'] = _("by me");
+                        }
+                        break;
                 }
             }
         } catch (Horde_Exception $e) {

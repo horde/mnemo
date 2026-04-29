@@ -1,6 +1,9 @@
 <?php
+
+use Horde\Util\Util;
+
 /**
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -14,11 +17,11 @@ require_once __DIR__ . '/lib/Application.php';
 Horde_Registry::appInit('mnemo');
 
 /* Check if a passphrase has been sent. */
-$passphrase = Horde_Util::getFormData('memo_passphrase');
+$passphrase = Util::getFormData('memo_passphrase');
 
 /* We can either have a UID or a memo id and a notepad. Check for UID
  * first. */
-if ($uid = Horde_Util::getFormData('uid')) {
+if ($uid = Util::getFormData('uid')) {
     $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create();
     try {
         $memo = $storage->getByUID($uid, $passphrase);
@@ -30,8 +33,8 @@ if ($uid = Horde_Util::getFormData('uid')) {
 } else {
     /* If we aren't provided with a memo and memolist, redirect to
      * list.php. */
-    $memo_id = Horde_Util::getFormData('memo');
-    $memolist_id = Horde_Util::getFormData('memolist');
+    $memo_id = Util::getFormData('memo');
+    $memolist_id = Util::getFormData('memolist');
     if (!isset($memo_id) || !$memolist_id) {
         Horde::url('list.php', true)->redirect();
     }
@@ -88,20 +91,25 @@ if ($memo['body'] instanceof Mnemo_Exception) {
 
 $share = $mnemo_shares->getShare($memolist_id);
 $url = Horde::url('memo.php')
-    ->add(array('memo' => $memo_id, 'memolist' => $memolist_id));
+    ->add(['memo' => $memo_id, 'memolist' => $memolist_id]);
 $body = $injector->getInstance('Horde_Core_Factory_TextFilter')
     ->filter(
         $memo['body'],
         'text2html',
-        array('parselevel' => Horde_Text_Filter_Text2html::MICRO)
+        ['parselevel' => Horde_Text_Filter_Text2html::MICRO]
     );
 
 $view = $injector->createInstance('Horde_View');
 $view->assign($memo);
 try {
-    $view->body = Horde::callHook(
+    /**
+     * ARCHITECTURE VIOLATION: Using deprecated Horde::callHook()
+     * @deprecated Use $GLOBALS['injector']->getInstance('Horde_Core_Hooks')->callHook() instead
+     * @see Horde_Deprecated::callHook()
+     */
+$view->body = Horde::callHook(
         'format_description',
-        array($body),
+        [$body],
         'mnemo',
         $body
     );
@@ -112,22 +120,22 @@ $view->id = $memo_id;
 $view->listid = $memolist_id;
 $view->passphrase = $show_passphrase;
 $view->pdfurl = Horde::url('note/pdf.php')
-    ->add(array('note' => $memo_id, 'notepad' => $memolist_id));
+    ->add(['note' => $memo_id, 'notepad' => $memolist_id]);
 $view->tags = implode(', ', $memo['tags']);
 if ($share->hasPermission($registry->getAuth(), Horde_Perms::DELETE)) {
-    $view->delete = Horde::widget(array(
+    $view->delete = Horde::widget([
         'url' => $url->add('actionID', 'delete_memos'),
         'class' => 'mnemo-delete',
         'id' => 'mnemo-delete',
-        'title' => _("_Delete")
-    ));
+        'title' => _("_Delete"),
+    ]);
 }
 if ($share->hasPermission($registry->getAuth(), Horde_Perms::EDIT)) {
-    $view->edit = Horde::widget(array(
+    $view->edit = Horde::widget([
         'url' => $url->add('actionID', 'modify_memo'),
         'class' => 'mnemo-edit',
-        'title' => _("_Edit")
-    ));
+        'title' => _("_Edit"),
+    ]);
 }
 if (isset($memo['created'])) {
     $view->created = $memo['created']->strftime(
@@ -149,11 +157,11 @@ if (isset($memo['modified'])) {
 $page_output->addScriptFile('stripe.js', 'horde');
 $page_output->addScriptFile('view.js');
 $page_output->addInlineJsVars(
-    array('Mnemo_View.confirm' => _("Really delete this note?"))
+    ['Mnemo_View.confirm' => _("Really delete this note?")]
 );
-$page_output->header(array(
-    'title' => $memo ? $memo['desc'] : _("Note Details")
-));
+$page_output->header([
+    'title' => $memo ? $memo['desc'] : _("Note Details"),
+]);
 $notification->notify();
 echo $view->render('view/view');
 $page_output->footer();

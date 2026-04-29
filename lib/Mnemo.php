@@ -1,9 +1,11 @@
 <?php
 
+use Horde\Util\Util;
+
 declare(strict_types=1);
 
 /**
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -21,37 +23,37 @@ class Mnemo
     /**
      * Sort by memo description.
      */
-    const SORT_DESC = 0;
+    public const SORT_DESC = 0;
 
     /**
      * Sort by notepad.
      */
-    const SORT_NOTEPAD = 2;
+    public const SORT_NOTEPAD = 2;
 
     /**
      * Sort by moddate
      */
-    const SORT_MOD_DATE = 3;
+    public const SORT_MOD_DATE = 3;
 
     /**
      * Sort in ascending order.
      */
-    const SORT_ASCEND = 0;
+    public const SORT_ASCEND = 0;
 
     /**
      * Sort in descending order.
      */
-    const SORT_DESCEND = 1;
+    public const SORT_DESCEND = 1;
 
     /**
      * No passphrase provided.
      */
-    const ERR_NO_PASSPHRASE = 100;
+    public const ERR_NO_PASSPHRASE = 100;
 
     /**
      * Decrypting failed
      */
-    const ERR_DECRYPT = 101;
+    public const ERR_DECRYPT = 101;
 
     /**
      * Retrieves the current user's note list from storage. This function will
@@ -66,18 +68,19 @@ class Mnemo
      *
      * @see Mnemo_Driver::listMemos()
      */
-    public static function listMemos($sortby = self::SORT_DESC,
-                                     $sortdir = self::SORT_ASCEND)
-    {
+    public static function listMemos(
+        $sortby = self::SORT_DESC,
+        $sortdir = self::SORT_ASCEND
+    ) {
         global $conf, $display_notepads;
-        $memos = array();
+        $memos = [];
 
         /* Sort the memo list. */
-        $sort_functions = array(
+        $sort_functions = [
             self::SORT_DESC => 'ByDesc',
             self::SORT_NOTEPAD => 'ByNotepad',
-            self::SORT_MOD_DATE => 'ByModDate'
-        );
+            self::SORT_MOD_DATE => 'ByModDate',
+        ];
 
         foreach ($display_notepads as $notepad) {
             $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create($notepad);
@@ -93,7 +96,7 @@ class Mnemo
         // Sort the array if we have a sort function defined
         if (isset($sort_functions[$sortby])) {
             $prefix = ($sortdir == self::SORT_DESCEND) ? '_rsort' : '_sort';
-            uasort($memos, array('Mnemo', $prefix . $sort_functions[$sortby]));
+            uasort($memos, ['Mnemo', $prefix . $sort_functions[$sortby]]);
         }
 
         return $memos;
@@ -170,33 +173,36 @@ class Mnemo
      *
      * @return array  The memo lists.
      */
-    public static function listNotepads($owneronly = false,
-                                        $permission = Horde_Perms::SHOW)
-    {
+    public static function listNotepads(
+        $owneronly = false,
+        $permission = Horde_Perms::SHOW
+    ) {
         if ($owneronly && !$GLOBALS['registry']->getAuth()) {
-            return array();
+            return [];
         }
         if ($owneronly || empty($GLOBALS['conf']['share']['hidden'])) {
             try {
                 $notepads = $GLOBALS['mnemo_shares']->listShares(
                     $GLOBALS['registry']->getAuth(),
-                    array('perm' => $permission,
-                          'attributes' => $owneronly ? $GLOBALS['registry']->getAuth() : null,
-                          'sort_by' => 'name'));
+                    ['perm' => $permission,
+                        'attributes' => $owneronly ? $GLOBALS['registry']->getAuth() : null,
+                        'sort_by' => 'name']
+                );
             } catch (Horde_Share_Exception $e) {
                 Horde::log($e->getMessage(), 'ERR');
-                return array();
+                return [];
             }
         } else {
             try {
                 $notepads = $GLOBALS['mnemo_shares']->listShares(
                     $GLOBALS['registry']->getAuth(),
-                    array('perm' => $permission,
-                          'attributes' => $GLOBALS['registry']->getAuth(),
-                          'sort_by' => 'name'));
+                    ['perm' => $permission,
+                        'attributes' => $GLOBALS['registry']->getAuth(),
+                        'sort_by' => 'name']
+                );
             } catch (Horde_Share_Exception $e) {
                 Horde::log($e);
-                return array();
+                return [];
             }
             $display_notepads = @unserialize($GLOBALS['prefs']->getValue('display_notepads'));
             if (is_array($display_notepads)) {
@@ -209,7 +215,7 @@ class Mnemo
                     } catch (Horde_Exception_NotFound $e) {
                     } catch (Horde_Share_Exception $e) {
                         Horde::log($e);
-                        return array();
+                        return [];
                     }
                 }
             }
@@ -262,8 +268,8 @@ class Mnemo
     public static function getLabel($notepad)
     {
         $label = $notepad->get('name');
-        if ($notepad->get('owner') &&
-            $notepad->get('owner') != $GLOBALS['registry']->getAuth()) {
+        if ($notepad->get('owner')
+            && $notepad->get('owner') != $GLOBALS['registry']->getAuth()) {
             $label .= ' [' . $GLOBALS['registry']->convertUsername($notepad->get('owner'), false) . ']';
         }
         return $label;
@@ -276,7 +282,7 @@ class Mnemo
      */
     public static function getUserName($uid)
     {
-        static $names = array();
+        static $names = [];
 
         if (!isset($names[$uid])) {
             $ident = $GLOBALS['injector']->getInstance('Horde_Core_Factory_Identity')->create($uid);
@@ -394,15 +400,15 @@ class Mnemo
         return ($modDateA > $modDateB) ? 1 : -1;
     }
 
-     /**
-     * Comparison function for reverse sorting notes by modification date.
-     *
-     * @param array $a  Note one.
-     * @param array $b  Note two.
-     *
-     * @return integer  -1 if note one is greater, 1 if note two is greater,
-     *                  0 if they are equal.
-     */
+    /**
+    * Comparison function for reverse sorting notes by modification date.
+    *
+    * @param array $a  Note one.
+    * @param array $b  Note two.
+    *
+    * @return integer  -1 if note one is greater, 1 if note two is greater,
+    *                  0 if they are equal.
+    */
     protected static function _rsortByModDate($a, $b)
     {
         return self::_sortByModDate($b, $a);
@@ -425,9 +431,9 @@ class Mnemo
         $allowed = $perms->getPermissions('mnemo:' . $permission, $GLOBALS['registry']->getAuth());
         if (is_array($allowed)) {
             switch ($permission) {
-            case 'max_notes':
-                $allowed = max($allowed);
-                break;
+                case 'max_notes':
+                    $allowed = max($allowed);
+                    break;
             }
         }
 
@@ -480,27 +486,27 @@ class Mnemo
         // user doesn't have any selected notepads for view then fall
         // back to some available notepad.
         $GLOBALS['display_notepads'] = unserialize($GLOBALS['prefs']->getValue('display_notepads'));
-        if (($actionID = Horde_Util::getFormData('actionID')) !== null) {
-            $notepadId = Horde_Util::getFormData('display_notepad');
+        if (($actionID = Util::getFormData('actionID')) !== null) {
+            $notepadId = Util::getFormData('display_notepad');
             switch ($actionID) {
-            case 'add_displaylist':
-                if (!in_array($notepadId, $GLOBALS['display_notepads'])) {
-                    $GLOBALS['display_notepads'][] = $notepadId;
-                }
-                break;
-            case 'remove_displaylist':
-                if (in_array($notepadId, $GLOBALS['display_notepads'])) {
-                    $key = array_search($notepadId, $GLOBALS['display_notepads']);
-                    unset($GLOBALS['display_notepads'][$key]);
-                }
+                case 'add_displaylist':
+                    if (!in_array($notepadId, $GLOBALS['display_notepads'])) {
+                        $GLOBALS['display_notepads'][] = $notepadId;
+                    }
+                    break;
+                case 'remove_displaylist':
+                    if (in_array($notepadId, $GLOBALS['display_notepads'])) {
+                        $key = array_search($notepadId, $GLOBALS['display_notepads']);
+                        unset($GLOBALS['display_notepads'][$key]);
+                    }
             }
         }
 
         // Make sure all notepads exist now, to save on checking later.
-        $_temp = ($GLOBALS['display_notepads']) ? $GLOBALS['display_notepads'] : array();
+        $_temp = ($GLOBALS['display_notepads']) ? $GLOBALS['display_notepads'] : [];
 
         $_all = self::listNotepads();
-        $GLOBALS['display_notepads'] = array();
+        $GLOBALS['display_notepads'] = [];
         foreach ($_temp as $id) {
             if (isset($_all[$id])) {
                 $GLOBALS['display_notepads'][] = $id;
@@ -508,8 +514,8 @@ class Mnemo
         }
 
         // All notepads for guests.
-        if (!count($GLOBALS['display_notepads']) &&
-            !$GLOBALS['registry']->getAuth()) {
+        if (!count($GLOBALS['display_notepads'])
+            && !$GLOBALS['registry']->getAuth()) {
             $GLOBALS['display_notepads'] = array_keys($_all);
         }
 
@@ -558,10 +564,10 @@ class Mnemo
         }
 
         if ($cs = self::getDefaultNotepad(Horde_Perms::DELETE)) {
-            return array($cs);
+            return [$cs];
         }
 
-        return array();
+        return [];
     }
 
 }

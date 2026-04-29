@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The base functionality of the notepads handler.
  *
@@ -14,6 +15,4 @@
 
 use Horde\Mnemo\Notepads\Base;
 
-abstract class Mnemo_Notepads_Base extends Base
-{
-}
+abstract class Mnemo_Notepads_Base extends Base {}

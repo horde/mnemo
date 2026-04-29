@@ -19,6 +19,4 @@ use Horde\Exception\Wrapped;
 /**
  * Base exception class for Mnemo.
  */
-class Exception extends Wrapped
-{
-}
+class Exception extends Wrapped {}

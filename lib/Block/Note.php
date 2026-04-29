@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2008-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -19,7 +19,7 @@ class Mnemo_Block_Note extends Horde_Core_Block
 
     /**
      */
-    public function __construct($app, $params = array())
+    public function __construct($app, $params = [])
     {
         parent::__construct($app, $params);
         $this->_name = _("View note");
@@ -30,20 +30,22 @@ class Mnemo_Block_Note extends Horde_Core_Block
     protected function _params()
     {
         global $prefs;
-        $memos = Mnemo::listMemos($prefs->getValue('sortby'),
-                                  $prefs->getValue('sortdir'));
-        $notes = array();
+        $memos = Mnemo::listMemos(
+            $prefs->getValue('sortby'),
+            $prefs->getValue('sortdir')
+        );
+        $notes = [];
         foreach ($memos as $memo) {
             $notes[$memo['uid']] = $memo['desc'];
         }
 
-        return array(
-            'note_uid' => array(
+        return [
+            'note_uid' => [
                 'type' => 'enum',
                 'name' => _("Show this note"),
                 'values' => $notes,
-            )
-        );
+            ],
+        ];
     }
 
     /**
@@ -64,16 +66,23 @@ class Mnemo_Block_Note extends Horde_Core_Block
             ->filter(
                 $memo['body'],
                 'text2html',
-                array('parselevel' => Horde_Text_Filter_Text2html::MICRO));
+                ['parselevel' => Horde_Text_Filter_Text2html::MICRO]
+            );
         try {
-            $body = Horde::callHook('format_description', array($body), 'mnemo', $body);
-        } catch (Horde_Exception_HookNotSet $e) {}
+            /**
+             * ARCHITECTURE VIOLATION: Using deprecated Horde::callHook()
+             * @deprecated Use $GLOBALS['injector']->getInstance('Horde_Core_Hooks')->callHook() instead
+             * @see Horde_Deprecated::callHook()
+             */
+$body = Horde::callHook('format_description', [$body], 'mnemo', $body);
+        } catch (Horde_Exception_HookNotSet $e) {
+        }
         $html .= $body . '</div>';
         $GLOBALS['injector']->getInstance('Horde_Core_Factory_Imple')
-            ->create('Mnemo_Ajax_Imple_EditNote', array(
+            ->create('Mnemo_Ajax_Imple_EditNote', [
                 'dataid' => $this->_params['note_uid'],
                 'id' => 'noteBody' . $memo['memo_id'],
-                'rows' => substr_count($memo['body'], "\n")));
+                'rows' => substr_count($memo['body'], "\n")]);
         return $html;
     }
 

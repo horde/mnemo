@@ -60,21 +60,21 @@ class Driver
             }
 
             switch ($class) {
-            case 'Mnemo_Driver_Sql':
-                if ($params['driverconfig'] != 'horde') {
-                    $customParams = $params;
-                    unset($customParams['driverconfig'], $customParams['table']);
-                    $params['db'] = $this->_injector->getInstance('Horde_Core_Factory_Db')->create('mnemo', $customParams);
-                } else {
-                    $params['db'] = $this->_injector->getInstance('Horde_Db_Adapter');
-                }
-                break;
+                case 'Mnemo_Driver_Sql':
+                    if ($params['driverconfig'] != 'horde') {
+                        $customParams = $params;
+                        unset($customParams['driverconfig'], $customParams['table']);
+                        $params['db'] = $this->_injector->getInstance('Horde_Core_Factory_Db')->create('mnemo', $customParams);
+                    } else {
+                        $params['db'] = $this->_injector->getInstance('Horde_Db_Adapter');
+                    }
+                    break;
 
-            case 'Mnemo_Driver_Kolab':
-                $params = [
-                    'storage' => $this->_injector->getInstance('Horde_Kolab_Storage'),
-                ];
-                break;
+                case 'Mnemo_Driver_Kolab':
+                    $params = [
+                        'storage' => $this->_injector->getInstance('Horde_Kolab_Storage'),
+                    ];
+                    break;
             }
             $driver = new $class($name, $params);
             $this->_instances[$name] = $driver;

@@ -1,6 +1,9 @@
 <?php
+
+use Horde\Util\Util;
+
 /**
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -18,49 +21,49 @@ if (!$conf['menu']['import_export']) {
 }
 
 /* Importable file types. */
-$file_types = array('csv' => _("CSV"),
-                    'vnote' => _("vNote"));
+$file_types = ['csv' => _("CSV"),
+    'vnote' => _("vNote")];
 
 /* Templates for the different import steps. */
-$templates = array(
-    Horde_Data::IMPORT_CSV => array($registry->get('templates', 'horde') . '/data/csvinfo.inc'),
-    Horde_Data::IMPORT_MAPPED => array($registry->get('templates', 'horde') . '/data/csvmap.inc'),
-);
-if ($GLOBALS['injector']->getInstance('Horde_Core_Perms')->hasAppPermission('max_notes') !== true &&
-    $GLOBALS['injector']->getInstance('Horde_Core_Perms')->hasAppPermission('max_notes') <= Mnemo::countMemos()) {
+$templates = [
+    Horde_Data::IMPORT_CSV => [$registry->get('templates', 'horde') . '/data/csvinfo.inc'],
+    Horde_Data::IMPORT_MAPPED => [$registry->get('templates', 'horde') . '/data/csvmap.inc'],
+];
+if ($GLOBALS['injector']->getInstance('Horde_Core_Perms')->hasAppPermission('max_notes') !== true
+    && $GLOBALS['injector']->getInstance('Horde_Core_Perms')->hasAppPermission('max_notes') <= Mnemo::countMemos()) {
     Horde::permissionDeniedError(
         'mnemo',
         'max_notes',
         sprintf(_("You are not allowed to create more than %d notes."), $GLOBALS['injector']->getInstance('Horde_Core_Perms')->hasAppPermission('max_notes'))
     );
-    $templates[Horde_Data::IMPORT_FILE] = array(MNEMO_TEMPLATES . '/data/export.inc');
+    $templates[Horde_Data::IMPORT_FILE] = [MNEMO_TEMPLATES . '/data/export.inc'];
 } else {
-    $templates[Horde_Data::IMPORT_FILE] = array(MNEMO_TEMPLATES . '/data/import.inc', MNEMO_TEMPLATES . '/data/export.inc');
+    $templates[Horde_Data::IMPORT_FILE] = [MNEMO_TEMPLATES . '/data/import.inc', MNEMO_TEMPLATES . '/data/export.inc'];
 }
 
 /* Field/clear name mapping. */
-$app_fields = array('body' => _("Memo Text"),
-                    'tags' => _("Tags"));
+$app_fields = ['body' => _("Memo Text"),
+    'tags' => _("Tags")];
 
 /* Initial values. */
-$param = array('file_types'  => $file_types);
-$import_format = Horde_Util::getFormData('import_format', '');
-$import_step   = Horde_Util::getFormData('import_step', 0) + 1;
+$param = ['file_types'  => $file_types];
+$import_format = Util::getFormData('import_format', '');
+$import_step   = Util::getFormData('import_step', 0) + 1;
 $next_step     = Horde_Data::IMPORT_FILE;
-$actionID      = Horde_Util::getFormData('actionID');
+$actionID      = Util::getFormData('actionID');
 $storage = $injector->getInstance('Horde_Core_Data_Storage');
 
 /* Loop through the action handlers. */
 switch ($actionID) {
-case Horde_Data::IMPORT_FILE:
-    $storage->set('target', Horde_Util::getFormData('notepad_target'));
-    break;
+    case Horde_Data::IMPORT_FILE:
+        $storage->set('target', Util::getFormData('notepad_target'));
+        break;
 }
 
 if ($import_format) {
     $data = null;
     try {
-        $data = $injector->getInstance('Horde_Core_Factory_Data')->create($import_format, array('cleanup' => array($app_ob, 'cleanupData')));
+        $data = $injector->getInstance('Horde_Core_Factory_Data')->create($import_format, ['cleanup' => [$app_ob, 'cleanupData']]);
         $next_step = $data->nextStep($actionID, $param);
     } catch (Horde_Exception $e) {
         if ($data) {
@@ -125,36 +128,46 @@ if (is_array($next_step)) {
             if (is_array($row['created'])) {
                 $row['created'] = $row['created']['ts'];
             }
-            $history->log('mnemo:' . $storage->get('target') . ':' . $note['uid'],
-                          array('action' => 'add', 'ts' => $row['created']), true);
+            $history->log(
+                'mnemo:' . $storage->get('target') . ':' . $note['uid'],
+                ['action' => 'add', 'ts' => $row['created']],
+                true
+            );
         }
         if (!empty($row['modified'])) {
             $history = $GLOBALS['injector']->getInstance('Horde_History');
             if (is_array($row['modified'])) {
                 $row['modified'] = $row['modified']['ts'];
             }
-            $history->log('mnemo:' . $storage->get('target') . ':' . $note['uid'],
-                          array('action' => 'modify', 'ts' => $row['modified']), true);
+            $history->log(
+                'mnemo:' . $storage->get('target') . ':' . $note['uid'],
+                ['action' => 'modify', 'ts' => $row['modified']],
+                true
+            );
         }
 
         $num_memos++;
     }
 
     if (!count($next_step)) {
-        $notification->push(sprintf(_("The %s file didn't contain any notes."),
-                                    $file_types[$storage->get('format')]), 'horde.error');
+        $notification->push(sprintf(
+            _("The %s file didn't contain any notes."),
+            $file_types[$storage->get('format')]
+        ), 'horde.error');
     } elseif (!empty($haveError)) {
         $notification->push(sprintf(_("There was an error importing the data: %s"), $haveError), 'horde.error');
     } else {
-        $notification->push(sprintf(_("%s file successfully imported"),
-                                    $file_types[$storage->get('format')]), 'horde.success');
+        $notification->push(sprintf(
+            _("%s file successfully imported"),
+            $file_types[$storage->get('format')]
+        ), 'horde.success');
     }
     $next_step = $data->cleanup();
 }
 
-$page_output->header(array(
-    'title' => _("Import/Export Notes")
-));
+$page_output->header([
+    'title' => _("Import/Export Notes"),
+]);
 $notification->notify();
 
 if (isset($templates[$next_step])) {

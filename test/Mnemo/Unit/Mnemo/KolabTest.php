@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the core Mnemo class with the Kolab backend.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the core Mnemo class with the Kolab backend.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -26,6 +27,7 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @link       http://www.horde.org/apps/mnemo
  * @license    http://www.horde.org/licenses/apache
+ * @coversNothing
  */
 class Mnemo_Unit_Mnemo_KolabTest extends Mnemo_Unit_Mnemo_Base
 {

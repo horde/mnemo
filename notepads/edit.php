@@ -1,7 +1,8 @@
 <?php
+
 /**
  *
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -25,10 +26,10 @@ try {
     $notification->push($e);
     Horde::url('', true)->redirect();
 }
-$owner = $notepad->get('owner') == $GLOBALS['registry']->getAuth() ||
-    (is_null($notepad->get('owner')) && $GLOBALS['registry']->isAdmin());
-if (!$owner &&
-    !$notepad->hasPermission($GLOBALS['registry']->getAuth(), Horde_Perms::READ)) {
+$owner = $notepad->get('owner') == $GLOBALS['registry']->getAuth()
+    || (is_null($notepad->get('owner')) && $GLOBALS['registry']->isAdmin());
+if (!$owner
+    && !$notepad->hasPermission($GLOBALS['registry']->getAuth(), Horde_Perms::READ)) {
     $notification->push(_("You are not allowed to see this notepad."), 'horde.error');
     Horde::url('', true)->redirect();
 }
@@ -53,9 +54,9 @@ if ($owner && $form->validate($vars)) {
 $vars->set('name', $notepad->get('name'));
 $vars->set('description', $notepad->get('desc'));
 
-$page_output->header(array(
-    'title' => $form->getTitle()
-));
+$page_output->header([
+    'title' => $form->getTitle(),
+]);
 $notification->notify();
 if ($owner) {
     echo $form->renderActive($form->getRenderer(), $vars, Horde::url('notepads/edit.php'), 'post');

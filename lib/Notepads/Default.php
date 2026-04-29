@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The default notepads handler.
  *
@@ -14,6 +15,4 @@
 
 use Horde\Mnemo\Notepads\DefaultNotepads;
 
-class Mnemo_Notepads_Default extends DefaultNotepads
-{
-}
+class Mnemo_Notepads_Default extends DefaultNotepads {}

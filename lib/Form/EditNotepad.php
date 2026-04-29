@@ -27,9 +27,9 @@ class Mnemo_Form_EditNotepad extends Horde_Form
     {
         $this->_notepad = $notepad;
 
-        $owner = $notepad->get('owner') == $GLOBALS['registry']->getAuth() ||
-            (is_null($notepad->get('owner')) &&
-             $GLOBALS['registry']->isAdmin());
+        $owner = $notepad->get('owner') == $GLOBALS['registry']->getAuth()
+            || (is_null($notepad->get('owner'))
+             && $GLOBALS['registry']->isAdmin());
 
         parent::__construct(
             $vars,
@@ -53,51 +53,57 @@ class Mnemo_Form_EditNotepad extends Horde_Form
             $v->setDefault($owner_name ? $owner_name : _("System"));
         }
 
-        $this->addVariable(_("Description"), 'description', 'longtext', false, false, null, array(4, 60));
+        $this->addVariable(_("Description"), 'description', 'longtext', false, false, null, [4, 60]);
 
         /* Permissions link. */
         if (empty($GLOBALS['conf']['share']['no_sharing']) && $owner) {
             $url = Horde::url($GLOBALS['registry']->get('webroot', 'horde')
                               . '/services/shares/edit.php')
-                ->add(array('app' => 'mnemo', 'share' => $notepad->getName()));
+                ->add(['app' => 'mnemo', 'share' => $notepad->getName()]);
             $this->addVariable(
-                 '', '', 'link', false, false, null,
-                 array(array(
-                     'url' => $url,
-                     'text' => _("Change Permissions"),
-                     'onclick' => Horde::popupJs(
-                          $url,
-                          array('urlencode' => true))
-                          . 'return false;',
-                     'class' => 'horde-button',
-                     'target' => '_blank')
-                 )
+                '',
+                '',
+                'link',
+                false,
+                false,
+                null,
+                [[
+                    'url' => $url,
+                    'text' => _("Change Permissions"),
+                    'onclick' => Horde::popupJs(
+                        $url,
+                        ['urlencode' => true]
+                    )
+                         . 'return false;',
+                    'class' => 'horde-button',
+                    'target' => '_blank'],
+                ]
             );
         }
 
-        $this->setButtons(array(
+        $this->setButtons([
             _("Save"),
-            array('class' => 'horde-delete', 'value' => _("Delete")),
-            array('class' => 'horde-cancel', 'value' => _("Cancel"))
-        ));
+            ['class' => 'horde-delete', 'value' => _("Delete")],
+            ['class' => 'horde-cancel', 'value' => _("Cancel")],
+        ]);
     }
 
     public function execute()
     {
         switch ($this->_vars->submitbutton) {
-        case _("Save"):
-            $this->_notepad->set('name', $this->_vars->get('name'));
-            $this->_notepad->set('desc', $this->_vars->get('description'));
-            $this->_notepad->save();
-            break;
-        case _("Delete"):
-            Horde::url('notepads/delete.php')
-                ->add('n', $this->_vars->n)
-                ->redirect();
-            break;
-        case _("Cancel"):
-            Horde::url('', true)->redirect();
-            break;
+            case _("Save"):
+                $this->_notepad->set('name', $this->_vars->get('name'));
+                $this->_notepad->set('desc', $this->_vars->get('description'));
+                $this->_notepad->save();
+                break;
+            case _("Delete"):
+                Horde::url('notepads/delete.php')
+                    ->add('n', $this->_vars->n)
+                    ->redirect();
+                break;
+            case _("Cancel"):
+                Horde::url('', true)->redirect();
+                break;
         }
     }
 

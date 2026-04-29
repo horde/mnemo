@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Adds autoincrement flags
  *
- * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2010-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -30,7 +31,7 @@ class MnemoUpgradeAutoIncrement extends Horde_Db_Migration_Base
      */
     public function down()
     {
-        $this->changeColumn('mnemo_shares', 'share_id', 'integer', array('null' => false));
+        $this->changeColumn('mnemo_shares', 'share_id', 'integer', ['null' => false]);
     }
 
 }

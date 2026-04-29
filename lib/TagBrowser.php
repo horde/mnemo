@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (GPL). If you
  * did not receive this file, see http://www.horde.org/licenses/gpl.
@@ -16,7 +16,7 @@ declare(strict_types=1);
 /**
  * Mnemo_TagBrowser:: class provides logic for dealing with tag browsing.
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (GPL). If you
  * did not receive this file, see http://www.horde.org/licenses/gpl.
@@ -40,9 +40,7 @@ class Mnemo_TagBrowser extends Horde_Core_TagBrowser
      *
      * @return  Return information useful for building a tag trail.
      */
-    public function getTagTrail()
-    {
-    }
+    public function getTagTrail() {}
 
     /**
      * Fetch the matching resources that should appear on the current page
@@ -59,7 +57,7 @@ class Mnemo_TagBrowser extends Horde_Core_TagBrowser
 
         $start = $page * $perpage;
         $results = array_slice($this->_results, $start, $perpage);
-        $notes = array();
+        $notes = [];
         foreach ($results as $id) {
             $notes[] = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')
                 ->create()

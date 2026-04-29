@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
@@ -11,6 +12,4 @@
 
 use Horde\Mnemo\Factory\Notepads;
 
-class Mnemo_Factory_Notepads extends Notepads
-{
-}
+class Mnemo_Factory_Notepads extends Notepads {}

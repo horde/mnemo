@@ -1,6 +1,9 @@
 <?php
+
+use Horde\Util\Util;
+
 /**
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -12,7 +15,7 @@
 require_once MNEMO_BASE . '/lib/Application.php';
 Horde_Registry::appInit('mnemo');
 
-$search = Horde_Util::getGet('q');
+$search = Util::getGet('q');
 if (!$search) {
     header('HTTP/1.0 204 No Content');
     exit;
@@ -21,7 +24,7 @@ if (!$search) {
 $memos = Mnemo::listMemos($prefs->getValue('sortby'), $prefs->getValue('sortdir'));
 
 $search_pattern = '/^' . preg_quote($search, '/') . '/i';
-$search_results = array();
+$search_results = [];
 foreach ($memos as $memo_id => $memo) {
     if (preg_match($search_pattern, $memo['desc'])) {
         $search_results[$memo_id] = $memo;
@@ -31,7 +34,7 @@ foreach ($memos as $memo_id => $memo) {
 if (count($search_results) == 1) {
     $note = array_shift($search_results);
     Horde::url('view.php', true)
-        ->add(array('memo' => $note['memo_id'], 'memolist' => $note['memolist_id']))
+        ->add(['memo' => $note['memo_id'], 'memolist' => $note['memolist_id']])
         ->redirect();
 }
 
@@ -40,9 +43,9 @@ $memos = $search_results;
 $page_output->addScriptFile('tables.js', 'horde');
 $page_output->addScriptFile('quickfinder.js', 'horde');
 
-$page_output->header(array(
-    'title' => _("Search Results")
-));
+$page_output->header([
+    'title' => _("Search Results"),
+]);
 require MNEMO_TEMPLATES . '/list/header.inc';
 
 if (count($memos)) {
@@ -55,12 +58,14 @@ if (count($memos)) {
 
     foreach ($memos as $memo_id => $memo) {
         $viewurl = Horde::url('view.php')->add(
-            array('memo' => $memo['memo_id'],
-                  'memolist' => $memo['memolist_id']));
+            ['memo' => $memo['memo_id'],
+                'memolist' => $memo['memolist_id']]
+        );
 
         $memourl = Horde::url('memo.php')->add(
-            array('memo' => $memo['memo_id'],
-                  'memolist' => $memo['memolist_id']));
+            ['memo' => $memo['memo_id'],
+                'memolist' => $memo['memolist_id']]
+        );
         try {
             $share = $GLOBALS['mnemo_shares']->getShare($memo['memolist_id']);
             $notepad = Mnemo::getLabel($share);

@@ -1,5 +1,7 @@
  <tr>
-  <td><?php if (isset($summary['edit'])) echo $summary['edit'] ?></td>
+  <td><?php if (isset($summary['edit'])) {
+      echo $summary['edit'];
+  } ?></td>
 <?php if ($this->showNotepad): ?>
   <td><?php echo $this->h($summary['notepad']) ?></td>
 <?php endif; ?>

@@ -1,7 +1,9 @@
 <div class="horde-buttonbar">
  <ul>
-<?php if (class_exists('Horde_Pdf_Writer')): ?>
-  <li class="horde-icon"><?php echo Horde::widget(array('url' => $this->pdfurl, 'title' => _("Save as PDF"), 'class' => 'mnemo-pdf')) ?></li>
+<?php use Horde\Util\Util;
+
+if (class_exists('Horde_Pdf_Writer')): ?>
+  <li class="horde-icon"><?php echo Horde::widget(['url' => $this->pdfurl, 'title' => _("Save as PDF"), 'class' => 'mnemo-pdf']) ?></li>
 <?php endif ?>
 <?php if ($this->edit): ?>
   <li class="horde-icon"><?php echo $this->edit ?></li>
@@ -50,7 +52,7 @@
 <?php if ($this->passphrase): ?>
 <div class="notePassphrase">
  <form action="view.php" name="passphrase" method="post">
-  <?php echo Horde_Util::formInput() ?>
+  <?php echo Util::formInput() ?>
   <input type="hidden" name="memolist" value="<?php echo $this->h($this->listid) ?>" />
   <input type="hidden" name="memo" value="<?php echo $this->h($this->id) ?>" />
   <?php echo Horde::label('memo_passphrase', _("_Password")) ?>:

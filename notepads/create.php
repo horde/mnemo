@@ -1,7 +1,8 @@
 <?php
+
 /**
  *
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -35,9 +36,9 @@ if ($form->validate($vars)) {
     }
 }
 
-$page_output->header(array(
-    'title' => $form->getTitle()
-));
+$page_output->header([
+    'title' => $form->getTitle(),
+]);
 $notification->notify();
 echo $form->renderActive($form->getRenderer(), $vars, Horde::url('notepads/create.php'), 'post');
 $page_output->footer();

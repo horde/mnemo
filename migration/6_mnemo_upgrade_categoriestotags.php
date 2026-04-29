@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Move tags from mnemo categories to content storage.
  *
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -24,15 +25,15 @@ class MnemoUpgradeCategoriesToTags extends Horde_Db_Migration_Base
                     '/^Content_/',
                     $GLOBALS['registry']->get('fileroot', 'content') . '/lib/'
                 )
-        );
+            );
 
         if (!class_exists('Content_Tagger')) {
             throw new Horde_Exception('The Content_Tagger class could not be found. Make sure the Content application is installed.');
         }
 
         $type_mgr = $GLOBALS['injector']->getInstance('Content_Types_Manager');
-        $types = $type_mgr->ensureTypes(array('note'));
-        $this->_type_ids = array('note' => (int)$types[0]);
+        $types = $type_mgr->ensureTypes(['note']);
+        $this->_type_ids = ['note' => (int) $types[0]];
         $this->_tagger = $GLOBALS['injector']->getInstance('Content_Tagger');
         try {
             $this->_shares = $GLOBALS['injector']->getInstance('Horde_Core_Factory_Share')->create('mnemo');
@@ -52,8 +53,8 @@ class MnemoUpgradeCategoriesToTags extends Horde_Db_Migration_Base
                     $list = $this->_shares->getShare($row['memo_owner']);
                     $this->_tagger->tag(
                         $list->get('owner'),
-                        array('object' => (string)$row['memo_uid'],
-                              'type' => $this->_type_ids['note']),
+                        ['object' => (string) $row['memo_uid'],
+                            'type' => $this->_type_ids['note']],
                         $row['memo_category']
                     );
                 } catch (Exception $e) {
@@ -68,18 +69,19 @@ class MnemoUpgradeCategoriesToTags extends Horde_Db_Migration_Base
     public function down()
     {
         $this->_init();
-        $this->addColumn('mnemo_memos', 'memo_category', 'string', array('limit' => 80));
+        $this->addColumn('mnemo_memos', 'memo_category', 'string', ['limit' => 80]);
         $this->announce('Migrating note tags to categories.');
         $sql = 'UPDATE mnemo_memos SET memo_category = ? WHERE memo_uid = ?';
         $rows = $this->select('SELECT memo_uid FROM mnemo_memos');
         foreach ($rows as $row) {
             $tags = $this->_tagger->getTagsByObjects(
                 $row['memo_uid'],
-                $this->_type_ids['note']);
+                $this->_type_ids['note']
+            );
             if (!count($tags) || !count($tags[$row['memo_uid']])) {
                 continue;
             }
-            $this->update($sql, array(reset($tags[$row['memo_uid']]), (string)$row['memo_uid']));
+            $this->update($sql, [reset($tags[$row['memo_uid']]), (string) $row['memo_uid']]);
         }
         $this->announce('Note tags successfully migrated.');
     }

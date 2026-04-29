@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017-2026 Horde LLC (http://www.horde.org/)
  *
@@ -16,6 +17,4 @@ use Horde\Mnemo\Backup\Notes as ModernNotes;
 /**
  * Backward-compatible alias for Horde\Mnemo\Backup\Notes.
  */
-class Notes extends ModernNotes
-{
-}
+class Notes extends ModernNotes {}

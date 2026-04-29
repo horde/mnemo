@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -18,9 +18,9 @@ class Mnemo_Ajax_Imple_TagAutoCompleter extends Horde_Core_Ajax_Imple_AutoComple
      */
     protected function _getAutoCompleter()
     {
-        $opts = array();
+        $opts = [];
 
-        foreach (array('box', 'triggerContainer') as $val) {
+        foreach (['box', 'triggerContainer'] as $val) {
             if (isset($this->_params[$val])) {
                 $opts[$val] = $this->_params[$val];
             }

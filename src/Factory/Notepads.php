@@ -64,9 +64,9 @@ class Notepads
                     $params['auto_create'] = true;
                 }
                 switch ($driver) {
-                case 'Default':
-                    $params['identity'] = $this->_injector->getInstance('Horde_Core_Factory_Identity')->create();
-                    break;
+                    case 'Default':
+                        $params['identity'] = $this->_injector->getInstance('Horde_Core_Factory_Identity')->create();
+                        break;
                 }
                 $this->_instances[$driver] = new $class(
                     $GLOBALS['mnemo_shares'],

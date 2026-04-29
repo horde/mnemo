@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -25,8 +26,8 @@ try {
     $notification->push($e);
     Horde::url('', true)->redirect();
 }
-if ($notepad->get('owner') != $GLOBALS['registry']->getAuth() &&
-    (!is_null($notepad->get('owner')) || !$GLOBALS['registry']->isAdmin())) {
+if ($notepad->get('owner') != $GLOBALS['registry']->getAuth()
+    && (!is_null($notepad->get('owner')) || !$GLOBALS['registry']->isAdmin())) {
     $notification->push(_("You are not allowed to delete this notepad."), 'horde.error');
     Horde::url('', true)->redirect();
 }
@@ -44,9 +45,9 @@ if ($form->validate(new Horde_Variables($_POST))) {
     Horde::url('', true)->redirect();
 }
 
-$page_output->header(array(
-    'title' => $form->getTitle()
-));
+$page_output->header([
+    'title' => $form->getTitle(),
+]);
 $notification->notify();
 echo $form->renderActive($form->getRenderer(), $vars, Horde::url('notepads/delete.php'), 'post');
 $page_output->footer();

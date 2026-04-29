@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Imple for performing Ajax note editing.
  *
- * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2008-2026 Horde LLC (http://www.horde.org/)
  *
  * @author   Michael J Rubinsky <mrubinsk@horde.org>
  * @category Horde
@@ -18,7 +18,7 @@ class Mnemo_Ajax_Imple_EditNote extends Horde_Core_Ajax_Imple_InPlaceEditor
 {
     /**
      */
-    protected function _handleEdit(Variables|\Horde_Variables $vars)
+    protected function _handleEdit(Variables|Horde_Variables $vars)
     {
         $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create();
         $memo = $storage->getByUID($vars->id);
@@ -38,7 +38,7 @@ class Mnemo_Ajax_Imple_EditNote extends Horde_Core_Ajax_Imple_InPlaceEditor
         return $GLOBALS['injector']->getInstance('Horde_Core_Factory_TextFilter')->filter(
             $vars->{$vars->input},
             'text2html',
-            array('parselevel' => Horde_Text_Filter_Text2html::MICRO)
+            ['parselevel' => Horde_Text_Filter_Text2html::MICRO]
         );
     }
 

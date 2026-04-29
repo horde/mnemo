@@ -64,8 +64,8 @@ abstract class Base
      */
     public function ensureDefaultShare(): ?string
     {
-        if (!empty($this->_params['auto_create']) && $this->_user &&
-            !count(Mnemo::listNotepads(true))) {
+        if (!empty($this->_params['auto_create']) && $this->_user
+            && !count(Mnemo::listNotepads(true))) {
             $share = $this->_shares->newShare(
                 $this->_user,
                 strval(new Horde_Support_Randomid()),
@@ -103,9 +103,7 @@ abstract class Base
     /**
      * Runs any actions after setting a new default notepad.
      */
-    public function setDefaultShare(string $share): void
-    {
-    }
+    public function setDefaultShare(string $share): void {}
 
     /**
      * Return the name of the default share.
@@ -115,7 +113,5 @@ abstract class Base
     /**
      * Add any modifiers required to the share in order to mark it as default.
      */
-    protected function _prepareDefaultShare(Horde_Share_Object $share): void
-    {
-    }
+    protected function _prepareDefaultShare(Horde_Share_Object $share): void {}
 }

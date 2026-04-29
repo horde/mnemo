@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the Kolab driver.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the Kolab driver.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -26,13 +27,14 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @license    http://www.horde.org/licenses/apache
  * @link       http://www.horde.org/apps/mnemo
+ * @coversNothing
  */
 class Mnemo_Unit_Driver_KolabTest extends Mnemo_TestCase
 {
     public function testAdd()
     {
         $driver = $this->getKolabDriver();
-        $id = $driver->add('TEST','Some test note.');
+        $id = $driver->add('TEST', 'Some test note.');
         $note = $driver->get($id);
         $this->assertEquals('TEST', $note['desc']);
     }

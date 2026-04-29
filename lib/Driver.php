@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Mnemo_Driver:: defines an API for implementing storage backends for Mnemo.
  *
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -25,7 +25,7 @@ abstract class Mnemo_Driver
      *
      * @var array
      */
-    protected $_memos = array();
+    protected $_memos = [];
 
     /**
      * String containing the current notepad name.
@@ -128,9 +128,12 @@ abstract class Mnemo_Driver
      * @throws Mnemo_Exception
      */
     public function add(
-        $desc, $body, $tags = '', $passphrase = null, $uid = null
-    )
-    {
+        $desc,
+        $body,
+        $tags = '',
+        $passphrase = null,
+        $uid = null
+    ) {
         global $injector, $registry;
 
         $noteId = $this->_generateId();
@@ -149,8 +152,11 @@ abstract class Mnemo_Driver
         // Log the creation of this item in the history log.
         try {
             $injector->getInstance('Horde_History')
-                ->log('mnemo:' . $this->_notepad . ':' . $uid,
-                      array('action' => 'add'), true);
+                ->log(
+                    'mnemo:' . $this->_notepad . ':' . $uid,
+                    ['action' => 'add'],
+                    true
+                );
         } catch (Horde_Exception $e) {
         }
 
@@ -182,9 +188,13 @@ abstract class Mnemo_Driver
      *
      * @throws Mnemo_Exception
      */
-    public function modify($noteId, $desc, $body, $tags = '',
-                           $passphrase = null)
-    {
+    public function modify(
+        $noteId,
+        $desc,
+        $body,
+        $tags = '',
+        $passphrase = null
+    ) {
         if ($passphrase) {
             $body = $this->_encrypt($body, $passphrase);
             Mnemo::storePassphrase($noteId, $passphrase);
@@ -200,8 +210,11 @@ abstract class Mnemo_Driver
         if ($uid) {
             try {
                 $GLOBALS['injector']->getInstance('Horde_History')
-                    ->log('mnemo:' . $this->_notepad . ':' . $uid,
-                          array('action' => 'modify'), true);
+                    ->log(
+                        'mnemo:' . $this->_notepad . ':' . $uid,
+                        ['action' => 'modify'],
+                        true
+                    );
             } catch (Horde_Exception $e) {
             }
         }
@@ -236,10 +249,16 @@ abstract class Mnemo_Driver
         if ($uid) {
             try {
                 $history = $GLOBALS['injector']->getInstance('Horde_History');
-                $history->log('mnemo:' . $this->_notepad . ':' . $uid,
-                              array('action' => 'delete'), true);
-                $history->log('mnemo:' . $newNotepad . ':' . $uid,
-                              array('action' => 'add'), true);
+                $history->log(
+                    'mnemo:' . $this->_notepad . ':' . $uid,
+                    ['action' => 'delete'],
+                    true
+                );
+                $history->log(
+                    'mnemo:' . $newNotepad . ':' . $uid,
+                    ['action' => 'add'],
+                    true
+                );
             } catch (Horde_Exception $e) {
             }
         }
@@ -271,18 +290,21 @@ abstract class Mnemo_Driver
         if ($uid) {
             try {
                 $GLOBALS['injector']->getInstance('Horde_History')
-                    ->log('mnemo:' . $this->_notepad . ':' . $uid,
-                          array('action' => 'delete'), true);
+                    ->log(
+                        'mnemo:' . $this->_notepad . ':' . $uid,
+                        ['action' => 'delete'],
+                        true
+                    );
             } catch (Horde_Exception $e) {
             }
 
             // Remove tags
             $GLOBALS['injector']->getInstance('Mnemo_Tagger')
-                ->replaceTags($uid, array(), $GLOBALS['registry']->getAuth(), 'note');
+                ->replaceTags($uid, [], $GLOBALS['registry']->getAuth(), 'note');
 
             /* Tell content we removed the object */
             $GLOBALS['injector']->getInstance('Content_Objects_Manager')
-                ->delete(array($uid), 'note');
+                ->delete([$uid], 'note');
         }
 
     }
@@ -316,14 +338,18 @@ abstract class Mnemo_Driver
             foreach ($uids as $uid) {
                 $history->log(
                     'mnemo:' . $this->_notepad . ':' . $uid,
-                    array('action' => 'delete'),
-                    true);
+                    ['action' => 'delete'],
+                    true
+                );
                 $tagger->replaceTags(
-                    $uid, array(), $registry->getAuth(), 'note'
+                    $uid,
+                    [],
+                    $registry->getAuth(),
+                    'note'
                 );
 
                 /* Tell content we removed the object */
-                $manager->delete(array($uid), 'note');
+                $manager->delete([$uid], 'note');
             }
         } catch (Horde_Exception $e) {
         }
@@ -348,9 +374,9 @@ abstract class Mnemo_Driver
             throw new Mnemo_Exception(_("Encryption support has not been configured, please contact your administrator."));
         }
 
-        $this->_pgp = $GLOBALS['injector']->getInstance('Horde_Core_Factory_Crypt')->create('pgp', array(
-            'program' => $GLOBALS['conf']['gnupg']['path']
-        ));
+        $this->_pgp = $GLOBALS['injector']->getInstance('Horde_Core_Factory_Crypt')->create('pgp', [
+            'program' => $GLOBALS['conf']['gnupg']['path'],
+        ]);
     }
 
     /**
@@ -364,7 +390,7 @@ abstract class Mnemo_Driver
     protected function _encrypt($note, $passphrase)
     {
         $this->_loadPGP();
-        return $this->_pgp->encrypt($note, array('type' => 'message', 'symmetric' => true, 'passphrase' => $passphrase));
+        return $this->_pgp->encrypt($note, ['type' => 'message', 'symmetric' => true, 'passphrase' => $passphrase]);
     }
 
     /**
@@ -381,7 +407,7 @@ abstract class Mnemo_Driver
         $this->_loadPGP();
 
         try {
-            return $this->_pgp->decrypt($note, array('type' => 'message', 'passphrase' => $passphrase));
+            return $this->_pgp->decrypt($note, ['type' => 'message', 'passphrase' => $passphrase]);
         } catch (Horde_Crypt_Exception $e) {
             throw new Mnemo_Exception($e->getMessage(), Mnemo::ERR_DECRYPT);
         }
@@ -437,8 +463,8 @@ abstract class Mnemo_Driver
             $this->_loadPGP();
         } catch (Mnemo_Exception $e) {
         }
-        return (is_callable(array($this->_pgp, 'encryptedSymmetrically')) &&
-                Horde::isConnectionSecure());
+        return (is_callable([$this->_pgp, 'encryptedSymmetrically'])
+                && Horde::isConnectionSecure());
     }
 
     /**
@@ -449,10 +475,10 @@ abstract class Mnemo_Driver
      *
      * @return Horde_ActiveSync_Message_Note
      */
-    public function toASNote($memo, $options = array())
+    public function toASNote($memo, $options = [])
     {
-        $message = new Horde_ActiveSync_Message_Note(array(
-            'protocolversion' => $options['protocolversion']));
+        $message = new Horde_ActiveSync_Message_Note([
+            'protocolversion' => $options['protocolversion']]);
         $message->subject = $memo['desc'];
         $bp = $options['bodyprefs'];
         $body = new Horde_ActiveSync_Message_AirSyncBaseBody();
@@ -465,9 +491,9 @@ abstract class Mnemo_Driver
 
         if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_HTML])) {
             $body->type = Horde_ActiveSync::BODYPREF_TYPE_HTML;
-            $memo['body'] = Horde_Text_Filter::filter($memo['body'], 'Text2html', array('parselevel' => Horde_Text_Filter_Text2html::MICRO));
-            if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) &&
-                HordeString::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) {
+            $memo['body'] = Horde_Text_Filter::filter($memo['body'], 'Text2html', ['parselevel' => Horde_Text_Filter_Text2html::MICRO]);
+            if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize'])
+                && HordeString::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_HTML]['truncationsize']) {
                 $body->data = HordeString::substr(
                     string: $memo['body'],
                     start: 0,
@@ -479,14 +505,14 @@ abstract class Mnemo_Driver
             }
         } else {
             $body->type = Horde_ActiveSync::BODYPREF_TYPE_PLAIN;
-            if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']) &&
-                HordeString::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']) {
-                    $body->data = HordeString::substr(
-                        string: $memo['body'],
-                        start: 0,
-                        length: $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']
-                    );
-                    $body->truncated = 1;
+            if (isset($bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize'])
+                && HordeString::length($memo['body']) > $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']) {
+                $body->data = HordeString::substr(
+                    string: $memo['body'],
+                    start: 0,
+                    length: $bp[Horde_ActiveSync::BODYPREF_TYPE_PLAIN]['truncationsize']
+                );
+                $body->truncated = 1;
             } else {
                 $body->data = $memo['body'];
             }
@@ -526,7 +552,7 @@ abstract class Mnemo_Driver
         $vnote->setAttribute('SUMMARY', $memo['desc']);
 
         if (!empty($memo['tags'])) {
-            $vnote->setAttribute('CATEGORIES', '', array(), true, $memo['tags']);
+            $vnote->setAttribute('CATEGORIES', '', [], true, $memo['tags']);
         }
 
         /* Get the note's history. */
@@ -535,13 +561,13 @@ abstract class Mnemo_Driver
         if ($log) {
             foreach ($log as $entry) {
                 switch ($entry['action']) {
-                case 'add':
-                    $created = $entry['ts'];
-                    break;
+                    case 'add':
+                        $created = $entry['ts'];
+                        break;
 
-                case 'modify':
-                    $modified = $entry['ts'];
-                    break;
+                    case 'modify':
+                        $modified = $entry['ts'];
+                        break;
                 }
             }
         }
@@ -565,7 +591,7 @@ abstract class Mnemo_Driver
      */
     public function fromiCalendar(Horde_Icalendar_Vnote $vNote)
     {
-        $memo = array();
+        $memo = [];
 
         try {
             $body = $vNote->getAttribute('BODY');
@@ -597,9 +623,7 @@ abstract class Mnemo_Driver
      * @param mixed  $token  A value indicating the last synchronization point,
      *                       if available.
      */
-    public function synchronize($token = false)
-    {
-    }
+    public function synchronize($token = false) {}
 
     /**
      * Generates a local note ID.

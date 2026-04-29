@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Base exception class for Mnemo.
  *
@@ -13,6 +14,4 @@
 
 use Horde\Mnemo\Exception as MnemoException;
 
-class Mnemo_Exception extends MnemoException
-{
-}
+class Mnemo_Exception extends MnemoException {}

@@ -41,7 +41,9 @@
    <td>
     <select id="notepad_target" name="notepad_target">
 <?php foreach ($this->notepads as $notepad): ?>
-     <option value="<?php echo $this->h($notepad['id']) ?>"<?php if ($notepad['selected']) echo ' selected="selected"' ?>><?php echo $this->h($notepad['label']) ?></option>
+     <option value="<?php echo $this->h($notepad['id']) ?>"<?php if ($notepad['selected']) {
+         echo ' selected="selected"';
+     } ?>><?php echo $this->h($notepad['label']) ?></option>
 <?php endforeach ?>
     </select>
    </td>

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Note list view.
  *
- * Copyright 2016-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2016-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you did not
  * did not receive this file, see http://www.horde.org/licenses/bsdl.php.
@@ -76,7 +76,7 @@ class Mnemo_View_List
      *
      * @return Nag_View_List
      */
-    public function __construct(Variables|\Horde_Variables $vars)
+    public function __construct(Variables|Horde_Variables $vars)
     {
         $this->_vars = $vars;
         $this->_title = _("My Notes");
@@ -102,13 +102,18 @@ class Mnemo_View_List
         $output->addScriptFile('tables.js', 'horde');
         $output->addScriptFile('quickfinder.js', 'horde');
         $output->addScriptFile('list.js');
-        $output->header(array(
-            'title' => $this->_title
-        ));
+        $output->header([
+            'title' => $this->_title,
+        ]);
 
         $view = $injector->createInstance('Horde_View');
         $view->count = count($this->_notes);
-        $view->searchImg = Horde::img('search.png', _("Search"), '');
+        /**
+         * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
+         * @deprecated Use Horde_Themes_Image::tag() instead
+         * @see Horde_Deprecated::img()
+         */
+$view->searchImg = Horde::img('search.png', _("Search"), '');
         $view->searchUrl = Horde::url('search.php');
         $view->title = $this->_title;
         $view->browser = $this->_showTagBrowser ? $this->_getRelatedTags() . $this->_getTagTrail() : '';
@@ -116,41 +121,46 @@ class Mnemo_View_List
         if (count($this->_notes)) {
             $sortby = $prefs->getValue('sortby');
             $sortdir = $prefs->getValue('sortdir');
-            $output->addInlineJsVars(array(
-                'Mnemo_List.ajaxUrl' => $registry->getServiceLink('ajax', 'mnemo')->url . 'setPrefValue'
-            ));
-            $view->editImg = Horde::img('edit.png', _("Edit Note"), '');
+            $output->addInlineJsVars([
+                'Mnemo_List.ajaxUrl' => $registry->getServiceLink('ajax', 'mnemo')->url . 'setPrefValue',
+            ]);
+            /**
+             * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
+             * @deprecated Use Horde_Themes_Image::tag() instead
+             * @see Horde_Deprecated::img()
+             */
+$view->editImg = Horde::img('edit.png', _("Edit Note"), '');
             $view->showNotepad = $prefs->getValue('show_notepad');
             $view->sortdirclass = $sortdir ? 'sortup' : 'sortdown';
-            $view->headers = array();
+            $view->headers = [];
             if ($view->showNotepad) {
-                $view->headers[] = array(
+                $view->headers[] = [
                     'id' => 's' . Mnemo::SORT_NOTEPAD,
                     'sorted' => $sortby == Mnemo::SORT_NOTEPAD,
                     'width' => '2%',
-                    'label' => Horde::widget(array('url' => $this->_baseurl->add('sortby', Mnemo::SORT_NOTEPAD), 'class' => 'sortlink', 'title' => _("Notepad"))),
-                );
+                    'label' => Horde::widget(['url' => $this->_baseurl->add('sortby', Mnemo::SORT_NOTEPAD), 'class' => 'sortlink', 'title' => _("Notepad")]),
+                ];
             }
-            $view->headers[] = array(
+            $view->headers[] = [
                 'id' => 's' . MNEMO::SORT_DESC,
                 'sorted' => $sortby == MNEMO::SORT_DESC,
                 'width' => '80%',
-                'label' => Horde::widget(array(
+                'label' => Horde::widget([
                     'url' => $this->_baseurl->add('sortby', Mnemo::SORT_DESC),
                     'class' => 'sortlink',
-                    'title' => _("No_te")
-                 )),
-            );
-            $view->headers[] = array(
+                    'title' => _("No_te"),
+                ]),
+            ];
+            $view->headers[] = [
                 'id' => 's' . MNEMO::SORT_MOD_DATE,
                 'sorted' => $sortby == Mnemo::SORT_MOD_DATE,
                 'width' => '2%',
-                'label' => Horde::widget(array(
+                'label' => Horde::widget([
                     'url' => $this->_baseurl->add('sortby', MNEMO::SORT_MOD_DATE),
                     'class' => 'sortlink',
-                    'title' => _("Date")
-                 )),
-            );
+                    'title' => _("Date"),
+                ]),
+            ];
 
             foreach ($this->_notes as $memo_id => &$memo) {
                 try {
@@ -164,22 +174,30 @@ class Mnemo_View_List
                 }
                 if ($share->hasPermission($registry->getAuth(), Horde_Perms::EDIT)) {
                     $label = sprintf(_("Edit \"%s\""), $memo['desc']);
-                    $memo['edit'] = Horde::url('memo.php')
-                        ->add(array(
+                    /**
+                     * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
+                     * @deprecated Use Horde_Themes_Image::tag() instead
+                     * @see Horde_Deprecated::img()
+                     */
+$memo['edit'] = Horde::url('memo.php')
+                        ->add([
                             'memo' => $memo['memo_id'],
                             'memolist' => $memo['memolist_id'],
-                            'actionID' => 'modify_memo'
-                        ))
-                        ->link(array('title' => $label))
+                            'actionID' => 'modify_memo',
+                        ])
+                        ->link(['title' => $label])
                         . Horde::img('edit.png', $label, '') . '</a>';
                 }
 
                 $memo['link'] = Horde::linkTooltip(
-                    Horde::url('view.php')->add(array(
+                    Horde::url('view.php')->add([
                         'memo' => $memo['memo_id'],
-                        'memolist' => $memo['memolist_id']
-                    )),
-                    '', '', '', '',
+                        'memolist' => $memo['memolist_id'],
+                    ]),
+                    '',
+                    '',
+                    '',
+                    '',
                     ($memo['body'] != $memo['desc']) ? Mnemo::getNotePreview($memo) : ''
                 )
                     . (strlen($memo['desc']) ? htmlspecialchars($memo['desc']) : '<em>' . _("Empty Note") . '</em>')
@@ -207,7 +225,7 @@ class Mnemo_View_List
         echo $view->render('list/header');
         if (count($this->_notes)) {
             echo $view->render('list/memo_headers');
-            echo $view->renderPartial('list/summary', array('collection' => array_values($this->_notes)));
+            echo $view->renderPartial('list/summary', ['collection' => array_values($this->_notes)]);
             echo $view->render('list/memo_footers');
         } else {
             echo $view->render('list/empty');
@@ -255,40 +273,40 @@ class Mnemo_View_List
             $action = $this->_vars->actionID;
         }
         switch ($action) {
-        case 'browse_add':
-        case 'browse_remove':
-        case 'browse':
-            $tag = trim($this->_vars->get('tag'));
-            if (!empty($tag)) {
-                if ($this->_vars->actionID == 'browse_add') {
-                    $this->_browser->addTag($tag);
-                } else {
-                    $this->_browser->removeTag($tag);
+            case 'browse_add':
+            case 'browse_remove':
+            case 'browse':
+                $tag = trim($this->_vars->get('tag'));
+                if (!empty($tag)) {
+                    if ($this->_vars->actionID == 'browse_add') {
+                        $this->_browser->addTag($tag);
+                    } else {
+                        $this->_browser->removeTag($tag);
+                    }
+                    $this->_browser->save();
                 }
-                $this->_browser->save();
-            }
-            if ($this->_browser->tagCount() < 1) {
-                $this->_browser->clearSearch();
+                if ($this->_browser->tagCount() < 1) {
+                    $this->_browser->clearSearch();
+                    $this->_loadNotes();
+                } else {
+                    $this->_notes = $this->_browser->getSlice();
+                }
+                break;
+            case 'search_memos':
                 $this->_loadNotes();
-            } else {
-                $this->_notes = $this->_browser->getSlice();
-            }
-            break;
-        case 'search_memos':
-            $this->_loadNotes();
-            $this->_showTagBrowser = false;
-            $this->_doSearch();
-            $this->_title = _("Search Results");
-            break;
-        default:
-            // If we have an active tag browse, use it.
-            if ($this->_browser->tagCount() >= 1) {
-                $this->_handleActions('browse');
-            } else {
-                $this->_loadNotes();
-            }
-            $this->_showTagBrowser = true;
-            break;
+                $this->_showTagBrowser = false;
+                $this->_doSearch();
+                $this->_title = _("Search Results");
+                break;
+            default:
+                // If we have an active tag browse, use it.
+                if ($this->_browser->tagCount() >= 1) {
+                    $this->_handleActions('browse');
+                } else {
+                    $this->_loadNotes();
+                }
+                $this->_showTagBrowser = true;
+                break;
         }
     }
 
@@ -305,10 +323,10 @@ class Mnemo_View_List
         $search_body = ($search_type == 'body');
         if (!empty($search_pattern) && ($search_body || $search_desc)) {
             $search_pattern = '/' . preg_quote($search_pattern, '/') . '/i';
-            $search_result = array();
+            $search_result = [];
             foreach ($this->_notes as $memo_id => $memo) {
-                if (($search_desc && preg_match($search_pattern, $memo['desc'])) ||
-                    ($search_body && preg_match($search_pattern, $memo['body']))) {
+                if (($search_desc && preg_match($search_pattern, $memo['desc']))
+                    || ($search_body && preg_match($search_pattern, $memo['body']))) {
                     $search_result[$memo_id] = $memo;
                 }
             }
@@ -325,10 +343,11 @@ class Mnemo_View_List
             $this->_handleActions(false);
             return;
         }
-        $this->_baseurl->add(array(
-            'actionID' => 'search_memos',
-            'search_pattern' => $search_pattern,
-            'search_type' => $search_type)
+        $this->_baseurl->add(
+            [
+                'actionID' => 'search_memos',
+                'search_pattern' => $search_pattern,
+                'search_type' => $search_type]
         );
     }
 
@@ -339,15 +358,20 @@ class Mnemo_View_List
      */
     protected function _getRelatedTags()
     {
-        $ids = array();
+        $ids = [];
         foreach ($this->_notes as $t) {
             $ids[] = $t['uid'];
         }
         $rtags = $this->_browser->getRelatedTags($ids);
         if (count($rtags)) {
-        $html = '<div class="nag-tags-related">'
-                . Horde::img('tags.png')
-                . ' <ul class="horde-tags">';
+            /**
+             * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
+             * @deprecated Use Horde_Themes_Image::tag() instead
+             * @see Horde_Deprecated::img()
+             */
+$html = '<div class="nag-tags-related">'
+                    . Horde::img('tags.png')
+                    . ' <ul class="horde-tags">';
             foreach ($rtags as $id => $taginfo) {
                 $html .= '<li>'
                     . $this->_linkAddTag($taginfo['tag_name'])->link()
@@ -367,9 +391,19 @@ class Mnemo_View_List
     protected function _getTagTrail()
     {
         if ($this->_browser->tagCount() >= 1) {
-            $html = '<div class="nag-tags-browsing">' . Horde::img('filter.png') . '<ul class="horde-tags">';
+            /**
+             * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
+             * @deprecated Use Horde_Themes_Image::tag() instead
+             * @see Horde_Deprecated::img()
+             */
+$html = '<div class="nag-tags-browsing">' . Horde::img('filter.png') . '<ul class="horde-tags">';
             foreach ($this->_browser->getTags() as $tag => $id) {
-                $html .= '<li>' . htmlspecialchars($tag)
+                /**
+                 * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
+                 * @deprecated Use Horde_Themes_Image::tag() instead
+                 * @see Horde_Deprecated::img()
+                 */
+$html .= '<li>' . htmlspecialchars($tag)
                     . $this->_linkRemoveTag($tag)->link()
                     . Horde::img('delete-small.png', _("Remove from search"))
                     . '</a></li>';
@@ -390,7 +424,7 @@ class Mnemo_View_List
     protected function _linkRemoveTag($tag)
     {
         return Horde::url('list.php')
-            ->add(array('actionID' => 'browse_remove', 'tag' => $tag));
+            ->add(['actionID' => 'browse_remove', 'tag' => $tag]);
     }
 
     /**
@@ -402,7 +436,7 @@ class Mnemo_View_List
      */
     protected function _linkAddTag($tag)
     {
-        return Horde::url('list.php')->add(array('actionID' => 'browse_add', 'tag' => $tag));
+        return Horde::url('list.php')->add(['actionID' => 'browse_add', 'tag' => $tag]);
     }
 
 }

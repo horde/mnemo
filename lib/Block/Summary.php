@@ -8,7 +8,7 @@ class Mnemo_Block_Summary extends Horde_Core_Block
 {
     /**
      */
-    public function __construct($app, $params = array())
+    public function __construct($app, $params = [])
     {
         parent::__construct($app, $params);
 
@@ -33,18 +33,18 @@ class Mnemo_Block_Summary extends Horde_Core_Block
      */
     protected function _params()
     {
-        return array(
-            'show_actions' => array(
+        return [
+            'show_actions' => [
                 'type' => 'checkbox',
                 'name' => _("Show action buttons?"),
-                'default' => 1
-            ),
-            'show_notepad' => array(
+                'default' => 1,
+            ],
+            'show_notepad' => [
                 'type' => 'checkbox',
                 'name' => _("Show notepad name?"),
-                'default' => 1
-            ),
-        );
+                'default' => 1,
+            ],
+        ];
     }
 
     /**
@@ -58,15 +58,22 @@ class Mnemo_Block_Summary extends Horde_Core_Block
         }
 
         $html = '';
-        $memos = Mnemo::listMemos($prefs->getValue('sortby'),
-                                  $prefs->getValue('sortdir'));
+        $memos = Mnemo::listMemos(
+            $prefs->getValue('sortby'),
+            $prefs->getValue('sortdir')
+        );
         foreach ($memos as $id => $memo) {
             $html .= '<tr>';
 
             if (!empty($this->_params['show_actions'])) {
                 $editImg = Horde_Themes::img('edit.png');
-                $editurl = Horde::url('memo.php')->add(array('memo' => $memo['memo_id'], 'memolist' => $memo['memolist_id']));
-                $html .= '<td width="1%">'
+                $editurl = Horde::url('memo.php')->add(['memo' => $memo['memo_id'], 'memolist' => $memo['memolist_id']]);
+                /**
+                 * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
+                 * @deprecated Use Horde_Themes_Image::tag() instead
+                 * @see Horde_Deprecated::img()
+                 */
+$html .= '<td width="1%">'
                     . Horde::link(htmlspecialchars(Horde::url($editurl, true)->add('actionID', 'modify_memo')), _("Edit Note"))
                     . Horde::img($editImg, _("Edit Note"))
                     . '</a></td>';
@@ -77,14 +84,19 @@ class Mnemo_Block_Summary extends Horde_Core_Block
             }
 
             $viewurl = Horde::url('view.php')->add(
-                array('memo' => $memo['memo_id'],
-                      'memolist' => $memo['memolist_id']));
+                ['memo' => $memo['memo_id'],
+                    'memolist' => $memo['memolist_id']]
+            );
 
             $html .= '<td>'
                 . Horde::linkTooltip(
                     htmlspecialchars(Horde::url($viewurl, true)),
-                    '', '', '', '',
-                    $memo['body'] != $memo['desc'] ? Mnemo::getNotePreview($memo) : '')
+                    '',
+                    '',
+                    '',
+                    '',
+                    $memo['body'] != $memo['desc'] ? Mnemo::getNotePreview($memo) : ''
+                )
                 . (strlen($memo['desc']) ? htmlspecialchars($memo['desc']) : '<em>' . _("Empty Note") . '</em>')
                 . '</a> <ul class="horde-tags">';
             foreach ($memo['tags'] as $tag) {

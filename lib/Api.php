@@ -8,7 +8,7 @@ declare(strict_types=1);
  * This file defines Mnemo's external API interface.  Other applications can
  * interact with Mnemo through this API.
  *
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -23,9 +23,9 @@ class Mnemo_Api extends Horde_Registry_Api
      *
      * @var array
      */
-    protected $_links = array(
-        'show' => '%application%/view.php?memo=|memo|&memolist=|memolist|&uid=|uid|'
-    );
+    protected $_links = [
+        'show' => '%application%/view.php?memo=|memo|&memolist=|memolist|&uid=|uid|',
+    ];
 
     /**
      * Removes user data.
@@ -66,13 +66,13 @@ class Mnemo_Api extends Horde_Registry_Api
      *
      * @return array  The contents of $path
      */
-    public function browse($path = '', $properties = array())
+    public function browse($path = '', $properties = [])
     {
         global $injector, $mnemo_shares, $registry;
 
         // Default properties.
         if (!$properties) {
-            $properties = array('name', 'icon', 'browseable');
+            $properties = ['name', 'icon', 'browseable'];
         }
 
         if (substr($path, 0, 5) == 'mnemo') {
@@ -86,12 +86,12 @@ class Mnemo_Api extends Horde_Registry_Api
             // This request is for a list of all users who have notepads
             // visible to the requesting user.
             $notepads = Mnemo::listNotepads(false, Horde_Perms::READ);
-            $owners = array();
+            $owners = [];
             foreach ($notepads as $notepad) {
                 $owners[$notepad->get('owner') ? $notepad->get('owner') : '-system-'] = true;
             }
 
-            $results = array();
+            $results = [];
             foreach (array_keys($owners) as $owner) {
                 $path = 'mnemo/' . $registry->convertUsername($owner, false);
                 if (in_array('name', $properties)) {
@@ -117,11 +117,11 @@ class Mnemo_Api extends Horde_Registry_Api
             $owner = $parts[0] == '-system-' ? '' : $registry->convertUsername($parts[0], true);
             $notepads = $mnemo_shares->listShares(
                 $currentUser,
-                array('perm' => Horde_Perms::SHOW,
-                      'attributes' => $owner)
+                ['perm' => Horde_Perms::SHOW,
+                    'attributes' => $owner]
             );
 
-            $results = array();
+            $results = [];
             foreach ($notepads as $notepadId => $notepad) {
                 if ($parts[0] == '-system-' && $notepad->get('owner')) {
                     continue;
@@ -176,7 +176,7 @@ class Mnemo_Api extends Horde_Registry_Api
                 ? $registry->convertUsername($notepad->get('owner'), false)
                 : '-system-';
             $dav = $injector->getInstance('Horde_Dav_Storage');
-            $results = array();
+            $results = [];
             foreach ($storage->listMemos() as $memo) {
                 $body = $memo['body'] instanceof Mnemo_Exception
                     ? $memo['body']->getMessage()
@@ -212,7 +212,7 @@ class Mnemo_Api extends Horde_Registry_Api
                     $results[$key]['modified'] = $this->_modified($memo);
                 }
                 if (in_array('created', $properties)) {
-                    $results[$key]['created'] = isset($memo['created']) ? $memo['created'] : 0;
+                    $results[$key]['created'] = $memo['created'] ?? 0;
                 }
                 if (in_array('etag', $properties)) {
                     $results[$key]['etag'] = '"' . md5($memo['memo_id'] . '|' . $this->_modified($memo)) . '"';
@@ -223,8 +223,8 @@ class Mnemo_Api extends Horde_Registry_Api
             //
             // The only valid request left is for a specific note.
             //
-            if (count($parts) == 3 &&
-                Mnemo::hasPermission($parts[1], Horde_Perms::READ)) {
+            if (count($parts) == 3
+                && Mnemo::hasPermission($parts[1], Horde_Perms::READ)) {
                 //
                 // This request is for a specific item within a given notepad.
                 //
@@ -244,11 +244,11 @@ class Mnemo_Api extends Horde_Registry_Api
                 } catch (Mnemo_Exception $e) {
                     throw new Mnemo_Exception($e->getMessage(), 500);
                 }
-                $result = array(
+                $result = [
                     'data' => $memo['body'] instanceof Mnemo_Exception
                         ? $memo['body']->getMessage()
                         : $memo['body'],
-                    'mimetype' => 'text/plain');
+                    'mimetype' => 'text/plain'];
                 $modified = $this->_modified($memo);
                 if (!empty($modified)) {
                     $result['mtime'] = $modified;
@@ -323,7 +323,7 @@ class Mnemo_Api extends Horde_Registry_Api
         try {
             $memo = $storage->get($id);
             if ($memo->encrypted) {
-                return array();
+                return [];
             }
             try {
                 $storage->modify(
@@ -348,7 +348,7 @@ class Mnemo_Api extends Horde_Registry_Api
             $memo = $storage->get($newId);
         }
 
-        return array($memo['uid']);
+        return [$memo['uid']];
     }
 
     /**
@@ -369,8 +369,8 @@ class Mnemo_Api extends Horde_Registry_Api
         $path = trim($path, '/');
         $parts = explode('/', $path);
 
-        if (count($parts) != 3 ||
-            !Mnemo::hasPermission($parts[1], Horde_Perms::DELETE)) {
+        if (count($parts) != 3
+            || !Mnemo::hasPermission($parts[1], Horde_Perms::DELETE)) {
 
             throw new Mnemo_Exception(_("Notepad does not exist or no permission to delete"), 403);
         }
@@ -418,7 +418,7 @@ class Mnemo_Api extends Horde_Registry_Api
             $notepads = Mnemo::getSyncNotepads();
         } else {
             if (!is_array($notepads)) {
-                $notepads = array($notepads);
+                $notepads = [$notepads];
             }
             foreach ($notepads as $notepad) {
                 if (!Mnemo::hasPermission($notepad, Horde_Perms::READ)) {
@@ -431,7 +431,7 @@ class Mnemo_Api extends Horde_Registry_Api
         $GLOBALS['display_notepads'] = $notepads;
 
         $memos = Mnemo::listMemos();
-        $uids = array();
+        $uids = [];
         foreach ($memos as $memo) {
             $uids[] = $memo['uid'];
         }
@@ -464,9 +464,9 @@ class Mnemo_Api extends Horde_Registry_Api
             ->create($notepad)
             ->synchronize();
 
-        return array('add' => $this->listBy('add', $start, $notepad, $end, $isModSeq),
-                     'modify' => $this->listBy('modify', $start, $notepad, $end, $isModSeq),
-                     'delete' => $this->listBy('delete', $start, $notepad, $end, $isModSeq));
+        return ['add' => $this->listBy('add', $start, $notepad, $end, $isModSeq),
+            'modify' => $this->listBy('modify', $start, $notepad, $end, $isModSeq),
+            'delete' => $this->listBy('delete', $start, $notepad, $end, $isModSeq)];
     }
 
     /**
@@ -503,16 +503,16 @@ class Mnemo_Api extends Horde_Registry_Api
         /* Make sure we have a valid notepad. */
         if (empty($notepad)) {
             $notepads = Mnemo::getSyncNotepads();
-            $results = array();
+            $results = [];
             foreach ($notepads as $notepad) {
                 $results = array_merge($results, $this->listBy($action, $timestamp, $notepad, $end, $isModSeq));
             }
             return $results;
         }
 
-        $filter = array(array('op' => '=', 'field' => 'action', 'value' => $action));
+        $filter = [['op' => '=', 'field' => 'action', 'value' => $action]];
         if (!empty($end) && !$isModSeq) {
-            $filter[] = array('op' => '<', 'field' => 'ts', 'value' => $end);
+            $filter[] = ['op' => '<', 'field' => 'ts', 'value' => $end];
         }
         $history = $GLOBALS['injector']->getInstance('Horde_History');
         if (!$isModSeq) {
@@ -607,59 +607,63 @@ class Mnemo_Api extends Horde_Registry_Api
         $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create($notepad);
 
         switch ($contentType) {
-        case 'text/plain':
-            $noteId = $storage->add($storage->getMemoDescription($content), $content);
-            break;
+            case 'text/plain':
+                $noteId = $storage->add($storage->getMemoDescription($content), $content);
+                break;
 
-        case 'text/x-vnote':
-            if (!($content instanceof Horde_Icalendar_Vnote)) {
-                $iCal = new Horde_Icalendar();
-                if (!$iCal->parsevCalendar($content)) {
-                    throw new Mnemo_Exception(_("There was an error importing the iCalendar data."));
-                }
-
-                $components = $iCal->getComponents();
-                switch (count($components)) {
-                case 0:
-                    throw new Mnemo_Exception(_("No iCalendar data was found."));
-
-                case 1:
-                    $content = $components[0];
-                    break;
-
-                default:
-                    $ids = array();
-                    foreach ($components as $content) {
-                        if ($content instanceof Horde_Icalendar_Vnote) {
-                            $note = $storage->fromiCalendar($content);
-                            $noteId = $storage->add(
-                                $note['desc'], $note['body'],
-                                !empty($note['tags']) ? $note['tags'] : '');
-                            $ids[] = $noteId;
-                        }
+            case 'text/x-vnote':
+                if (!($content instanceof Horde_Icalendar_Vnote)) {
+                    $iCal = new Horde_Icalendar();
+                    if (!$iCal->parsevCalendar($content)) {
+                        throw new Mnemo_Exception(_("There was an error importing the iCalendar data."));
                     }
-                    return $ids;
+
+                    $components = $iCal->getComponents();
+                    switch (count($components)) {
+                        case 0:
+                            throw new Mnemo_Exception(_("No iCalendar data was found."));
+
+                        case 1:
+                            $content = $components[0];
+                            break;
+
+                        default:
+                            $ids = [];
+                            foreach ($components as $content) {
+                                if ($content instanceof Horde_Icalendar_Vnote) {
+                                    $note = $storage->fromiCalendar($content);
+                                    $noteId = $storage->add(
+                                        $note['desc'],
+                                        $note['body'],
+                                        !empty($note['tags']) ? $note['tags'] : ''
+                                    );
+                                    $ids[] = $noteId;
+                                }
+                            }
+                            return $ids;
+                    }
                 }
-            }
 
-            $note = $storage->fromiCalendar($content);
-            $noteId = $storage->add(
-                $note['desc'], $note['body'],
-                !empty($note['tags']) ? $note['tags'] : '');
-            break;
+                $note = $storage->fromiCalendar($content);
+                $noteId = $storage->add(
+                    $note['desc'],
+                    $note['body'],
+                    !empty($note['tags']) ? $note['tags'] : ''
+                );
+                break;
 
-        case 'activesync':
-            // We only support plaintext
-            if ($content->body->type == Horde_ActiveSync::BODYPREF_TYPE_HTML) {
-                $body = Horde_Text_Filter::filter($content->body->data, 'Html2text');
-            } else {
-                $body = $content->body->data;
-            }
-            $noteId = $storage->add(Horde_String::substr($content->subject, 0, 255), $body, $content->categories);
-            break;
+            case 'activesync':
+                // We only support plaintext
+                if ($content->body->type == Horde_ActiveSync::BODYPREF_TYPE_HTML) {
+                    $body = Horde_Text_Filter::filter($content->body->data, 'Html2text');
+                } else {
+                    $body = $content->body->data;
+                }
+                $noteId = $storage->add(Horde_String::substr($content->subject, 0, 255), $body, $content->categories);
+                break;
 
-        default:
-            throw new Mnemo_Exception(sprintf(_("Unsupported Content-Type: %s"), $contentType));
+            default:
+                throw new Mnemo_Exception(sprintf(_("Unsupported Content-Type: %s"), $contentType));
         }
         $note = $storage->get($noteId);
 
@@ -684,7 +688,7 @@ class Mnemo_Api extends Horde_Registry_Api
      * @throws Mnemo_Exception
      * @throws Horde_Exception_PermissionDenied
      */
-    public function export($uid, $contentType, array $options = array())
+    public function export($uid, $contentType, array $options = [])
     {
         $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create();
         $memo = $storage->getByUID($uid);
@@ -693,22 +697,22 @@ class Mnemo_Api extends Horde_Registry_Api
         }
 
         switch ($contentType) {
-        case 'text/plain':
-            return $memo['body'];
+            case 'text/plain':
+                return $memo['body'];
 
-        case 'text/x-vnote':
-            // Create the new iCalendar container.
-            $iCal = new Horde_Icalendar('1.1');
-            $iCal->setAttribute('VERSION', '1.1');
-            $iCal->setAttribute('PRODID', '-//The Horde Project//Mnemo ' . $GLOBALS['registry']->getVersion() . '//EN');
-            $iCal->setAttribute('METHOD', 'PUBLISH');
+            case 'text/x-vnote':
+                // Create the new iCalendar container.
+                $iCal = new Horde_Icalendar('1.1');
+                $iCal->setAttribute('VERSION', '1.1');
+                $iCal->setAttribute('PRODID', '-//The Horde Project//Mnemo ' . $GLOBALS['registry']->getVersion() . '//EN');
+                $iCal->setAttribute('METHOD', 'PUBLISH');
 
-            // Create a new vNote.
-            $vNote = $storage->toiCalendar($memo, $iCal);
-            return $vNote->exportvCalendar();
+                // Create a new vNote.
+                $vNote = $storage->toiCalendar($memo, $iCal);
+                return $vNote->exportvCalendar();
 
-        case 'activesync':
-            return $storage->toASNote($memo, $options);
+            case 'activesync':
+                return $storage->toASNote($memo, $options);
         }
 
         throw new Mnemo_Exception(sprintf(_("Unsupported Content-Type: %s"), $contentType));
@@ -734,8 +738,8 @@ class Mnemo_Api extends Horde_Registry_Api
 
         $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create();
         $memo = $storage->getByUID($uid);
-        if (!$GLOBALS['registry']->isAdmin() &&
-            !array_key_exists($memo['memolist_id'], Mnemo::listNotepads(false, Horde_Perms::DELETE))) {
+        if (!$GLOBALS['registry']->isAdmin()
+            && !array_key_exists($memo['memolist_id'], Mnemo::listNotepads(false, Horde_Perms::DELETE))) {
 
             throw new Horde_Exception_PermissionDenied();
         }
@@ -765,48 +769,50 @@ class Mnemo_Api extends Horde_Registry_Api
         }
 
         switch ($contentType) {
-        case 'text/plain':
-            $storage->modify($memo['memo_id'], $storage->getMemoDescription($content), $content, null);
-            break;
-        case 'text/x-vnote':
-            if (!($content instanceof Horde_Icalendar_Vnote)) {
-                $iCal = new Horde_Icalendar();
-                if (!$iCal->parsevCalendar($content)) {
-                    throw new Mnemo_Exception(_("There was an error importing the iCalendar data."));
+            case 'text/plain':
+                $storage->modify($memo['memo_id'], $storage->getMemoDescription($content), $content, null);
+                break;
+            case 'text/x-vnote':
+                if (!($content instanceof Horde_Icalendar_Vnote)) {
+                    $iCal = new Horde_Icalendar();
+                    if (!$iCal->parsevCalendar($content)) {
+                        throw new Mnemo_Exception(_("There was an error importing the iCalendar data."));
+                    }
+
+                    $components = $iCal->getComponents();
+                    switch (count($components)) {
+                        case 0:
+                            throw new Mnemo_Exception(_("No iCalendar data was found."));
+
+                        case 1:
+                            $content = $components[0];
+                            break;
+
+                        default:
+                            throw new Mnemo_Exception(_("Multiple iCalendar components found; only one vNote is supported."));
+                    }
                 }
+                $note = $storage->fromiCalendar($content);
+                $storage->modify(
+                    $memo['memo_id'],
+                    $note['desc'],
+                    $note['body'],
+                    !empty($note['tags']) ? $note['tags'] : ''
+                );
+                break;
 
-                $components = $iCal->getComponents();
-                switch (count($components)) {
-                case 0:
-                    throw new Mnemo_Exception(_("No iCalendar data was found."));
-
-                case 1:
-                    $content = $components[0];
-                    break;
-
-                default:
-                    throw new Mnemo_Exception(_("Multiple iCalendar components found; only one vNote is supported."));
+            case 'activesync':
+                // We only support plaintext
+                if ($content->body->type == Horde_ActiveSync::BODYPREF_TYPE_HTML) {
+                    $body = Horde_Text_Filter::filter($content->body->data, 'Html2text');
+                } else {
+                    $body = $content->body->data;
                 }
-            }
-            $note = $storage->fromiCalendar($content);
-            $storage->modify($memo['memo_id'],
-                             $note['desc'],
-                             $note['body'],
-                             !empty($note['tags']) ? $note['tags'] : '');
-            break;
+                $storage->modify($memo['memo_id'], Horde_String::substr($content->subject, 0, 255), $body, $content->categories);
+                break;
 
-        case 'activesync':
-            // We only support plaintext
-            if ($content->body->type == Horde_ActiveSync::BODYPREF_TYPE_HTML) {
-                $body = Horde_Text_Filter::filter($content->body->data, 'Html2text');
-            } else {
-                $body = $content->body->data;
-            }
-            $storage->modify($memo['memo_id'], Horde_String::substr($content->subject, 0, 255), $body, $content->categories);
-            break;
-
-        default:
-            throw new Mnemo_Exception(sprintf(_("Unsupported Content-Type: %s"),$contentType));
+            default:
+                throw new Mnemo_Exception(sprintf(_("Unsupported Content-Type: %s"), $contentType));
         }
     }
 
@@ -822,7 +828,7 @@ class Mnemo_Api extends Horde_Registry_Api
      */
     public function sources($writeable = false, $sync_only = false)
     {
-        $out = array();
+        $out = [];
 
         foreach (Mnemo::listNotepads(false, $writeable ? Horde_Perms::EDIT : Horde_Perms::READ) as $key => $val) {
             $out[$key] = $val->get('name');
@@ -860,7 +866,7 @@ class Mnemo_Api extends Horde_Registry_Api
      * @return string  The new notepad's id.
      * @since 4.2.0
      */
-    public function addNotepad($name, array $params = array())
+    public function addNotepad($name, array $params = [])
     {
         if ($GLOBALS['prefs']->isLocked('default_notepad')) {
             throw new Horde_Exception_PermissionDenied();
@@ -869,7 +875,8 @@ class Mnemo_Api extends Horde_Registry_Api
         $notepad = $GLOBALS['mnemo_shares']->newShare(
             $GLOBALS['registry']->getAuth(),
             strval(new Horde_Support_Uuid()),
-            $name);
+            $name
+        );
 
         $name = $notepad->getName();
         if (!empty($params['synchronize'])) {
@@ -959,9 +966,14 @@ class Mnemo_Api extends Horde_Registry_Api
      *  'icon'     - URL to an image.
      * </pre>
      */
-    public function searchTags($names, $max = 10, $from = 0,
-                               $resource_type = '', $user = null, $raw = false)
-    {
+    public function searchTags(
+        $names,
+        $max = 10,
+        $from = 0,
+        $resource_type = '',
+        $user = null,
+        $raw = false
+    ) {
         // TODO: $max, $from, $resource_type not honored
         global $injector, $registry;
 
@@ -969,26 +981,27 @@ class Mnemo_Api extends Horde_Registry_Api
             ->getInstance('Mnemo_Tagger')
             ->search(
                 $names,
-                array('user' => $user));
+                ['user' => $user]
+            );
 
         // Check for error or if we requested the raw data array.
         if ($raw) {
             return $results;
         }
 
-        $return = array();
+        $return = [];
         $redirectUrl = Horde::url('memo.php');
         foreach ($results as $memo_id) {
             try {
                 $memo = $injector->getInstance('Mnemo_Factory_Driver')
                     ->create(null)
                     ->getByUID($memo_id);
-                $return[] = array(
+                $return[] = [
                     'title' => $memo['desc'],
                     'desc' => '',
-                    'view_url' => $redirectUrl->copy()->add(array('memo' => $memo['memo_id'], 'memolist' => $memo['memolist_id'])),
-                    'app' => 'mnemo'
-                );
+                    'view_url' => $redirectUrl->copy()->add(['memo' => $memo['memo_id'], 'memolist' => $memo['memolist_id']]),
+                    'app' => 'mnemo',
+                ];
             } catch (Exception $e) {
             }
         }
@@ -1005,11 +1018,9 @@ class Mnemo_Api extends Horde_Registry_Api
      */
     protected function _modified($memo)
     {
-        return isset($memo['modified'])
-            ? $memo['modified']
-            : (isset($memo['created'])
-               ? $memo['created']
-               : null);
+        return $memo['modified']
+            ?? ($memo['created']
+               ?? null);
     }
 
 }

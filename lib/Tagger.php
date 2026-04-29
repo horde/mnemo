@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Interface to the Horde_Content tagger
  *
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -18,7 +18,7 @@ declare(strict_types=1);
 class Mnemo_Tagger extends Horde_Core_Tagger
 {
     protected $_app = 'mnemo';
-    protected $_types = array('note');
+    protected $_types = ['note'];
 
     /**
      * Searches for resources that are tagged with all of the requested tags.
@@ -30,9 +30,9 @@ class Mnemo_Tagger extends Horde_Core_Tagger
      *
      * @return array  A hash of results.
      */
-    public function search($tags, $filter = array())
+    public function search($tags, $filter = [])
     {
-        $args = array();
+        $args = [];
 
         // These filters are mutually exclusive
         if (array_key_exists('user', $filter)) {
@@ -41,7 +41,7 @@ class Mnemo_Tagger extends Horde_Core_Tagger
         } elseif (!empty($filter['list'])) {
             // Only events located in specific notepad(s)
             if (!is_array($filter['list'])) {
-                $filter['list'] = array($filter['list']);
+                $filter['list'] = [$filter['list']];
             }
             $args['listId'] = $filter['list'];
         }
@@ -51,7 +51,7 @@ class Mnemo_Tagger extends Horde_Core_Tagger
             ->getInstance('Content_Tagger')
             ->ensureTags($tags);
 
-        $results = array();
+        $results = [];
         $args['typeId'] = $this->_type_ids['note'];
 
         return array_values($GLOBALS['injector']->getInstance('Content_Tagger')->getObjects($args));

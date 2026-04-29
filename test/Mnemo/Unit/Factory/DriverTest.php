@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the Mnemo library.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the Mnemo library.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -26,6 +27,7 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @license    http://www.horde.org/licenses/apache
  * @link       http://www.horde.org/apps/mnemo
+ * @coversNothing
  */
 class Mnemo_Unit_Factory_DriverTest extends Mnemo_TestCase
 {
@@ -44,7 +46,7 @@ class Mnemo_Unit_Factory_DriverTest extends Mnemo_TestCase
     public function testCreateKolab()
     {
         self::createKolabSetup();
-        list($share, $other_share) = self::_createDefaultShares();
+        [$share, $other_share] = self::_createDefaultShares();
         $GLOBALS['conf']['storage']['driver'] = 'kolab';
         $this->assertInstanceOf(
             'Mnemo_Driver_Kolab',
@@ -57,7 +59,7 @@ class Mnemo_Unit_Factory_DriverTest extends Mnemo_TestCase
     public function testCreateKolabEmpty()
     {
         self::createKolabSetup();
-        list($share, $other_share) = self::_createDefaultShares();
+        [$share, $other_share] = self::_createDefaultShares();
         $GLOBALS['conf']['storage']['driver'] = 'kolab';
         $this->assertInstanceOf(
             'Mnemo_Driver_Kolab',

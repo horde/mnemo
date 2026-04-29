@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2001-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
  * did not receive this file, see http://www.horde.org/licenses/apache.
@@ -16,13 +17,13 @@ Horde_Registry::appInit('mnemo');
 $vars = Horde_Variables::getDefaultVariables();
 $form = new Mnemo_Form_Search($vars);
 
-$page_output->addInlineScript(array(
-    '$("search_pattern").focus()'
-), true);
+$page_output->addInlineScript([
+    '$("search_pattern").focus()',
+], true);
 
-$page_output->header(array(
-    'title' => _("Search")
-));
+$page_output->header([
+    'title' => _("Search"),
+]);
 $notification->notify();
 $form->render();
 $page_output->footer();

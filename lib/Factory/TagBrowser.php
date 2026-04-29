@@ -1,16 +1,24 @@
 <?php
+/**
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
+ *
+ * See the enclosed file LICENSE for license information (ASL). If you
+ * did not receive this file, see http://www.horde.org/licenses/apache.
+ *
+ * @package Mnemo
+ */
+
+use Horde\Mnemo\Factory\TagBrowser;
+
 class Mnemo_Factory_TagBrowser extends Horde_Core_Factory_Base
 {
-    protected $_instance;
+    private ?TagBrowser $_delegate = null;
 
     public function create()
     {
-        if (empty($this->_instance)) {
-            $this->_instance = new Mnemo_TagBrowser(
-                $GLOBALS['injector']->getInstance('Mnemo_Tagger'));
+        if ($this->_delegate === null) {
+            $this->_delegate = new TagBrowser($this->_injector);
         }
-
-        return $this->_instance;
+        return $this->_delegate->create();
     }
-
 }

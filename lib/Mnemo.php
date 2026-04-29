@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Copyright 2001-2017 Horde LLC (http://www.horde.org/)
  *

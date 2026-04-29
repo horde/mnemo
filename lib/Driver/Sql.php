@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Mnemo storage implementation for Horde's Horde_Db database abstraction
  * layer.

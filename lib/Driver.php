@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Mnemo_Driver:: defines an API for implementing storage backends for Mnemo.
  *

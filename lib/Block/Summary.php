@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  */
 class Mnemo_Block_Summary extends Horde_Core_Block

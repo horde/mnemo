@@ -1,7 +1,8 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * Base exception class for Mnemo.
- *
  * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (ASL). If you
@@ -11,8 +12,13 @@
  * @package Mnemo
  */
 
-use Horde\Mnemo\Exception as MnemoException;
+namespace Horde\Mnemo;
 
-class Mnemo_Exception extends MnemoException
+use Horde\Exception\Wrapped;
+
+/**
+ * Base exception class for Mnemo.
+ */
+class Exception extends Wrapped
 {
 }

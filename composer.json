@@ -20,7 +20,7 @@
         "notes",
         "journals"
     ],
-    "time": "2026-04-29",
+    "time": "2026-05-02",
     "repositories": [],
     "require": {
         "horde/horde-installer-plugin": "dev-FRAMEWORK_6_0 || ^3 || ^2",

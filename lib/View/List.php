@@ -214,7 +214,7 @@ $memo['edit'] = Horde::url('memo.php')
                 }
                 if ($modified) {
                     $memo['modifiedStamp'] = $modified->timestamp();
-                    $memo['modifiedString'] = $modified->strftime($prefs->getValue('date_format'));
+                    $memo['modifiedString'] = $modified->format($prefs->getValue('date_format'), new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US');
                 } else {
                     $memo['modifiedStamp'] = $memo['modifiedString'] = '';
                 }

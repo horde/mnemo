@@ -138,19 +138,19 @@ if ($share->hasPermission($registry->getAuth(), Horde_Perms::EDIT)) {
     ]);
 }
 if (isset($memo['created'])) {
-    $view->created = $memo['created']->strftime(
-        $prefs->getValue('date_format')
+    $view->created = $memo['created']->format(
+        $prefs->getValue('date_format'), new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
     )
     . ' ' . $memo['created']->format(
-        $prefs->getValue('twentyFour') ? 'G:i' : 'g:i a'
+        $prefs->getValue('twentyFour') ? 'HH:mm' : 'h:mm a', new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
     );
 }
 if (isset($memo['modified'])) {
-    $view->modified = $memo['modified']->strftime(
-        $prefs->getValue('date_format')
+    $view->modified = $memo['modified']->format(
+        $prefs->getValue('date_format'), new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
     )
     . ' ' . $memo['modified']->format(
-        $prefs->getValue('twentyFour') ? 'G:i' : 'g:i a'
+        $prefs->getValue('twentyFour') ? 'HH:mm' : 'h:mm a', new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
     );
 }
 

@@ -73,8 +73,8 @@ class Mnemo_Block_Summary extends Horde_Core_Block
                  * @deprecated Use Horde_Themes_Image::tag() instead
                  * @see Horde_Deprecated::img()
                  */
-$html .= '<td width="1%">'
-                    . Horde::link(htmlspecialchars(Horde::url($editurl, true)->add('actionID', 'modify_memo')), _("Edit Note"))
+                $html .= '<td width="1%">'
+                    . Horde::link(Horde::url($editurl, true)->add('actionID', 'modify_memo'), _("Edit Note"))
                     . Horde::img($editImg, _("Edit Note"))
                     . '</a></td>';
             }
@@ -90,7 +90,7 @@ $html .= '<td width="1%">'
 
             $html .= '<td>'
                 . Horde::linkTooltip(
-                    htmlspecialchars(Horde::url($viewurl, true)),
+                    Horde::url($viewurl, true),
                     '',
                     '',
                     '',

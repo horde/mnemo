@@ -721,23 +721,31 @@ class Mnemo_Api extends Horde_Registry_Api
     /**
      * Delete a memo identified by UID.
      *
-     * @param string | array $uid  Identify the note to delete, either a
-     *                             single UID or an array.
+     * @param string|array $uid      Identify the note to delete, either a
+     *                               single UID or an array.
+     * @param string       $notepad  The notepad id, if not using multiplexed
+     *                               ActiveSync collections.
+     *
      * @throws Horde_Exception_PermissionDenied
      */
-    public function delete($uid)
+    public function delete($uid, $notepad = null)
     {
         // Handle an arrray of UIDs for convenience of deleting multiple
         // notes at once.
         if (is_array($uid)) {
             foreach ($uid as $u) {
-                $result = $this->delete($u);
+                $this->delete($u, $notepad);
             }
             return;
         }
 
-        $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create();
+        $storage = $GLOBALS['injector']->getInstance('Mnemo_Factory_Driver')->create(
+            $notepad ?: ''
+        );
         $memo = $storage->getByUID($uid);
+        if ($notepad !== null && $memo['memolist_id'] != $notepad) {
+            throw new Horde_Exception_NotFound('Not found');
+        }
         if (!$GLOBALS['registry']->isAdmin()
             && !array_key_exists($memo['memolist_id'], Mnemo::listNotepads(false, Horde_Perms::DELETE))) {
 

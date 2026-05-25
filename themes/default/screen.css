@@ -129,3 +129,19 @@ table#notepad-list th.sortdown {
     background-image: url('graphics/delete.png');
     background-size: 16px 16px;
 }
+
+/* ============================================================================
+   Responsive View (scoped under .horde-responsive)
+   ============================================================================ */
+
+.horde-responsive .topbar-menu-app-mnemo::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('graphics/mnemo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}

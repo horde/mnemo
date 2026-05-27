@@ -107,7 +107,7 @@ try {
      * @deprecated Use $GLOBALS['injector']->getInstance('Horde_Core_Hooks')->callHook() instead
      * @see Horde_Deprecated::callHook()
      */
-$view->body = Horde::callHook(
+    $view->body = Horde::callHook(
         'format_description',
         [$body],
         'mnemo',
@@ -139,18 +139,26 @@ if ($share->hasPermission($registry->getAuth(), Horde_Perms::EDIT)) {
 }
 if (isset($memo['created'])) {
     $view->created = $memo['created']->format(
-        $prefs->getValue('date_format'), new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
+        $prefs->getValue('date_format'),
+        new Horde\Date\Formatter\IcuFormatter(),
+        $GLOBALS['language'] ?? 'en_US'
     )
     . ' ' . $memo['created']->format(
-        $prefs->getValue('twentyFour') ? 'HH:mm' : 'h:mm a', new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
+        $prefs->getValue('twentyFour') ? 'HH:mm' : 'h:mm a',
+        new Horde\Date\Formatter\IcuFormatter(),
+        $GLOBALS['language'] ?? 'en_US'
     );
 }
 if (isset($memo['modified'])) {
     $view->modified = $memo['modified']->format(
-        $prefs->getValue('date_format'), new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
+        $prefs->getValue('date_format'),
+        new Horde\Date\Formatter\IcuFormatter(),
+        $GLOBALS['language'] ?? 'en_US'
     )
     . ' ' . $memo['modified']->format(
-        $prefs->getValue('twentyFour') ? 'HH:mm' : 'h:mm a', new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US'
+        $prefs->getValue('twentyFour') ? 'HH:mm' : 'h:mm a',
+        new Horde\Date\Formatter\IcuFormatter(),
+        $GLOBALS['language'] ?? 'en_US'
     );
 }
 

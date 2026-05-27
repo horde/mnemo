@@ -298,7 +298,7 @@ if (!$view->modify || !$view->passphrase) {
          * @deprecated Use $GLOBALS['injector']->getInstance('Horde_Core_Hooks')->callHook() instead
          * @see Horde_Deprecated::callHook()
          */
-$view->help = Horde::callHook('description_help', [], 'mnemo', '');
+        $view->help = Horde::callHook('description_help', [], 'mnemo', '');
     } catch (Horde_Exception_HookNotSet $e) {
     }
     /**
@@ -306,7 +306,7 @@ $view->help = Horde::callHook('description_help', [], 'mnemo', '');
      * @deprecated Use Horde_Themes_Image::tag() instead
      * @see Horde_Deprecated::img()
      */
-$view->loadingImg = Horde::img('loading.gif', _("Loading..."));
+    $view->loadingImg = Horde::img('loading.gif', _("Loading..."));
     $view->notepads = [];
     if (!$prefs->isLocked('default_notepad')) {
         foreach (Mnemo::listNotepads(false, Horde_Perms::SHOW) as $id => $notepad) {

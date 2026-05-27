@@ -113,7 +113,7 @@ class Mnemo_View_List
          * @deprecated Use Horde_Themes_Image::tag() instead
          * @see Horde_Deprecated::img()
          */
-$view->searchImg = Horde::img('search.png', _("Search"), '');
+        $view->searchImg = Horde::img('search.png', _("Search"), '');
         $view->searchUrl = Horde::url('search.php');
         $view->title = $this->_title;
         $view->browser = $this->_showTagBrowser ? $this->_getRelatedTags() . $this->_getTagTrail() : '';
@@ -129,7 +129,7 @@ $view->searchImg = Horde::img('search.png', _("Search"), '');
              * @deprecated Use Horde_Themes_Image::tag() instead
              * @see Horde_Deprecated::img()
              */
-$view->editImg = Horde::img('edit.png', _("Edit Note"), '');
+            $view->editImg = Horde::img('edit.png', _("Edit Note"), '');
             $view->showNotepad = $prefs->getValue('show_notepad');
             $view->sortdirclass = $sortdir ? 'sortup' : 'sortdown';
             $view->headers = [];
@@ -179,14 +179,14 @@ $view->editImg = Horde::img('edit.png', _("Edit Note"), '');
                      * @deprecated Use Horde_Themes_Image::tag() instead
                      * @see Horde_Deprecated::img()
                      */
-$memo['edit'] = Horde::url('memo.php')
-                        ->add([
-                            'memo' => $memo['memo_id'],
-                            'memolist' => $memo['memolist_id'],
-                            'actionID' => 'modify_memo',
-                        ])
-                        ->link(['title' => $label])
-                        . Horde::img('edit.png', $label, '') . '</a>';
+                    $memo['edit'] = Horde::url('memo.php')
+                                            ->add([
+                                                'memo' => $memo['memo_id'],
+                                                'memolist' => $memo['memolist_id'],
+                                                'actionID' => 'modify_memo',
+                                            ])
+                                            ->link(['title' => $label])
+                                            . Horde::img('edit.png', $label, '') . '</a>';
                 }
 
                 $memo['link'] = Horde::linkTooltip(
@@ -214,7 +214,7 @@ $memo['edit'] = Horde::url('memo.php')
                 }
                 if ($modified) {
                     $memo['modifiedStamp'] = $modified->timestamp();
-                    $memo['modifiedString'] = $modified->format($prefs->getValue('date_format'), new \Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US');
+                    $memo['modifiedString'] = $modified->format($prefs->getValue('date_format'), new Horde\Date\Formatter\IcuFormatter(), $GLOBALS['language'] ?? 'en_US');
                 } else {
                     $memo['modifiedStamp'] = $memo['modifiedString'] = '';
                 }
@@ -369,9 +369,9 @@ $memo['edit'] = Horde::url('memo.php')
              * @deprecated Use Horde_Themes_Image::tag() instead
              * @see Horde_Deprecated::img()
              */
-$html = '<div class="nag-tags-related">'
-                    . Horde::img('tags.png')
-                    . ' <ul class="horde-tags">';
+            $html = '<div class="nag-tags-related">'
+                                . Horde::img('tags.png')
+                                . ' <ul class="horde-tags">';
             foreach ($rtags as $id => $taginfo) {
                 $html .= '<li>'
                     . $this->_linkAddTag($taginfo['tag_name'])->link()
@@ -396,17 +396,17 @@ $html = '<div class="nag-tags-related">'
              * @deprecated Use Horde_Themes_Image::tag() instead
              * @see Horde_Deprecated::img()
              */
-$html = '<div class="nag-tags-browsing">' . Horde::img('filter.png') . '<ul class="horde-tags">';
+            $html = '<div class="nag-tags-browsing">' . Horde::img('filter.png') . '<ul class="horde-tags">';
             foreach ($this->_browser->getTags() as $tag => $id) {
                 /**
                  * ARCHITECTURE VIOLATION: Using deprecated Horde::img()
                  * @deprecated Use Horde_Themes_Image::tag() instead
                  * @see Horde_Deprecated::img()
                  */
-$html .= '<li>' . htmlspecialchars($tag)
-                    . $this->_linkRemoveTag($tag)->link()
-                    . Horde::img('delete-small.png', _("Remove from search"))
-                    . '</a></li>';
+                $html .= '<li>' . htmlspecialchars($tag)
+                                    . $this->_linkRemoveTag($tag)->link()
+                                    . Horde::img('delete-small.png', _("Remove from search"))
+                                    . '</a></li>';
             }
             return $html .= '</ul></div>';
         }

@@ -204,7 +204,7 @@ class Mnemo
                 Horde::log($e);
                 return [];
             }
-            $display_notepads = @unserialize($GLOBALS['prefs']->getValue('display_notepads'));
+            $display_notepads = @unserialize($GLOBALS['prefs']->getValue('display_notepads'), ['allowed_classes' => false]);
             if (is_array($display_notepads)) {
                 foreach ($display_notepads as $id) {
                     try {

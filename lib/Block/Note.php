@@ -74,7 +74,7 @@ class Mnemo_Block_Note extends Horde_Core_Block
              * @deprecated Use $GLOBALS['injector']->getInstance('Horde_Core_Hooks')->callHook() instead
              * @see Horde_Deprecated::callHook()
              */
-$body = Horde::callHook('format_description', [$body], 'mnemo', $body);
+            $body = Horde::callHook('format_description', [$body], 'mnemo', $body);
         } catch (Horde_Exception_HookNotSet $e) {
         }
         $html .= $body . '</div>';

@@ -888,7 +888,7 @@ class Mnemo_Api extends Horde_Registry_Api
 
         $name = $notepad->getName();
         if (!empty($params['synchronize'])) {
-            $sync = @unserialize($prefs->getValue('sync_notepads'));
+            $sync = @unserialize($prefs->getValue('sync_notepads'), ['allowed_classes' => false]);
             $sync[] = $name;
             $prefs->setValue('sync_notepads', serialize($sync));
         }

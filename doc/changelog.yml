@@ -1,4 +1,23 @@
 ---
+5.0.0-beta5:
+  api: 5.0.0-beta5
+  state:
+    release: beta
+    api: beta
+  date: 2026-05-28
+  license:
+    identifier: Apache-1.1
+    uri: https://spdx.org/licenses/Apache-1.1.html
+  notes: |-
+    fix(security): restrict unserialize allowed_classes (ZDI-20-1051) (#21)
+    Merge pull request #20 from horde/fix/do_not_enforce1_ios_multiplexing_anymore
+    Modify delete method to include notepad parameter
+    refactor: Transition to unified screen.css
+    chore: Update workflow dependency
+    Php8 type error
+    Merge pull request #18 from horde/refactor/strftime-icu-migration
+    refactor(strftime): Migrate to native usage of IntlDateFormatter and DateTime
+    style: constrain tag list icon size to 16px
 5.0.0-beta4:
   api: 5.0.0-beta4
   state:

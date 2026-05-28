@@ -50,7 +50,7 @@ class Mnemo_Application extends Horde_Registry_Application
 
     /**
      */
-    public $version = '5.0.0-beta4';
+    public $version = '5.0.0-beta5';
 
     /**
      * Global variables defined:
